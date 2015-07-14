@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\UserRepository")
  * @ORM\Table(name="user")
  *
  * @UniqueEntity("email")
@@ -86,11 +86,17 @@ class User
      */
     private $rates;
 
+    /**
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="user")
+     */
+    private $orders;
+
     function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->roles = new ArrayCollection();
         $this->rates = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -338,5 +344,38 @@ class User
     public function getRates()
     {
         return $this->rates;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     * @return User
+     */
+    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     */
+    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

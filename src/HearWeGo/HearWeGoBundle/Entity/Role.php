@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\RoleRepository")
  * @ORM\Table(name="role")
  */
 class Role

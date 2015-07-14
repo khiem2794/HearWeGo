@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tour
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\TourRepository")
  */
 class Tour
 {

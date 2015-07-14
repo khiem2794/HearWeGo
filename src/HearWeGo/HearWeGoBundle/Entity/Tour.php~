@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tour
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\TourRepository")
  */
 class Tour
 {
@@ -225,5 +225,61 @@ class Tour
     public function getInfo()
     {
         return $this->info;
+    }
+
+    /**
+     * Set company
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Company $company
+     * @return Tour
+     */
+    public function setCompany(\HearWeGo\HearWeGoBundle\Entity\Company $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \HearWeGo\HearWeGoBundle\Entity\Company 
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Add destinations
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destinations
+     * @return Tour
+     */
+    public function addDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destinations)
+    {
+        $this->destinations[] = $destinations;
+
+        return $this;
+    }
+
+    /**
+     * Remove destinations
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destinations
+     */
+    public function removeDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destinations)
+    {
+        $this->destinations->removeElement($destinations);
+    }
+
+    /**
+     * Get destinations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDestinations()
+    {
+        return $this->destinations;
     }
 }

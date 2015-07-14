@@ -2,13 +2,14 @@
 
 namespace HearWeGo\HearWeGoBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Audio
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\AudioRepository")
  */
 class Audio
 {
@@ -49,6 +50,12 @@ class Audio
      *
      * @return integer 
      */
+
+    /**
+     * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="audios")
+     */
+    private $orders;
+
     public function getId()
     {
         return $this->id;
@@ -105,6 +112,7 @@ class Audio
     public function __construct()
     {
         $this->rates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -161,5 +169,38 @@ class Audio
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     * @return Audio
+     */
+    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     */
+    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

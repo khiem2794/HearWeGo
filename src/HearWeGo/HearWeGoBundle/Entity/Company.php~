@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Company
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\CompanyRepository")
  */
 class Company
 {
@@ -190,5 +190,38 @@ class Company
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Add tours
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Tour $tours
+     * @return Company
+     */
+    public function addTour(\HearWeGo\HearWeGoBundle\Entity\Tour $tours)
+    {
+        $this->tours[] = $tours;
+
+        return $this;
+    }
+
+    /**
+     * Remove tours
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Tour $tours
+     */
+    public function removeTour(\HearWeGo\HearWeGoBundle\Entity\Tour $tours)
+    {
+        $this->tours->removeElement($tours);
+    }
+
+    /**
+     * Get tours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTours()
+    {
+        return $this->tours;
     }
 }
