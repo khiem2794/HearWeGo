@@ -1,3 +1,7 @@
+hear_we_go_hear_we_go:
+    resource: "@HearWeGoHearWeGoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

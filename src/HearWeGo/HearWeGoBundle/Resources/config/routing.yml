@@ -1,0 +1,3 @@
+hear_we_go_hear_we_go_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: HearWeGoHearWeGoBundle:Default:index }
