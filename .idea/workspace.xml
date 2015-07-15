@@ -19,11 +19,32 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - hearwego@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="hearwego" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="HearWeGo" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <leaf>
       <file leaf-file-name="Order.php" pinned="false" current-in-tab="true">
@@ -55,15 +76,28 @@
               <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding>
                 <element signature="e#54#111#0#PHP" expanded="true" />
+=======
+    <leaf>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35828876" vertical-offset="376" max-vertical-offset="5850">
+              <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+              <folding>
+                <element signature="e#132#180#0#PHP" expanded="true" />
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+<<<<<<< HEAD
 =======
     <leaf />
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
+=======
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -74,10 +108,14 @@
         <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Rating.php" />
         <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Role.php" />
         <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Tour.php" />
-        <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Comment.php" />
-        <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Company.php" />
         <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Destination.php" />
+        <option value="dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..article" />
+        <option value="dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..comment" />
+        <option value="dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..user" />
+        <option value="dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..rating" />
+        <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Company.php" />
+        <option value="$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/User.php" />
       </list>
     </option>
   </component>
@@ -205,8 +243,10 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
@@ -218,12 +258,15 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
+=======
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
       <method />
@@ -242,6 +285,8 @@
     </configuration>
 =======
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
+=======
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -269,12 +314,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980047" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
 =======
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -599,20 +644,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.060606" vertical-offset="325" max-vertical-offset="5850">
-          <caret line="94" column="8" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+        <state vertical-scroll-proportion="1.1969697" vertical-offset="445" max-vertical-offset="2490">
+          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
           <folding>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <element signature="e#50#98#0#PHP" expanded="false" />
 =======
             <element signature="e#132#180#0#PHP" expanded="true" />
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
+=======
+            <element signature="e#50#82#0#PHP" expanded="true" />
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="dbDummy://dbtable:/37bfc46c/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..company">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -694,19 +744,90 @@
             <element signature="e#54#111#0#PHP" expanded="true" />
 =======
     <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Comment.php">
+=======
+    <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Destination.php">
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1969697" vertical-offset="445" max-vertical-offset="2490">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.46969697" vertical-offset="325" max-vertical-offset="3375">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding>
-            <element signature="e#50#82#0#PHP" expanded="true" />
+            <element signature="e#50#98#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="411">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4379562" vertical-offset="0" max-vertical-offset="411">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..comment">
+      <provider editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..article">
+      <provider editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="210">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..rating">
+      <provider editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/3b7947ac/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/Company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2878788" vertical-offset="340" max-vertical-offset="3615">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.44117647" vertical-offset="450" max-vertical-offset="3630">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
           <folding>
             <element signature="e#50#98#0#PHP" expanded="true" />
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
@@ -714,6 +835,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="dbDummy://dbtable:/37bfc46c/5955f523-09e2-4dca-be32-a32f0e48673a/hearwego..order_audio">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -785,8 +907,14 @@
         <state vertical-scroll-proportion="0.46969697" vertical-offset="325" max-vertical-offset="3375">
           <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
 >>>>>>> 4b06e68c704d747c868aa65a2b827dd97ed84760
+=======
+    <entry file="file://$PROJECT_DIR$/src/HearWeGo/HearWeGoBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35828876" vertical-offset="376" max-vertical-offset="5850">
+          <caret line="39" column="57" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+>>>>>>> e8a3e5db18df77f7632cccd7771694ab5a0c3a10
           <folding>
-            <element signature="e#50#98#0#PHP" expanded="true" />
+            <element signature="e#132#180#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
