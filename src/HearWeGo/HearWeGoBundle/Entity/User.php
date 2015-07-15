@@ -31,43 +31,49 @@ class User
 
     /**
      * @ORM\Column(type="string")
-     *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $password;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     * @Assert\Length(max="30")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
+     * @Assert\Length(max=30,maxMessage="Cannot be longer than 30 characters")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     * @Assert\Length(max="30")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
+     * @Assert\Length(max=30,maxMessage="Cannot be longer than 30 characters")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
+     * @Assert\DateTime()
      */
     private $dateOfBirth;
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      * @Assert\Regex("[0-9]+")
-     * @Assert\Length(min="9", max="11")
+     * @Assert\Length(min=9, max=11)
      */
     private $phone;
 
@@ -83,6 +89,8 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="user")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $rates;
 

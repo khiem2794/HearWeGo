@@ -3,6 +3,7 @@
 namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Rating
@@ -25,16 +26,24 @@ class Rating
      * @var integer
      *
      * @ORM\Column(name="stars", type="integer")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
+     * @Assert\GreaterThanOrEqual(value=0,message="Rating must be between 0 and 5 stars")
+     * @Assert\LessThanOrEqual(value=5,message="Rating must be between 0 and 5 stars")
      */
     private $stars;
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="rates", cascade={"persist"} )
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="rates", cascade={"persist"} )
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $audio;
 

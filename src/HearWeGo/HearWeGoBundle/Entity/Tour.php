@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tour
@@ -26,6 +27,8 @@ class Tour
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $name;
 
@@ -33,6 +36,7 @@ class Tour
      * @var \DateTime
      *
      * @ORM\Column(name="startdate", type="datetime")
+     * @Assert\DateTime()
      */
     private $startdate;
 
@@ -40,6 +44,7 @@ class Tour
      * @var \DateTime
      *
      * @ORM\Column(name="enddate", type="datetime")
+     * @Assert\DateTime()
      */
     private $enddate;
 
@@ -47,6 +52,7 @@ class Tour
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=10)
+     * @Assert\Length(max=10,maxMessage="Cannot be longer than 10 characters")
      */
     private $status;
 
@@ -61,6 +67,8 @@ class Tour
      * @var string
      *
      * @ORM\Column(name="info", type="text")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $info;
 
@@ -71,6 +79,8 @@ class Tour
 
     /**
      * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", mappedBy="tours")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $destinations;
 

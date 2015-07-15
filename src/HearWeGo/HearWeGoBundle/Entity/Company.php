@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Company
@@ -26,6 +27,8 @@ class Company
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $name;
 
@@ -33,6 +36,9 @@ class Company
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=64)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
+     * @Assert\Email(message="The email '{{value}}' is not a valid email")
      */
     private $email;
 
@@ -40,6 +46,8 @@ class Company
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $password;
 
