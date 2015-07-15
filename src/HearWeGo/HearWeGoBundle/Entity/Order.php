@@ -8,6 +8,7 @@
 namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,6 +26,9 @@ class Order
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
+     * @Assert\DateTime()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $date;
     /**
@@ -34,6 +38,8 @@ class Order
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="orders")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $user;
 

@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Audio
@@ -26,6 +27,8 @@ class Audio
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $name;
 
@@ -33,6 +36,8 @@ class Audio
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $content;
 
@@ -43,6 +48,8 @@ class Audio
 
     /**
      * @ORM\OneToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="audio")
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $destination;
     /**

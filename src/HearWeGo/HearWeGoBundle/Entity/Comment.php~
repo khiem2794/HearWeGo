@@ -3,6 +3,7 @@
 namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -25,6 +26,7 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\DateTime()
      */
     private $date;
 
@@ -32,12 +34,16 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotBlank()
+     * 
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Assert\NotBlank()
+     * 
      */
     private $user;
 
@@ -45,6 +51,8 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Article", inversedBy="comments")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Assert\NotBlank()
+     * 
      */
     private $article;
 

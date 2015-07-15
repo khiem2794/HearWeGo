@@ -23,7 +23,8 @@ class Role
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="This field must be filled")
+     * 
      */
     private $role;
 
