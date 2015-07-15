@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\CompanyRepository")
+ * @UniqueEntity("email")
  */
 class Company
 {
@@ -35,10 +36,10 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=64)
+     * @ORM\Column(name="email", type="string", length=64,unique=true)
      * @Assert\NotBlank(message="This field must be filled")
      * 
-     * @Assert\Email(message="The email '{{value}}' is not a valid email")
+     * @Assert\Email(message="Not a valid email")
      */
     private $email;
 
