@@ -37,10 +37,10 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",name="email",unique=true)
      * @Assert\NotBlank(message="This field must be filled")
      * 
-     * @Assert\Email()
+     * @Assert\Email(message="Not a valid email")
      */
     private $email;
 
