@@ -51,8 +51,7 @@ class Tour
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=10)
-     * @Assert\Length(max=10,maxMessage="Cannot be longer than 10 characters")
+     * @ORM\Column(name="status", type="boolean")
      */
     private $status;
 
@@ -292,4 +291,5 @@ class Tour
     {
         return $this->destinations;
     }
+
 }

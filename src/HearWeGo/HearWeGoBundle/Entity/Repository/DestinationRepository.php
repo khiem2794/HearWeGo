@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class DestinationRepository extends EntityRepository
 {
+    public function findAll()
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d')->getResult();
+    }
+
+    public function findIdByName($name)
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d.name=:name')->setParameter('name',$name)->getResult();
+    }
 }
