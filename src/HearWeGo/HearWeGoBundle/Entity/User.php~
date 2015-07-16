@@ -10,6 +10,7 @@ namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -20,8 +21,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity("email")
  */
-class User
+class User implements UserInterface
 {
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -137,6 +139,7 @@ class User
      */
     public function getPassword()
     {
+
         return $this->password;
     }
 
@@ -318,7 +321,11 @@ class User
      */
     public function getRoles()
     {
-        return $this->roles;
+        $user_role = array();
+        foreach ($this->roles->toArray() as $role)
+            $user_role[] = $role->getRole();
+        return $user_role;
+        //return array('ROLE_ADMIN');
     }
 
     /**
@@ -386,4 +393,12 @@ class User
     {
         return $this->orders;
     }
+
+    public function getSalt(){
+        return null;
+    }
+    public function getUsername(){
+        return $this->email;
+    }
+    public function eraseCredentials(){}
 }

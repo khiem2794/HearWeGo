@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function findUserByEmail( $email ){
+        $query  = $this->getEntityManager()->createQuery(
+            'SELECT u FROM HearWeGoHearWeGoBundle:User u WHERE u.email = :email'
+        )->setParameter('email', $email );
+        return $query->getOneOrNullResult();
+    }
 }

@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -14,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\CompanyRepository")
  * @UniqueEntity("email")
  */
-class Company
+class Company implements UserInterface
 {
     /**
      * @var integer
@@ -70,6 +71,11 @@ class Company
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Tour", mappedBy="company")
      */
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $roles;
+
     private $tours;
 
     function __construct()
@@ -233,5 +239,53 @@ class Company
     public function getTours()
     {
         return $this->tours;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return Company
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    public function getSalt(){
+        return null;
+    }
+
+    public function getUsername(){
+        return $this->email;
+    }
+
+    public function eraseCredentials(){
+
+    }
+
+    /**
+     * Set roles
+     *
+     * @param string $roles
+     * @return Company
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return array('ROLE_COMPANY');
     }
 }
