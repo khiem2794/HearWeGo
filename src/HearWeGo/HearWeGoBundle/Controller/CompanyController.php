@@ -9,7 +9,6 @@ use HearWeGo\HearWeGoBundle\Entity\Tour;
 use HearWeGo\HearWeGoBundle\Form\CompanySignupType;
 use HearWeGo\HearWeGoBundle\Form\CompanySubmitTourType;
 use HearWeGo\HearWeGoBundle\Form\CompanyEditType;
-use HearWeGo\HearWeGoBundle\Form\CompanyDeleteType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -20,6 +19,10 @@ class CompanyController extends Controller
      */
     public function signupAction(Request $request)
     {
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
         $company=new Company();
         $form=$this->createForm(new CompanySignupType(),$company,array('method'=>'POST','action'=>$this->generateUrl('company_signup')));
         $form->add('submit','submit');
@@ -31,7 +34,7 @@ class CompanyController extends Controller
                 $em=$this->getDoctrine()->getEntityManager();
                 $em->persist($company);
                 $em->flush();
-                return new Response("<html>".$company->getName()." has been created!</html>");
+                return $this->redirect($this->generateUrl('homepage'));
             }
         }
         return $this->render('HearWeGoHearWeGoBundle:Company:companySignup.html.twig', array('form'=>$form->createView()));
@@ -120,6 +123,8 @@ class CompanyController extends Controller
         {
             $form=$form->getForm();
             $form->handleRequest($request);
+            echo $form->get('password')->getData()."<br>".$company->getPassword();
+
             if ($form->get('password')->getData()==$company->getPassword())
             {
                 $em=$this->getDoctrine()->getEntityManager();

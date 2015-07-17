@@ -63,7 +63,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @Assert\NotBlank(message="This field must be filled")
      * 
      * @Assert\DateTime()

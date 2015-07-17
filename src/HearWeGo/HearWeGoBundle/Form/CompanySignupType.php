@@ -17,14 +17,14 @@ class CompanySignupType extends AbstractType
             ->add('phone','text')
             ->add('address','text')
             ->add('role', 'hidden', array(
-                'data' => "ROLE_COMPANY"
+                'data' => 'ROLE_COMPANY'
             ))
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array('data_class'=>"HearWeGo\HearWeGoBundle\Entity\Company"));
+        $resolver->setDefaults(array('data_class'=>"HearWeGo\\HearWeGoBundle\\Entity\\Company"));
     }
 
     public function getName()

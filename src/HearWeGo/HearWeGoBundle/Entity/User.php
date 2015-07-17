@@ -63,7 +63,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @Assert\NotBlank(message="This field must be filled")
      * 
      * @Assert\DateTime()
@@ -73,8 +73,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
-     * @Assert\Regex("[0-9]+")
+     *
      * @Assert\Length(min=9, max=11)
      */
     private $phone;

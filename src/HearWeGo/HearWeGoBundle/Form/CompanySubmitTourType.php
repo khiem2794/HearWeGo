@@ -2,13 +2,9 @@
 
 namespace HearWeGo\HearWeGoBundle\Form;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
-use HearWeGo\HearWeGoBundle\Util\DestinationUtil;
-use Doctrine\ORM\EntityRepository;
 use HearWeGo\HearWeGoBundle\Form\Transformer\DestinationTransformer;
 
 class CompanySubmitTourType extends AbstractType
