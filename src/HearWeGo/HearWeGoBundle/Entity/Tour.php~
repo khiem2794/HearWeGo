@@ -51,8 +51,7 @@ class Tour
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=10)
-     * @Assert\Length(max=10,maxMessage="Cannot be longer than 10 characters")
+     * @ORM\Column(name="status", type="boolean")
      */
     private $status;
 
@@ -78,16 +77,10 @@ class Tour
     private $company;
 
     /**
-     * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", mappedBy="tours")
-     * @Assert\NotBlank(message="This field must be filled")
-     * 
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="tour")
      */
-    private $destinations;
+    private $destination;
 
-    function __construct()
-    {
-        $this->destinations = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -171,7 +164,7 @@ class Tour
     /**
      * Set status
      *
-     * @param string $status
+     * @param boolean $status
      * @return Tour
      */
     public function setStatus($status)
@@ -184,7 +177,7 @@ class Tour
     /**
      * Get status
      *
-     * @return string 
+     * @return boolean 
      */
     public function getStatus()
     {
@@ -261,35 +254,25 @@ class Tour
     }
 
     /**
-     * Add destinations
+     * Set destination
      *
-     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destinations
+     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destination
      * @return Tour
      */
-    public function addDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destinations)
+    public function setDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destination = null)
     {
-        $this->destinations[] = $destinations;
+        $this->destination = $destination;
 
         return $this;
     }
 
     /**
-     * Remove destinations
+     * Get destination
      *
-     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destinations
+     * @return \HearWeGo\HearWeGoBundle\Entity\Destination 
      */
-    public function removeDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destinations)
+    public function getDestination()
     {
-        $this->destinations->removeElement($destinations);
-    }
-
-    /**
-     * Get destinations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getDestinations()
-    {
-        return $this->destinations;
+        return $this->destination;
     }
 }

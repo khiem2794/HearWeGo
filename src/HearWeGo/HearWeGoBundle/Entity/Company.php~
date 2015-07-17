@@ -74,13 +74,14 @@ class Company implements UserInterface
     /**
      * @ORM\Column(type="string")
      */
-    private $roles;
+    private $role;
 
     private $tours;
 
     function __construct()
     {
         $this->tours = new ArrayCollection();
+        $this->role = 'ROLE_COMPANY';
     }
 
     /**
@@ -261,7 +262,7 @@ class Company implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return array($this->role);
     }
 
     public function getSalt(){
@@ -275,4 +276,5 @@ class Company implements UserInterface
     public function eraseCredentials(){
 
     }
+
 }

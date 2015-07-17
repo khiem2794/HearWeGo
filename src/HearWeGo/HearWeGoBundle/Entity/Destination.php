@@ -35,7 +35,7 @@ class Destination
     /**
      * @var string
      *
-     * @ORM\Column(name="location", type="decimal")
+     * @ORM\Column(name="location", type="decimal", scale=2)
      */
     private $location;
 
@@ -51,15 +51,18 @@ class Destination
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Tour", inversedBy="destinations")
-     * @ORM\JoinTable(name="tours_destinations")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Tour", mappedBy="destination")
      */
     private $tours;
 
-    function __construct()
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        $this->article = new ArrayCollection();
-        $this->tours = new ArrayCollection();
+        $this->audio = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tours = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

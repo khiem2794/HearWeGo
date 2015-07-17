@@ -3,11 +3,17 @@ security:
     encoders:
         HearWeGo\HearWeGoBundle\Entity\User:
             algorithm: plaintext
+        HearWeGo\HearWeGoBundle\Entity\Company:
+            algorithm: plaintext
         Symfony\Component\Security\Core\User\User: plaintext
     providers:
         user_provider:
             entity: { class: HearWeGoHearWeGoBundle:User, property: email }
+        company_provider:
             entity: { class: HearWeGoHearWeGoBundle:Company, property: email}
+        chain_provider:
+            chain:
+                providers: [user_provider, company_provider]
     role_hierarchy:
         ROLE_ADMIN: [ROLE_USER]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -18,7 +24,7 @@ security:
             form_login:
                 username_parameter: user_login_type[email]
                 password_parameter: user_login_type[password]
-                provider: user_provider
+                provider: chain_provider
                 check_path: /login_check
                 login_path: /login
                 default_target_path: /

@@ -2,3 +2,12 @@ services:
 #    hear_we_go_hear_we_go.example:
 #        class: HearWeGo\HearWeGoBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+
+    destination_service:
+        class:        HearWeGo\HearWeGoBundle\Util\DestinationUtil
+        arguments: [ @doctrine.orm.entity_manager ]
+
+    destination.transformer:
+        class:    HearWeGo\HearWeGoBundle\Form\Transformer\DestinationTransformer
+        arguments: [ @doctrine.orm.entity_manager ]
