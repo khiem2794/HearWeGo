@@ -24,7 +24,7 @@ class CompanySignupType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array('data_class'=>"HearWeGo\HearWeGoBundle\Entity\Company"));
+        $resolver->setDefaults(array('data_class'=>"HearWeGo\\HearWeGoBundle\\Entity\\Company"));
     }
 
     public function getName()
