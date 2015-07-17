@@ -9,11 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="hello")
+     * @Route("/", name="homepage")
      */
     public function indexAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default:index.html.twig', array('name' => 'guest'));
+        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
+        $name = (!$currentUser)?'guest':$currentUser->getEmail();
+        return $this->render('HearWeGoHearWeGoBundle:Default:index.html.twig', array('name' => $name));
     }
 
     /**

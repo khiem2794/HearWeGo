@@ -1,6 +1,7 @@
 <?php
 namespace HearWeGo\HearWeGoBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use HearWeGo\HearWeGoBundle\Entity\Company;
@@ -36,9 +37,16 @@ class CompanyController extends Controller
 
     /**
      * @Route("/company/submit",name="company_submit")
+     *
      */
     public function submitTourAction(Request $request)
     {
+
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('user_login'));
+        }
+        $this->denyAccessUnlessGranted('ROLE_COMPANY', null, 'Unable to access this page!');
+
         $tour=new Tour();
         $form=$this->createForm(new CompanySubmitTourType($this->get('destination.transformer')),$tour,array(
             'method'=>'POST',

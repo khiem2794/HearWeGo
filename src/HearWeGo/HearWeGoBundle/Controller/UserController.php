@@ -19,7 +19,7 @@ class UserController extends Controller
         $request = $this->get('request');
 
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
-            return $this->redirectToRoute('admin_index');
+            return $this->redirectToRoute('homepage');
 
         if ( $request->attributes->has(Security::AUTHENTICATION_ERROR)){
             $error = $request->attributes->has(Security::AUTHENTICATION_ERROR);
