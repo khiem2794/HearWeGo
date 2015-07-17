@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class RoleRepository extends EntityRepository
 {
+    public function getRoleUser(){
+        $roleUser = 'ROLE_USER';
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT r FROM HearWeGoHearWeGoBundle:Role r WHERE r.role=:role_user'
+        )->setParameter('role_user', $roleUser);
+        return $query->getOneOrNullResult();
+    }
 }

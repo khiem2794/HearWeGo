@@ -4,6 +4,8 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Security;
 use HearWeGo\HearWeGoBundle\Entity\User;
 use HearWeGo\HearWeGoBundle\Form;
@@ -11,6 +13,42 @@ use HearWeGo\HearWeGoBundle\Form;
 
 class UserController extends Controller
 {
+    /**
+     * @Route("/register", name="register")
+     */
+    public function registerAction(){
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+        $request = $this->get('request');
+        $user = new User();
+        $form = $this->createForm(new Form\UserRegisterType(), $user, array(
+            'method' => 'POST',
+            'action' => $this->generateUrl("register")
+        ));
+        $form->add('submit', 'submit');
+
+        if ( $request->getMethod() == 'POST'){
+            $form->handleRequest($request);
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $roleUser = $em->getRepository('HearWeGoHearWeGoBundle:Role')->getRoleUser();
+                $roleUser->addUser($user);
+                $user->addRole($roleUser);
+                $em->persist($roleUser);
+                $em->persist($user);
+                $em->flush();
+                $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+                $this->get('security.token_storage')->setToken($token);
+                return $this->redirect($this->generateUrl('homepage'));
+            }
+        }
+        return $this->render('HearWeGoHearWeGoBundle:Default:register.html.twig', array(
+            'form' => $form->createView()
+        ));
+
+    }
+
     /**
      * @Route("/login", name="user_login")
      */

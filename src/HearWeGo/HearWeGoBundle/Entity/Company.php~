@@ -277,4 +277,14 @@ class Company implements UserInterface
 
     }
 
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

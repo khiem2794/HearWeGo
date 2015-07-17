@@ -16,6 +16,9 @@ class CompanySignupType extends AbstractType
             ->add('password','password')
             ->add('phone','text')
             ->add('address','text')
+            ->add('role', 'hidden', array(
+                'data' => 'ROLE_COMPANY'
+            ))
         ;
     }
 
