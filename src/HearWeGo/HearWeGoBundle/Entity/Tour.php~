@@ -81,6 +81,11 @@ class Tour
      */
     private $destination;
 
+    function __construct()
+    {
+        $this->status = false;
+    }
+
 
     /**
      * Get id
