@@ -120,7 +120,6 @@ class CompanyController extends Controller
         {
             $form=$form->getForm();
             $form->handleRequest($request);
-            echo $form->get('password')->getData()."<br>".$company->getPassword();
             if ($form->get('password')->getData()==$company->getPassword())
             {
                 $em=$this->getDoctrine()->getEntityManager();
