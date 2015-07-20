@@ -21,4 +21,10 @@ class DestinationRepository extends EntityRepository
     {
         return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d.name=:name')->setParameter('name',$name)->getOneOrNullResult();
     }
+
+    public function findDestinationWithoutAudio()
+    {
+        $query='SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d NOT IN (SELECT IDENTITY (a.destination) FROM HearWeGoHearWeGoBundle:Audio a)';
+        return $this->getEntityManager()->createQuery($query)->getResult();
+    }
 }

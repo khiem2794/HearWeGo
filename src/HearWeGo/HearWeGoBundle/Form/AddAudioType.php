@@ -11,16 +11,22 @@ class AddAudioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $destination_repo=$options['dr'];
+
         $builder
             ->add('name','text')
             ->add('content','file')
-            ->add('destination','entity',array('class'=>'HearWeGoHearWeGoBundle:Destination','property'=>'name'))
+            ->add('destination','entity',array(
+                'class'=>'HearWeGoHearWeGoBundle:Destination',
+                'choices'=>$destination_repo->findDestinationWithoutAudio(),
+                'property'=>'name'))
             ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array('data_class'=>"HearWeGo\\HearWeGoBundle\\Entity\\Audio"));
+        $resolver->setRequired(array('dr'));
     }
 
     public function getName()

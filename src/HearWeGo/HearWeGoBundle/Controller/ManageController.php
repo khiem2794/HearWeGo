@@ -34,11 +34,14 @@ class ManageController extends Controller
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
 
+        $destination_repo=$this->getDoctrine()->getManager()->getRepository('HearWeGoHearWeGoBundle:Destination');
         $audio=new Audio();
         $form=$this->createForm(new AddAudioType(),$audio,array(
             'method'=>'POST',
-            'action'=>$this->generateUrl('add_audio')
+            'action'=>$this->generateUrl('add_audio'),
+            'dr'=>$destination_repo
         ));
+        //var_dump ($destination_repo->findDestinationWithoutAudio());
         $form->add('submit','submit');
         if ($request->getMethod()=='POST')
         {
