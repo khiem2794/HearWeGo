@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use HearWeGo\HearWeGoBundle\Entity\User;
 use HearWeGo\HearWeGoBundle\Entity\Article;
+use HearWeGo\HearWeGoBundle\Entity\Audio;
 use HearWeGo\HearWeGoBundle\Form;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
