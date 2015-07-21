@@ -1,0 +1,67 @@
+{% extends('admin/admin.html.twig') %}
+
+{% block pagecssplugin %}
+{% endblock %}
+
+
+
+{% block mainpageheader %}
+    <h1 class="page-heading">Add New Article</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">Add New Article</h3>
+{% endblock %}
+
+
+{% block mainpagecontainer %}
+
+    {% for flashMessage in app.session.flashbag.get('status') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+
+    {{ form_start(form) }}
+    <div class="col-md-7 block">
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tags) }}
+            {{ form_widget(form.tags, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter Tags'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content, { 'attr' : { 'class' : 'form-control input-lg','rows': '25', 'placeholder': 'Content goes here ...'}  }) }}
+        </div>
+    </div>
+    <div class="col-md-5 block form-group">
+        {{ form_widget(form.imgpath, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'placeholder': 'Enter title'}  }) }}
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+
+{% block pagejsplugin %}
+{% endblock %}
+
+
+{% block pagejscode %}
+    <script>
+        $(function () {
+            // Init page helpers (Summernote + CKEditor plugins)
+            App.initHelpers([]);
+        });
+    </script>
+{% endblock %}
+
+
+
+

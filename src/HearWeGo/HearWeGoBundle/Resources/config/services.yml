@@ -4,6 +4,17 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
 
 
+
+
+    tag.transform.type:
+        class: HearWeGo\HearWeGoBundle\Form\TagTransformType
+        arguments: [@tag.transformer]
+        tags: [{ name: "form.type", alias: "tag_type" }]
+
+    tag.transformer:
+        class: HearWeGo\HearWeGoBundle\Form\Transformer\TagTransformer
+        arguments: [@doctrine.orm.entity_manager]
+
     destination_service:
         class:        HearWeGo\HearWeGoBundle\Util\DestinationUtil
         arguments: [ @doctrine.orm.entity_manager ]

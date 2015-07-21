@@ -40,7 +40,7 @@ class Destination
     private $location;
 
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", mappedBy="destination")
+     * @ORM\OneToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", mappedBy="destination")
      */
     private $audio;
 
@@ -55,6 +55,10 @@ class Destination
      */
     private $tours;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Region", inversedBy="destinations")
+     */
+    private $region;
     /**
      * Constructor
      */
@@ -218,5 +222,41 @@ class Destination
     public function getTours()
     {
         return $this->tours;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Region $region
+     * @return Destination
+     */
+    public function setRegion(\HearWeGo\HearWeGoBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \HearWeGo\HearWeGoBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set audio
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Audio $audio
+     * @return Destination
+     */
+    public function setAudio(\HearWeGo\HearWeGoBundle\Entity\Audio $audio = null)
+    {
+        $this->audio = $audio;
+
+        return $this;
     }
 }

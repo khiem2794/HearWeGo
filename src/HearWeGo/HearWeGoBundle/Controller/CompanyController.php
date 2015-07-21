@@ -50,6 +50,8 @@ class CompanyController extends Controller
             return $this->redirect($this->generateUrl('user_login'));
         }
         $this->denyAccessUnlessGranted('ROLE_COMPANY', null, 'Unable to access this page!');
+        $company = $this->get('security.token_storage')->getToken()->getUser();
+
 
         $tour=new Tour();
         $form=$this->createForm(new CompanySubmitTourType($this->get('destination.transformer')),$tour,array(
@@ -63,8 +65,8 @@ class CompanyController extends Controller
             $form->handleRequest($request);
             if ($form->isValid())
             {
+                $tour->setCompany($company);
                 $em=$this->getDoctrine()->getEntityManager();
-
                 $em->persist($tour);
                 $em->flush();
                 return new Response(' Success ');

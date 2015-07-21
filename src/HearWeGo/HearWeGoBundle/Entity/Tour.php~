@@ -35,7 +35,7 @@ class Tour
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startdate", type="datetime")
+     * @ORM\Column(name="startdate", type="date")
      * @Assert\DateTime()
      */
     private $startdate;
@@ -43,7 +43,7 @@ class Tour
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="enddate", type="datetime")
+     * @ORM\Column(name="enddate", type="date")
      * @Assert\DateTime()
      */
     private $enddate;

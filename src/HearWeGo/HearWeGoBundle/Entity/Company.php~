@@ -68,14 +68,15 @@ class Company implements UserInterface
      */
     private $address;
 
+
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Tour", mappedBy="company")
-     */
-    /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $role;
 
+    /**
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Tour", mappedBy="company")
+     */
     private $tours;
 
     function __construct()

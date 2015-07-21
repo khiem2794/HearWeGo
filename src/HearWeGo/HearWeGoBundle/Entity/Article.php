@@ -42,6 +42,11 @@ class Article
     private $content;
 
     /**
+     * @ORM\Column(name="imgpath", type="string", nullable=false)
+     */
+    private $imgpath;
+
+    /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
      */
     private $comments;
@@ -51,8 +56,18 @@ class Article
      */
     private $destination;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag", indexBy="name", fetch="EAGER")
+     * @ORM\JoinTable(name="article_tags",
+     *      joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="CASCADE")}
+     *      )
+     * */
+    private $tags;
+
     function __construct()
     {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -166,5 +181,61 @@ class Article
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Tag $tags
+     * @return Article
+     */
+    public function addTag(\HearWeGo\HearWeGoBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Tag $tags
+     */
+    public function removeTag(\HearWeGo\HearWeGoBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set imgpath
+     *
+     * @param string $imgpath
+     * @return Article
+     */
+    public function setImgpath($imgpath)
+    {
+        $this->imgpath = $imgpath;
+
+        return $this;
+    }
+
+    /**
+     * Get imgpath
+     *
+     * @return string 
+     */
+    public function getImgpath()
+    {
+        return $this->imgpath;
     }
 }

@@ -26,11 +26,12 @@ class Order
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Assert\DateTime()
+     * @Assert\Date()
      * @Assert\NotBlank(message="This field must be filled")
      * 
      */
     private $date;
+
     /**
      * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="orders")
      */
@@ -39,7 +40,7 @@ class Order
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="orders")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      */
     private $user;
 

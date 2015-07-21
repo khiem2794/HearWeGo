@@ -22,8 +22,12 @@ class CompanySubmitTourType extends AbstractType
 
         $builder
             ->add('name','text')
-            ->add('startdate','datetime')
-            ->add('enddate','datetime')
+            ->add('startdate','date', array(
+                'years' => range(date('Y'), date('Y')+1)
+            ))
+            ->add('enddate','date', array(
+                'years' => range(date('Y'), date('Y')+1)
+            ))
             ->add('discount','number')
             ->add('info','text')
             ->add('destination', 'text', array(
