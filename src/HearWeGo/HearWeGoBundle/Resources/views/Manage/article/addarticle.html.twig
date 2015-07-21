@@ -40,8 +40,10 @@
         </div>
     </div>
     <div class="col-md-5 block form-group">
-        {{ form_widget(form.imgpath, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
-        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'placeholder': 'Enter title'}  }) }}
+<div class="form-group">
+    {{ form_label(form.imgpath) }}
+    {{ form_widget(form.imgpath, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
+</div>        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'placeholder': 'Enter title'}  }) }}
     </div>
     {{ form_end(form) }}
 

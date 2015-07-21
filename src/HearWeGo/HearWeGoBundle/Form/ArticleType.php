@@ -13,7 +13,10 @@ class ArticleType extends AbstractType
         $builder->add('title')
                 ->add('imgpath', 'file')
                 ->add('content', 'textarea')
-                ->add('tags', 'tag_type');
+                ->add('tags', 'tag_type')
+                ->add('destination', 'entity', array(
+
+                ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
