@@ -97,6 +97,48 @@ class ManageController extends Controller
      * @Route("/admin/audio/add", name="add_audio")
      */
     public function addAudioAction() {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
+            return  new Response('Please login');
+        }
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        $request = $this->get('request');
+        $destination_repo=$this->getDoctrine()->getManager()->getRepository('HearWeGoHearWeGoBundle:Destination');
+        $audio=new Audio();
+        $form=$this->createForm(new AddAudioType(),$audio,array(
+            'method'=>'POST',
+            'action'=>$this->generateUrl('add_audio'),
+            'dr'=>$destination_repo
+        ));
+        //var_dump ($destination_repo->findDestinationWithoutAudio());
+        $form->add('submit','submit');
+        if ($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            if ($form->isValid())
+            {
+                $destination=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')
+                    ->findByName($form->get('destination')->getData()->getName());
+                $audio->setDestination($destination);
+                $name=$_FILES['add_audio']['name']['content'];
+                $tmp_name=$_FILES['add_audio']['tmp_name']['content'];
+                if (isset($name))
+                {
+                    if (!empty($name))
+                    {
+                        $location=$_SERVER['DOCUMENT_ROOT']."/bundles/hearwegohearwego/uploads/";
+                        move_uploaded_file($tmp_name,$location.$name);
+                        $audio->setContent($location.$name);
+                        $em=$this->getDoctrine()->getEntityManager();
+                        $em->persist($audio);
+                        $em->flush();
+                        return new Response('Audio '.$audio->getName().' has been created!');
+                    }
+                }
+            }
+        }
+        return $this->render('@HearWeGoHearWeGo/manage/addAudio.html.twig',array('form'=>$form->createView()));
         return $this->render('@HearWeGoHearWeGo/Manage/audio/addaudio.html.twig');
     }
 
@@ -162,6 +204,9 @@ class ManageController extends Controller
     public function manageCommentAction(){
         return $this->render('@HearWeGoHearWeGo/Manage/comment/commnent.html.twig');
     }
+
+
+
 
 
 
