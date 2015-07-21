@@ -2,15 +2,17 @@
 
 namespace HearWeGo\HearWeGoBundle\Controller;
 
+use HearWeGo\HearWeGoBundle\Entity\Audio;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use HearWeGo\HearWeGoBundle\Entity\User;
 use HearWeGo\HearWeGoBundle\Entity\Article;
-use HearWeGo\HearWeGoBundle\Entity\Audio;
 use HearWeGo\HearWeGoBundle\Form;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
+use HearWeGo\HearWeGoBundle\Form\AddAudioType;
 
 class ManageController extends Controller
 {
@@ -23,6 +25,7 @@ class ManageController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * @Route("/admin/user", name="manage_user")
      */
     public function manageUserAction() {
@@ -97,7 +100,8 @@ class ManageController extends Controller
     /**
      * @Route("/admin/audio/add", name="add_audio")
      */
-    public function addAudioAction() {
+    public function addAudioAction()
+    {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
             return  new Response('Please login');
         }
@@ -204,7 +208,6 @@ class ManageController extends Controller
     public function manageCommentAction(){
         return $this->render('@HearWeGoHearWeGo/Manage/comment/commnent.html.twig');
     }
-
 
 
 

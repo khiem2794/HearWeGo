@@ -33,4 +33,5 @@ class AddAudioType extends AbstractType
     {
         return 'add_audio';
     }
+
 }
