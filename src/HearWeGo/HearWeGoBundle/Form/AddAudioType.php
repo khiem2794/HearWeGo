@@ -19,8 +19,8 @@ class AddAudioType extends AbstractType
             ->add('destination','entity',array(
                 'class'=>'HearWeGoHearWeGoBundle:Destination',
                 'choices'=>$destination_repo->findDestinationWithoutAudio(),
-                'property'=>'name'))
-        ;
+                'property'=>'name'
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

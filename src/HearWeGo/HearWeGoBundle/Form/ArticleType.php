@@ -15,7 +15,9 @@ class ArticleType extends AbstractType
                 ->add('content', 'textarea')
                 ->add('tags', 'tag_type')
                 ->add('destination', 'entity', array(
-
+                    'class'=>'HearWeGoHearWeGoBundle:Destination',
+                    'property'=>'name',
+                    'required' => false
                 ));
     }
 

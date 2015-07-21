@@ -52,7 +52,7 @@ class Article
     private $comments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="articles", nullable=true)
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="articles")
      */
     private $destination;
 

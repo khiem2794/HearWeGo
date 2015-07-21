@@ -6,7 +6,7 @@
 
 
 {% block mainpageheader %}
-    <h1 class="page-heading">Add New Article</h1>
+    <h1 class="page-heading">ARTICLE MANAGEMENT</h1>
 {% endblock %}
 
 
@@ -40,10 +40,15 @@
         </div>
     </div>
     <div class="col-md-5 block form-group">
-<div class="form-group">
-    {{ form_label(form.imgpath) }}
-    {{ form_widget(form.imgpath, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
-</div>        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'placeholder': 'Enter title'}  }) }}
+        <div class="form-group">
+            {{ form_label(form.imgpath,null,  { 'label_attr': {'id': 'imgpath'} }  ) }}
+            {{ form_widget(form.imgpath, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.destination) }}
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'label': 'Enter'}  }) }}
     </div>
     {{ form_end(form) }}
 
@@ -60,6 +65,8 @@
         $(function () {
             // Init page helpers (Summernote + CKEditor plugins)
             App.initHelpers([]);
+            $(" #article_type_destination option:first-child").html("Travel Guide");
+            $(" #imgpath ").html("Set Image");
         });
     </script>
 {% endblock %}
