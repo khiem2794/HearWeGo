@@ -138,8 +138,7 @@ class ManageController extends Controller
                 }
             }
         }
-        return $this->render('@HearWeGoHearWeGo/manage/addAudio.html.twig',array('form'=>$form->createView()));
-        return $this->render('@HearWeGoHearWeGo/Manage/audio/addaudio.html.twig');
+        return $this->render('@HearWeGoHearWeGo/Manage/audio/addaudio.html.twig',array('form'=>$form->createView()));
     }
 
     /**
