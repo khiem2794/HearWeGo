@@ -15,7 +15,7 @@ class AddAudioType extends AbstractType
 
         $builder
             ->add('name','text')
-            ->add('content','file')
+            ->add('audio','file')
             ->add('destination','entity',array(
                 'class'=>'HearWeGoHearWeGoBundle:Destination',
                 'choices'=>$destination_repo->findDestinationWithoutAudio(),

@@ -35,11 +35,16 @@ class Audio
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="audiopath", type="string", length=255)
      * @Assert\NotBlank(message="This field must be filled")
      * 
      */
-    private $content;
+    private $audiopath;
+
+    /**
+     * @Assert\File()
+     */
+    private $audio;
 
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="audio")
@@ -49,7 +54,6 @@ class Audio
     /**
      * @ORM\OneToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="audio")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
      */
     private $destination;
     /**
@@ -210,4 +214,92 @@ class Audio
     {
         return $this->orders;
     }
+
+
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->audiopath
+            ? null
+            : $this->getUploadRootDir().'/'.$this->audiopath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->audiopath
+            ? null
+            : $this->getUploadDir().'/'.$this->audiopath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/bundles/hearwegohearwego/uploads/audio';
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getAudio()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getAudio()->move(
+            $this->getUploadRootDir(),
+            $this->getAudio()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->audiopath = $this->getAudio()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->audio = null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAudiopath()
+    {
+        return $this->audiopath;
+    }
+
+    /**
+     * @param string $audiopath
+     */
+    public function setAudiopath($audiopath)
+    {
+        $this->audiopath = $audiopath;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAudio()
+    {
+        return $this->audio;
+    }
+
+    /**
+     * @param mixed $audio
+     */
+    public function setAudio($audio)
+    {
+        $this->audio = $audio;
+    }
+
 }

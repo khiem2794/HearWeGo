@@ -1,22 +1,54 @@
 {% extends('admin/admin.html.twig') %}
 
+{% block pagecssplugin %}
+{% endblock %}
 
 
 {% block mainpageheader %}
-    <h1 class="page-heading">mainpageheader</h1>
+    <h1 class="page-heading">AUDIO MANAGEMENT</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">mainpagecontainerheader</h3>
+    <h3 class="block-title">Add Audio</h3>
 {% endblock %}
 
 
 {% block mainpagecontainer %}
-    <h3 class="block-title">mainpagecontainer</h3>
+
+    {% for flashMessage in app.session.flashbag.get('status') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+    <div class="col-md-7 block">
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter Name'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.audio,null,  { 'label_attr': {'id': 'imgpath'} }  ) }}
+            {{ form_widget(form.audio, { 'attr' : { 'class' : 'form-control' }  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.destination) }}
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        {{ form_widget(form.submit , { 'attr' : { 'class' : 'btn btn-primary', 'label': 'Enter'}  }) }}
+    </div>
+    {{ form_end(form) }}
+
 {% endblock %}
 
 
+{% block pagejsplugin %}
+{% endblock %}
+
+
+{% block pagejscode %}
+{% endblock %}
 
 
 

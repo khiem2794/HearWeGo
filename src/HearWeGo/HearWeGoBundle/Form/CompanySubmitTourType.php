@@ -30,8 +30,10 @@ class CompanySubmitTourType extends AbstractType
             ))
             ->add('discount','number')
             ->add('info','text')
-            ->add('destination', 'text', array(
-                'invalid_message' => 'not a valid destination'
+            ->add('destination', 'entity', array(
+                'class'=>'HearWeGoHearWeGoBundle:Destination',
+                'property'=>'name',
+                'required' => true
             ))
             ;
         $builder->get('destination')

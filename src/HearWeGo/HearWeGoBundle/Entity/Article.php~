@@ -43,8 +43,14 @@ class Article
 
     /**
      * @ORM\Column(name="imgpath", type="string", nullable=false)
+     * @Assert\NotBlank()
      */
     private $imgpath;
+
+    /**
+     * @Assert\File(maxSize="2024k", mimeTypes={"image/jpeg", "image/png", "image/bmp", "image/gif"} )
+     */
+    private $img;
 
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
@@ -215,4 +221,99 @@ class Article
     {
         return $this->tags;
     }
+
+    /**
+     * Set imgpath
+     *
+     * @param string $imgpath
+     * @return Article
+     */
+    public function setImgpath($imgpath)
+    {
+        $this->imgpath = $imgpath;
+
+        return $this;
+    }
+
+    /**
+     * Get imgpath
+     *
+     * @return string 
+     */
+    public function getImgpath()
+    {
+        return $this->imgpath;
+    }
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+    }
+
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->imgpath
+            ? null
+            : $this->getUploadRootDir().'/'.$this->imgpath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->imgpath
+            ? null
+            : $this->getUploadDir().'/'.$this->imgpath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return '/bundles/hearwegohearwego/uploads/articleimg';
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getImg()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getImg()->move(
+            $this->getUploadRootDir(),
+            $this->getImg()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->imgpath = $this->getImg()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->img = null;
+    }
+
+
+
 }

@@ -1,0 +1,126 @@
+.no-inset {
+  padding: 0 !important; }
+
+.no-offset {
+  margin: 0 !important; }
+
+.my-page {
+  background-color: #dcfbd1; }
+  .my-page .gallery {
+    height: 450px;
+    background-color: #dcfbd1; }
+    .my-page .gallery .coverflow {
+      margin: auto; }
+      .my-page .gallery .coverflow .cover {
+        background-color: #ffffff; }
+        .my-page .gallery .coverflow .cover img {
+          width: 300px;
+          height: 300px;
+          margin: 10px; }
+    .my-page .gallery .name {
+      width: 320px;
+      height: 120px;
+      position: relative;
+      background-color: white;
+      margin-left: 410px;
+      margin-top: 0px; }
+      .my-page .gallery .name .caption {
+        position: absolute; }
+        .my-page .gallery .name .caption p {
+          font-size: large; }
+          .my-page .gallery .name .caption p b {
+            margin-left: 50px;
+            text-align: center; }
+  .my-page .content {
+    width: 100%; }
+    .my-page .content .info .title img {
+      width: 100%; }
+    .my-page .content .info .article {
+      background-color: #ffffff; }
+    .my-page .content .audio-map .audio {
+      height: 35px; }
+    .my-page .content .audio-map .map .map-img {
+      width: 100%;
+      height: 100%; }
+    .my-page .content .audio-map .map .download {
+      background-color: rgba(255, 255, 255, 0.6);
+      height: 50px;
+      width: 100%;
+      position: relative;
+      margin-top: -100px; }
+      .my-page .content .audio-map .map .download .icon {
+        width: 48px;
+        height: 48px;
+        margin-left: 155px;
+        margin-top: 2px;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.6); }
+    .my-page .content .audio-map .listtour .title {
+      margin-top: 85px; }
+      .my-page .content .audio-map .listtour .title img {
+        width: 100%;
+        height: 40px; }
+    .my-page .content .audio-map .listtour .tours .tour {
+      margin-top: 10px;
+      background-color: #ffffff;
+      margin-left: 0px;
+      margin-right: 0px; }
+      .my-page .content .audio-map .listtour .tours .tour .logo {
+        border: #ffffff solid 1px;
+        border-right-color: #000000; }
+        .my-page .content .audio-map .listtour .tours .tour .logo img {
+          margin-left: -10px; }
+  .my-page .comments {
+    margin-bottom: 35px; }
+    .my-page .comments .title {
+      margin-bottom: 10px; }
+      .my-page .comments .title img {
+        width: 100%;
+        height: 40px; }
+    .my-page .comments .comment {
+      background-color: #ffffff;
+      margin-right: 0px;
+      margin-left: 0px; }
+      .my-page .comments .comment .avatar {
+        width: 90px; }
+        .my-page .comments .comment .avatar img {
+          width: 80px;
+          height: 80px;
+          border: solid gray; }
+      .my-page .comments .comment .cmt .head .username {
+        color: #00CC00; }
+      .my-page .comments .comment .cmt .head .date {
+        color: #00CC00;
+        margin-top: 25px; }
+  .my-page .articles {
+    margin-top: 40px;
+    margin-bottom: 10px; }
+    .my-page .articles .title img {
+      width: 310px;
+      height: 40px; }
+    .my-page .articles .article {
+      margin: 20px 20px 10px 80px; }
+      .my-page .articles .article .item {
+        width: 250px;
+        height: 250px; }
+        .my-page .articles .article .item img {
+          width: 100%;
+          height: 100%; }
+        .my-page .articles .article .item .caption {
+          position: relative;
+          height: 50px;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.6);
+          margin-top: -50px; }
+          .my-page .articles .article .item .caption .title {
+            position: absolute;
+            margin-left: 15px;
+            margin-right: auto; }
+  .my-page .divider {
+    width: auto;
+    height: 8px;
+    background-color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+
+/*# sourceMappingURL=detail.css.map */

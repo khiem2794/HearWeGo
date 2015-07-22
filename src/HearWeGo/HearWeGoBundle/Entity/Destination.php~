@@ -35,7 +35,7 @@ class Destination
     /**
      * @var string
      *
-     * @ORM\Column(name="location", type="decimal", scale=2)
+     * @ORM\Column(name="location", type="decimal", scale=4)
      */
     private $location;
 
@@ -64,7 +64,6 @@ class Destination
      */
     public function __construct()
     {
-        $this->audio = new \Doctrine\Common\Collections\ArrayCollection();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tours = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -95,7 +94,7 @@ class Destination
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -245,5 +244,18 @@ class Destination
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Set audio
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Audio $audio
+     * @return Destination
+     */
+    public function setAudio(\HearWeGo\HearWeGoBundle\Entity\Audio $audio = null)
+    {
+        $this->audio = $audio;
+
+        return $this;
     }
 }
