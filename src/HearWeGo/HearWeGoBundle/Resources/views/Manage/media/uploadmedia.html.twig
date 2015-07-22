@@ -1,0 +1,38 @@
+{% extends('admin/admin.html.twig') %}
+
+{% block pagecssplugin %}
+{% endblock %}
+
+
+
+{% block mainpageheader %}
+    <h1 class="page-heading">mainpageheader</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">mainpagecontainerheader</h3>
+{% endblock %}
+
+
+{% block mainpagecontainer %}
+    {% for flashMessage in app.session.flashbag.get('status') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form(form) }}
+{% endblock %}
+
+
+
+{% block pagejsplugin %}
+{% endblock %}
+
+
+
+{% block pagejscode %}
+{% endblock %}
+
+

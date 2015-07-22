@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use HearWeGo\HearWeGoBundle\Entity\Audio;
 use HearWeGo\HearWeGoBundle\Entity\Destination;
+use HearWeGo\HearWeGoBundle\Entity\Gallery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -106,11 +107,6 @@ class ManageController extends Controller
      */
     public function manageAudioAction()
     {
-
-        $em = $this->getDoctrine()->getManager();
-        $audiorepo = $em->getRepository('HearWeGoHearWeGoBundle:Audio');
-        $audiolst = $audiorepo->findAll();
-        var_dump($audiolst[0]->getWebPath());
 
         return $this->render('@HearWeGoHearWeGo/Manage/audio/audio.html.twig');
 
@@ -254,12 +250,67 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/media", name="manage_media")
+     */
+    public function manageMediaAction()
+    {
+        $request = $this->get('request');
+        $session = $this->get('session');
+
+        $em = $this->getDoctrine()->getManager();
+        $galleryrepo = $em->getRepository('HearWeGoHearWeGoBundle:Gallery');
+        $gallery = $galleryrepo->findAll();
+
+        var_dump($gallery[0]->getWebPath());
+        //return $this->render('@HearWeGoHearWeGo/Manage/media/media.html.twig');
+        return $this->render('@HearWeGoHearWeGo/test.html.twig');
+    }
+
+    /**
+     * @Route("/admin/media/add", name="add_media")
+     */
+    public function uploadMediaAction()
+    {
+        $request = $this->get('request');
+        $session = $this->get('session');
+
+        $img = new Gallery();
+        $form = $this->createForm(new Form\GalleryType(), $img, array(
+            'method' => 'POST',
+            'action' => $this->generateUrl('add_media')
+        ));
+        $form->add('submit', 'submit');
+
+        if ( $request->getMethod() == 'POST'){
+            $form->handleRequest($request);
+            if ( $form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $img->upload();
+                $em->persist($img);
+                $em->flush();
+
+                $session->getFlashBag()->add('status', 'success');
+                return $this->render('@HearWeGoHearWeGo/Manage/media/uploadmedia.html.twig', array(
+                    'form' => $form->createView()
+                ));
+            }
+        }
+
+        return $this->render('@HearWeGoHearWeGo/Manage/media/uploadmedia.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
      * @Route("/admin/comment", name="manage_comment")
      */
     public function manageCommentAction()
     {
         return $this->render('@HearWeGoHearWeGo/Manage/comment/commnent.html.twig');
     }
+
+
+
 
 
 }

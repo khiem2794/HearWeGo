@@ -59,13 +59,20 @@ class Destination
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Region", inversedBy="destinations")
      */
     private $region;
+
+    /**
+     * @ORM\OneToMany( targetEntity="HearWeGo\HearWeGoBundle\Entity\Gallery" , mappedBy="destination")
+     */
+    private $photos;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tours = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->articles = new ArrayCollection();
+        $this->tours = new ArrayCollection();
+        $this->photos = new ArrayCollection();
     }
 
     /**
@@ -257,5 +264,38 @@ class Destination
         $this->audio = $audio;
 
         return $this;
+    }
+
+    /**
+     * Add photos
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Gallery $photos
+     * @return Destination
+     */
+    public function addPhoto(\HearWeGo\HearWeGoBundle\Entity\Gallery $photos)
+    {
+        $this->photos[] = $photos;
+
+        return $this;
+    }
+
+    /**
+     * Remove photos
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Gallery $photos
+     */
+    public function removePhoto(\HearWeGo\HearWeGoBundle\Entity\Gallery $photos)
+    {
+        $this->photos->removeElement($photos);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }

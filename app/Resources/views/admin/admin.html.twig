@@ -357,6 +357,20 @@
                             </ul>
                         </li>
 
+                        {# GALLERY MANAGEMENT#}
+
+                        <li {{ (app.request.attributes.get('_route') == 'add_media' or app.request.attributes.get('_route') == 'manage_media') ? ' class="open"' }} >
+                            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-file-image-o"></i><span class="sidebar-mini-hide">Media</span></a>
+                            <ul>
+                                <li>
+                                    <a {{ (app.request.attributes.get('_route') == 'manage_media') ? ' class="active"' }} href="{{ path('manage_media') }}">Galleries</a>
+                                </li>
+                                <li>
+                                    <a {{ (app.request.attributes.get('_route') == 'add_media') ? ' class="active"' }} href="{{ path('add_media') }}">Upload Images</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         {# COMMENT MANAGEMENT#}
 
                         <li>

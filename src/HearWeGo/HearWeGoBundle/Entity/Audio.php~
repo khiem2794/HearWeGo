@@ -42,7 +42,7 @@ class Audio
     private $audiopath;
 
     /**
-     * @Assert\File()
+     * @Assert\File( maxSize="600000")
      */
     private $audio;
 
@@ -215,7 +215,37 @@ class Audio
         return $this->orders;
     }
 
+    /**
+     * @return string
+     */
+    public function getAudiopath()
+    {
+        return $this->audiopath;
+    }
 
+    /**
+     * @param string $audiopath
+     */
+    public function setAudiopath($audiopath)
+    {
+        $this->audiopath = $audiopath;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAudio()
+    {
+        return $this->audio;
+    }
+
+    /**
+     * @param mixed $audio
+     */
+    public function setAudio($audio)
+    {
+        $this->audio = $audio;
+    }
 
 
     public function getAbsolutePath()
@@ -270,36 +300,6 @@ class Audio
         $this->audio = null;
     }
 
-    /**
-     * @return string
-     */
-    public function getAudiopath()
-    {
-        return $this->audiopath;
-    }
 
-    /**
-     * @param string $audiopath
-     */
-    public function setAudiopath($audiopath)
-    {
-        $this->audiopath = $audiopath;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAudio()
-    {
-        return $this->audio;
-    }
-
-    /**
-     * @param mixed $audio
-     */
-    public function setAudio($audio)
-    {
-        $this->audio = $audio;
-    }
 
 }
