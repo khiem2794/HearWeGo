@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class AudioRepository extends EntityRepository
 {
+    public function findAll(){
+        $query = $this->getEntityManager()->createQuery(
+            "SELECT a FROM HearWeGoHearWeGoBundle:Audio a"
+        );
+        return $query->getResult();
+    }
 }

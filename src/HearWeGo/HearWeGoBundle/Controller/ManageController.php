@@ -57,11 +57,7 @@ class ManageController extends Controller
     public function manageArticleAction()
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
-        $articlelst = $articlerepo->findAll();
-        var_dump($articlelst[1]->getWebPath());
-        return $this->render('@HearWeGoHearWeGo/test.html.twig');
+        return $this->render('@HearWeGoHearWeGo/Manage/article/article.html.twig');
     }
 
 
@@ -110,7 +106,14 @@ class ManageController extends Controller
      */
     public function manageAudioAction()
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $audiorepo = $em->getRepository('HearWeGoHearWeGoBundle:Audio');
+        $audiolst = $audiorepo->findAll();
+        var_dump($audiolst[0]->getWebPath());
+
         return $this->render('@HearWeGoHearWeGo/Manage/audio/audio.html.twig');
+
     }
 
     /**
