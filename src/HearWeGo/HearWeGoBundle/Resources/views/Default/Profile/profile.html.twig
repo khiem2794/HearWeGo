@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>User Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/hearwegohearwego/css/profile.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('bundles/hearwegohearwego/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
+</head>
+
+<body>
+    <div id="toppage">
+        <img src="{{ asset('bundles/hearwegohearwego/images/banner.png') }}" style="width:100%">
+    </div>
+    <div class="container" align="center">
+        <img src="{{ asset('bundles/hearwegohearwego/images/personal/profile.png') }}" style="height:40px">
+        <div class="col-md-6">
+            <img src="{{ asset('bundles/hearwegohearwego/images/personal/avatar.png') }}" style="width:250px;margin-top: 10px">
+            {{ form_start(form) }}
+            <h3>{{ form.firstName.vars.data }} {{ form.lastName.vars.data }}</h3>
+        </div>
+        <div class="col-md-6" style="text-align:left" id="info">
+            <h4>Personal Information</h4>
+            <p>
+                First name: {{ form_widget(form.firstName,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            <p>
+                Last name: {{ form_widget(form.lastName,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            <div>
+                Date of Birth: {{ form_widget(form.dateOfBirth,{'attr':{'class':'infotext'}}) }}
+            </div>
+            <h4>Contact Information</h4>
+            <p>
+                Email: {{ form_widget(form.email,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            <p>
+                Phone: {{ form_widget(form.phone,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            <p>
+                Password to change: {{ form_widget(form.password,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            <p>
+                Password to confirm: {{ form_widget(form.confirm,{'attr':{'size':'30','class':'infotext'}}) }}
+            </p>
+            {{ form_widget(form.submit,{'attr':{'class':'my-custom-button'}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="container" align="center">
+        <img src="{{ asset('bundles/hearwegohearwego/images/personal/purchase.png') }}" style="height:40px">
+    </div>
+</body>
+
+</html>

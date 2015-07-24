@@ -22,14 +22,38 @@ class DefaultController extends Controller
         $name = 'guest';
         if ($currentUser instanceof User) $name = $currentUser->getFirstName();
         if ($currentUser instanceof Company) $name = $currentUser->getName()." company";
-        return $this->render('HearWeGoHearWeGoBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array('name' => $name));
     }
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/destination",name="destination")
      */
-    public function testAction(){
-        $session = $this->get('session');
-        return new Response("asdasdasd");
+    public function destinationAction()
+    {
+        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig',array());
     }
+
+    /**
+     * @Route("/detail", name="detail")
+     */
+    public function detailAction(){
+        return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig');
+
+    }
+
+
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function Action(){
+        return $this->render('HearWeGoHearWeGoBundle:Default/HandBook:articles.html.twig');
+    }
+
+    /**
+     * @Route("/blog/{id}", name="article")
+     */
+    public function articleAction( $id ){
+        return $this->render('HearWeGoHearWeGoBundle:Default/HandBook:article.html.twig');
+    }
+
 }

@@ -1,504 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Hear we go</title>
+{% extends('default/homepage.html.twig') %}
 
-    <!-- Bootstrap -->
-    <link href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('bundles/hearwegohearwego/css/bootstrap-theme.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('bundles/hearwegohearwego/css/homepage/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('bundles/hearwegohearwego/css/homepage/slick-theme.css') }}" rel="stylesheet">
-    <link href="{{ asset('bundles/hearwegohearwego/css/homepage/homepage.css') }}"rel="stylesheet">
+{% block loginform %}
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-<div class="container-fluid no-inset">
-    <div id="home-page" class="row my-page page-home no-offset">
-        <div class="col-md-12 no-inset">
-            <!--Banner/header-->
-            <div class="row my-banner no-offset">
-                <!--<div class="col-md-12">-->
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/banner.png') }}"/>
-                <!--</div>-->
+    {% if not app.user %}
+        {% render controller('HearWeGoHearWeGoBundle:User:userLogin') %}
+    {% else %}
+
+
+
+        <form>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group input-group">
+                <span class="input-group-addon" id="id_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon">
+                    {% if app.user.role is defined %}
+                    {{ app.user.name }}
+                    {% else %}
+                    {{ app.user.firstName }}
+                    {% endif %}
+                </span>
+
             </div>
-            <!--End Banner/header-->
-
-            <!--Content-->
-            <div class="row my-content no-offset">
-                <div class="col-md-12 no-inset">
-                    <!--Search toolbar-->
-                    <div class="row my-search no-offset ">
-                        <div class="col-md-12">
-                            <div class="input-group inputgroup ">
-                                <span class="input-group-addon inputgroup-addon">
-                                    <button class="btn btn-default btn-tape" type="submit"></button>
-                                </span>
-                                <input type="text" class="form-control" aria-label="search...">
-                                <span class="input-group-addon inputgroup-addon">
-                                    <button class="btn btn-default btn-filter dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" aria-haspopup="true"></button>
-                                    <div class="filter dropdown-menu col-md-6" role="menu" aria-labelledby="filter_btn">
-                                        <div role="presentation" class="row criteria no-offset">
-                                            <div class="picture text-center col-md-3">
-                                                <img class="price" src="{{ asset('bundles/hearwegohearwego/images/searchbar/price.png') }}">
-                                            </div>
-                                            <div class="col-md-9 row tick">
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  <1.000.000</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  <3.000.000</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  <5.000.000</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  >5.000.000</i></p>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div role="presentation" class="divider"></div>
-                                        <div role="presentation" class="row criteria no-offset">
-                                            <div class="picture text-center col-md-3">
-                                                <img class="discount" src="{{ asset('bundles/hearwegohearwego/images/searchbar/discount.png') }}">
-                                            </div>
-                                            <div class="col-md-9 row tick">
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  0-20%</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  20-40%</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  40-60%</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>  >60%</i></p>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div role="presentation" class="divider"></div>
-                                        <div role="presentation" class="row criteria no-offset">
-                                            <div class="picture text-center col-md-3">
-                                                <img class="destination" src="{{ asset('bundles/hearwegohearwego/images/searchbar/destination.png') }}">
-                                            </div>
-                                            <div class="col-md-9 row tick">
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>Ha Noi</i></p>
-                                                    <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
-                                                    <p><input type="checkbox" ><i>Da Nang</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>Ha Noi</i></p>
-                                                    <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
-                                                    <p><input type="checkbox" ><i>Da Nang</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>Ha Noi</i></p>
-                                                    <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
-                                                    <p><input type="checkbox" ><i>Da Nang</i></p>
-                                                </label>
-                                                <label class="col-md-3">
-                                                    <p><input type="checkbox" ><i>Ha Noi</i></p>
-                                                    <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
-                                                    <p><input type="checkbox" ><i>Da Nang</i></p>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Search toolbar-->
-
-                    <!--Slider-->
-                    <div class="row my-slider-wrapper no-offset">
-                        <div class="col-md-12">
-                            <div class="my-slider">
-                                <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider.png') }}"/></div>
-                                <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider2.jpg') }}"/></div>
-                                <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider3.jpg') }}"/></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Slider-->
-
-                    <div class="row my-top-gallery no-offset">
-                        <div class="col-md-12 no-inset">
-                            <div class="my-top-bot">
-                                <img class="my-news" src="{{ asset('bundles/hearwegohearwego/images/homepage/topnew.png') }}"/>
-                                <div class="col-md-10 col-md-offset-1">
-                                    <ul class="my-slide-top">
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row my-top-gallery no-offset">
-                        <div class="col-md-12 no-inset">
-                            <div class="my-top-bot">
-                                <img class="my-news" src="{{ asset('bundles/hearwegohearwego/images/homepage/topview.png') }}"/>
-                                <div class="col-md-10 col-md-offset-1">
-                                    <ul class="my-slide-top">
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row my-top-gallery no-offset">
-                        <div class="col-md-12 no-inset">
-                            <div class="my-top-bot">
-                                <img class="my-news" src="{{ asset('bundles/hearwegohearwego/images/homepage/topsale.png') }}"/>
-                                <div class="col-md-10 col-md-offset-1">
-                                    <ul class="my-slide-top">
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                            <span>
-                                                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                                                <label>abc</label>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Navigation bar-->
-                    <div class="row my-navbar">
-                        <div class="col-md-1">
-                            <ul class="my-navbar">
-                                <li class="item"><img  class="icon"src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}" alt="Home icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}" alt="Map icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/audio.png') }}" alt="Audio icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}" alt="News icon"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--End Navigation bar-->
-
-
-                    <!--Login/Reg bar-->
-                    <div class="row my-reg-log-bar">
-                        <div class="col-md-1">
-                            <ul class="my-reg-log-bar">
-                                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
-                                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--EndLogin/Reg bar-->
-                    <!--Register Form-->
-                    <div class="my-reg-form modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            <!--Form content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
-                                    <img class="modal-title title" src="{{ asset('bundles/hearwegohearwego/images/homepage/title.png') }}">
-                                </div>
-                                <div class="modal-body">
-                                    <button class="fb_signup" type="button"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/fbsignup.png') }}"></button>
-                                    <form>
-                                        <div class="form-group">
-                                            <label>Email address</label>
-                                            <input type="email" class="form-control" id="Email" placeholder="Email">
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>Password</label>
-                                                <input type="password" class="form-control" id="Password" placeholder="Password">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Confirm Password</label>
-                                                <input type="password" class="form-control" id="confPass" placeholder="Enter Password again">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" id="Fname" placeholder="First name">
-                                                <!-- label>Last Name</label>
-                                                <input type="text" class="form-control" id="Lname" placeholder="Last name"> -->
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" id="Lname" placeholder="Last name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date of Birth</label>
-                                            <select id="year"></select>
-                                            <select id="month"></select>
-                                            <select id="day"></select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone number</label>
-                                            <input type="text" class="form-control" id="PhoneNum" placeholder="Telephone number">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="reg-submit btn btn-default"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/signup_btn.png') }}"></button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Register form-->
-
-                    <!--Login form-->
-                    <div class="my-log-form modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            <!--Form content-->
-                            <div class="modal-content">
-                                <form>
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
-                                        <img class="modal-title title" src="{{ asset('bundles/hearwegohearwego/images/homepage/login_title.png') }}">
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <button class="fb_signin" type="button"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/fb_login.png') }}"></button>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon" id="id_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon"></span>
-                                            <input type="email" class="form-control" id="Email" placeholder="Email" aria-describedby="id_addon">
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon" id="pass_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}" class="pass_icon"></span>
-                                            <input type="password" class="form-control" id="Password" placeholder="Password" aria-describedby="pass_addon">
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col-md-6" ><a href="#">Forgot Password</a></div>
-                                            <div class="form-group col-md-6">
-                                                <label><input type="checkbox" name="remember"> Remember Me!</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="log-submit btn btn-default"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/signin_btn.png') }}"></button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End login form-->
-                </div>
-                <!--End  content-->
-                <!--Footer-->
-                <div class="my-footer row no-offset">
-                </div>
-                <!--End Footer-->
+            <div class="form-group input-group">
+                <span class="input-group-addon" id="pass_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}" class="pass_icon"></span>
             </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="{{ path('user_logout') }}"><button type="button" class="btn btn-danger" >Sign Out</button></a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+
+
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block register %}
+
+    {% if app.user %}
+{% else %}
+    {% render controller('HearWeGoHearWeGoBundle:User:register') %}
+{% endif %}
+{% endblock %}
+
+{% block reglogbutton %}
+
+    <div class="row my-reg-log-bar">
+        <div class="col-md-1">
+            <ul class="my-reg-log-bar">
+                {% if app.user %}
+                {% else %}
+                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
+                {% endif %}
+                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
+            </ul>
         </div>
     </div>
-</div>
-    <script src="{{ asset('bundles/hearwegohearwego/js/jquery.min.js') }}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bundles/hearwegohearwego/js/homepage/slick.min.js') }}"></script>
-    <script src="{{ asset('bundles/hearwegohearwego/js/homepage/homepage.js') }}"></script>
-    <script src="{{ asset('bundles/hearwegohearwego/js/homepage/select-birthday.js') }}"></script>
-    <script type="text/javascript">
-        var today= new Date();
-        var yy= today.getFullYear();
-        var dd=today.getDate();
-        var mm=today.getMonth()+1;
-        selectBirthday("#year", "#month", "#day", {
-            year : 1938,
-            month : mm,
-            day : dd,
-            yearRange : 75,
-            endYear : yy
-        });
-    </script>
-</body>
-</html>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>OneUI - Admin Dashboard Template & UI Framework</title>
+    <title>Hear We Go </title>
 
     <meta name="description" content="OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -236,7 +236,7 @@
                         </ul>
                     </div>
                     <a class="h5 text-white" href="{{ path('admin_index') }}">
-                        <img src="{{ asset('bundles/hearwegohearwego/img/new logo.jpg') }}"><span class="h4 font-w600 sidebar-mini-hide"> HearWeGo</span>
+                        <img src="{{ asset('bundles/hearwegohearwego/images/logo admin.jpg') }}"><span class="h4 font-w600 sidebar-mini-hide"> HearWeGo</span>
                     </a>
                 </div>
                 <!-- END Side Header -->
@@ -334,11 +334,14 @@
 
                         {# TOUR MANAGEMENT#}
 
-                        <li {{ (app.request.attributes.get('_route') == 'manage_tour') ? ' class="open"' }} >
+                        <li {{ (app.request.attributes.get('_route') == 'manage_tour' or app.request.attributes.get('_route') == 'approve_tour') ? ' class="open"' }} >
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-plane "></i><span class="sidebar-mini-hide">Tours</span></a>
                             <ul>
                                 <li>
                                     <a {{ (app.request.attributes.get('_route') == 'manage_tour') ? ' class="active"' }} href="{{ path('manage_tour') }}">All Tours</a>
+                                </li>
+                                <li>
+                                    <a {{ (app.request.attributes.get('_route') == 'approve_tour') ? ' class="active"' }} href="{{ path('approve_tour') }}">Approve Tours</a>
                                 </li>
                             </ul>
                         </li>
@@ -377,7 +380,11 @@
                             <a {{ (app.request.attributes.get('_route') == 'manage_comment') ? ' class="active"' }} href="{{ path('manage_comment') }}"><i class="fa fa-comments"></i><span class="sidebar-mini-hide">Comments</span></a>
                         </li>
 
+                        {# COMMENT MANAGEMENT#}
 
+                        <li>
+                            <a href="{{ path('user_logout') }}"><i class="fa fa-sign-out"></i><span class="sidebar-mini-hide">Log out</span></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- END Side Content -->

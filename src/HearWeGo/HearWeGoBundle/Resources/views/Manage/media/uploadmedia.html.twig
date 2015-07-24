@@ -6,12 +6,12 @@
 
 
 {% block mainpageheader %}
-    <h1 class="page-heading">mainpageheader</h1>
+    <h1 class="page-heading">MEDIA MANAGEMENT</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">mainpagecontainerheader</h3>
+    <h3 class="block-title">UPLOAD IMAGE</h3>
 {% endblock %}
 
 
@@ -22,7 +22,22 @@
         </div>
     {% endfor %}
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+    <div class="block col-md-7 col-sm-5 col-xs-5">
+        <div class="form-group">
+        {{ form_label(form.img) }}
+        {{ form_widget(form.img, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.destination) }}
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        {{ form_widget(form.submit , { 'attr' : { 'class' : 'btn btn-primary'}  }) }}
+    </div>
+    {{ form_end(form) }}
+    <div class="col-md-5 col-sm-7 col-xs-7">
+        <img id="previewHolder"  width="100%" height="100%"/>
+    </div>
 {% endblock %}
 
 
@@ -33,6 +48,22 @@
 
 
 {% block pagejscode %}
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewHolder').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#gallery_type_img").change(function() {
+            readURL(this);
+        });
+    </script>
 {% endblock %}
 
 

@@ -204,4 +204,12 @@
   height: 150px;
   /*background-image: url(../images/footer.png);*/ }
 
+.reg-submit
+{
+    background-image: url("../../images/homepage/signup_btn.png");
+    width:120px;
+    background-size:100%;
+    color:transparent;
+}
+
 /*# sourceMappingURL=homepage.css.map */

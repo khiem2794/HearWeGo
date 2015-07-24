@@ -41,14 +41,16 @@
     </div>
     <div class="col-md-5 block form-group">
         <div class="form-group">
-            {{ form_label(form.img,null,  { 'label_attr': {'id': 'imgpath'} }  ) }}
-            {{ form_widget(form.img, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
-        </div>
-        <div class="form-group">
             {{ form_label(form.destination) }}
             {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
         </div>
-        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary', 'label': 'Enter'}  }) }}
+        <div class="form-group">
+            {{ form_label(form.img,null,  { 'label_attr': {'id': 'imgpath'} }  ) }}
+            {{ form_widget(form.img, { 'attr' : { 'class' : 'form-control input-lg' }  }) }}
+            <img id="previewHolder"  width="100%" height="100%"/>
+        </div>
+
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary pull-right', 'label': 'Enter'}  }) }}
     </div>
     {{ form_end(form) }}
 
@@ -67,6 +69,21 @@
             App.initHelpers([]);
             $(" #article_type_destination option:first-child").html("Travel Guide");
             $(" #imgpath ").html("Set Image");
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewHolder').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#article_type_img").change(function() {
+            readURL(this);
         });
     </script>
 {% endblock %}

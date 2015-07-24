@@ -16,8 +16,30 @@
 
 
 {% block mainpagecontainer %}
+    {% for flashMessage in app.session.flashbag.get('status') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
     {{ form_start(form) }}
 
+    <div class="col-md-7 block">
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control', 'placeholder': 'Enter Destination Name'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.region) }}
+            {{ form_widget(form.region, { 'attr' : { 'class' : 'form-control', 'placeholder': 'Enter Name'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.location) }}
+            {{ form_widget(form.location, { 'attr' : { 'class' : 'form-control', 'placeholder': 'Enter Location'}  }) }}
+        </div>
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary'}  }) }}
+
+    </div>
     {{ form_end(form) }}
 {% endblock %}
 

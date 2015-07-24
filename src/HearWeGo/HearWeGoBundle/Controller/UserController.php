@@ -20,17 +20,21 @@ class UserController extends Controller
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('homepage'));
         }
+
         $request = $this->get('request');
         $user = new User();
         $form = $this->createForm(new Form\UserRegisterType(), $user, array(
             'method' => 'POST',
             'action' => $this->generateUrl("register")
         ));
-        $form->add('submit', 'submit');
+        $form->add('confirm','password',array('mapped'=>false));
+        $form->add('submit','submit',array(
+            'label'=>'',
+            'attr'=>array('class'=>'reg-submit')
+        ));
 
         if ( $request->getMethod() == 'POST'){
             $form->handleRequest($request);
-            if ($form->isValid()){
                 $em = $this->getDoctrine()->getManager();
                 $roleUser = $em->getRepository('HearWeGoHearWeGoBundle:Role')->getRoleUser();
                 $roleUser->addUser($user);
@@ -41,9 +45,9 @@ class UserController extends Controller
                 $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                 $this->get('security.token_storage')->setToken($token);
                 return $this->redirect($this->generateUrl('homepage'));
-            }
+
         }
-        return $this->render('HearWeGoHearWeGoBundle:Default:register.html.twig', array(
+        return $this->render('HearWeGoHearWeGoBundle:Default/SubView:register.html.twig', array(
             'form' => $form->createView()
         ));
 
@@ -67,13 +71,13 @@ class UserController extends Controller
             $session->remove(Security::AUTHENTICATION_ERROR);
         }
 
-        $admin = new User();
-        $form = $this->createForm(new Form\UserLoginType(), $admin, array(
+        $user = new User();
+        $form = $this->createForm(new Form\UserLoginType(), $user, array(
             'method' => 'POST',
             'action' => $this->generateUrl('user_login_check')
         ));
         $form->add('submit', 'submit');
-        return $this->render('HearWeGoHearWeGoBundle:Default:login.html.twig', array(
+        return $this->render('HearWeGoHearWeGoBundle:Default/SubView:login.html.twig', array(
             'form' => $form->createView(),
             'error' => $error
         ));
@@ -95,5 +99,46 @@ class UserController extends Controller
 
     }
 
+
+    /**
+     * @Route("/profile",name="edit_profile")
+     */
+    public function editProfile() {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
+            return  $this->redirect($this->generateUrl('homepage'));
+        }
+
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page!');
+
+        $request = $this->get('request');
+        $user=$this->get('security.token_storage')->getToken()->getUser();
+        $pass=$user->getPassword();
+        $form=$this->createForm(new Form\UserEditType($user),$user,array('method'=>'POST','action'=>$this->generateUrl('edit_profile')));
+        $form->add('confirm','password',array('mapped'=>false));
+        $form->add('submit','submit',array(
+            'label'=>'',
+            'attr'=>array('class'=>'my-custom-button')
+        ));
+        if ($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            if ($form->isValid())
+            {
+                if ($pass==$form->get('confirm')->getData())
+                {
+                    $em=$this->getDoctrine()->getEntityManager();
+                    $em->persist($user);
+                    $em->flush();
+                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
+                }
+                else
+                {
+                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
+                }
+            }
+        }
+
+        return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
+    }
 
 }

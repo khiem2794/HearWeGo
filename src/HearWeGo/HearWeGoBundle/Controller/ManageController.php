@@ -234,6 +234,14 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/tour/approve",name="approve_tour")
+     */
+    public function approveTourAction()
+    {
+        return $this->render('@HearWeGoHearWeGo/Manage/tour/approvetour.html.twig');
+    }
+
+    /**
      * @Route("/admin/rating", name="manage_rating")
      */
     public function manageRatingAction()
@@ -254,16 +262,7 @@ class ManageController extends Controller
      */
     public function manageMediaAction()
     {
-        $request = $this->get('request');
-        $session = $this->get('session');
-
-        $em = $this->getDoctrine()->getManager();
-        $galleryrepo = $em->getRepository('HearWeGoHearWeGoBundle:Gallery');
-        $gallery = $galleryrepo->findAll();
-
-        var_dump($gallery[0]->getWebPath());
-        //return $this->render('@HearWeGoHearWeGo/Manage/media/media.html.twig');
-        return $this->render('@HearWeGoHearWeGo/test.html.twig');
+        return $this->render('@HearWeGoHearWeGo/Manage/media/media.html.twig');
     }
 
     /**
