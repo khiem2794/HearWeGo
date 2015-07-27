@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Article
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\ArticleRepository")
  */
 class Article
@@ -54,6 +55,11 @@ class Article
     private $img;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
      */
     private $comments;
@@ -74,6 +80,7 @@ class Article
 
     function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -317,4 +324,27 @@ class Article
 
 
 
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Article
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 }

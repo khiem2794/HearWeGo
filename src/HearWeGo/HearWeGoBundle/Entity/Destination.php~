@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Destination
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\DestinationRepository")
  */
 class Destination
@@ -43,6 +44,11 @@ class Destination
      *
      * @ORM\Column(name="location", type="decimal", scale=4)
      */
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
     private $location;
 
     /**
@@ -79,6 +85,7 @@ class Destination
         $this->articles = new ArrayCollection();
         $this->tours = new ArrayCollection();
         $this->photos = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**

@@ -12,6 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Company
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\CompanyRepository")
  * @UniqueEntity("email")
  */
@@ -68,7 +69,10 @@ class Company implements UserInterface
      */
     private $address;
 
-
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
     /**
      * @ORM\Column(type="string", nullable=true)
      */
@@ -83,6 +87,7 @@ class Company implements UserInterface
     {
         $this->tours = new ArrayCollection();
         $this->role = 'ROLE_COMPANY';
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -287,5 +292,28 @@ class Company implements UserInterface
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Company
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }

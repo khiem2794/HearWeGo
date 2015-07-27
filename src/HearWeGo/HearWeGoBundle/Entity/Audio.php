@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Audio
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\AudioRepository")
  */
 class Audio
@@ -46,6 +47,10 @@ class Audio
      */
     private $audio;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="audio")
      */
@@ -124,6 +129,7 @@ class Audio
     {
         $this->rates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -302,4 +308,27 @@ class Audio
 
 
 
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Audio
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 }

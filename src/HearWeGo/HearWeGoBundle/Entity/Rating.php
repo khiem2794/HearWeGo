@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Rating
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\RatingRepository")
  */
 class Rating
@@ -41,11 +42,21 @@ class Rating
     private $user;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="rates", cascade={"persist"} )
      * @Assert\NotBlank(message="This field must be filled")
      * 
      */
     private $audio;
+
+    function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -124,5 +135,28 @@ class Rating
     public function getAudio()
     {
         return $this->audio;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Rating
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }

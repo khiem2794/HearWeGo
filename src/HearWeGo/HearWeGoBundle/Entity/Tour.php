@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Tour
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\TourRepository")
  */
 class Tour
@@ -56,6 +57,10 @@ class Tour
     private $status;
 
     /**
+     * @ORM\Column(type="datetime");
+     */
+    private $createdAt;
+    /**
      * @var integer
      *
      * @ORM\Column(name="discount", type="integer")
@@ -84,6 +89,7 @@ class Tour
     function __construct()
     {
         $this->status = false;
+        $this->createdAt = new \DateTime();
     }
 
 
@@ -279,5 +285,28 @@ class Tour
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Tour
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 }
