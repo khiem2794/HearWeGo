@@ -11,10 +11,10 @@
   .my-page .my-search {
     height: 50px;
     padding: 8px; }
-    .my-page .my-search .input-group {
+    .my-page .my-search .inputgroup {
       width: 30%;
       margin: 0 auto; }
-    .my-page .my-search .input-group-addon {
+    .my-page .my-search .inputgroup-addon {
       padding: 0;
       width: 32px;
       height: 32px;
@@ -31,6 +31,25 @@
     .my-page .my-search .btn-filter {
       background: url(../../images/homepage/filter_btn.png) no-repeat top left;
       background-size: 32px 32px; }
+    .my-page .my-search .filter {
+      width: 372px !important; }
+      .my-page .my-search .filter .criteria .picture {
+        border: solid 1px #ffffff;
+        border-right-color: #000000; }
+        .my-page .my-search .filter .criteria .picture .price {
+          width: 50%;
+          height: 50%;
+          margin: 10px; }
+        .my-page .my-search .filter .criteria .picture .discount {
+          width: 75%;
+          height: 75%;
+          margin: 10px; }
+        .my-page .my-search .filter .criteria .picture .destination {
+          width: 75%;
+          height: 75%;
+          margin: 10px; }
+      .my-page .my-search .filter .criteria .tick p {
+        font-size: 9px; }
   .my-page .content {
     background-color: #DCFBD1;
     padding-right: 200px;

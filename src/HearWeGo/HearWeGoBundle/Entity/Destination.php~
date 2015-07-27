@@ -33,6 +33,12 @@ class Destination
     private $name;
 
     /**
+     * @ORM\Column(name="article", type="text")
+     * @Assert\NotBlank(message="This field must be filled")
+     *
+     */
+    private $article;
+    /**
      * @var string
      *
      * @ORM\Column(name="location", type="decimal", scale=4)
@@ -297,5 +303,28 @@ class Destination
     public function getPhotos()
     {
         return $this->photos;
+    }
+
+    /**
+     * Set article
+     *
+     * @param string $article
+     * @return Destination
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return string 
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

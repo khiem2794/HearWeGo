@@ -41,6 +41,7 @@ class Article
      */
     private $content;
 
+
     /**
      * @ORM\Column(name="imgpath", type="string", nullable=false)
      * @Assert\NotBlank()

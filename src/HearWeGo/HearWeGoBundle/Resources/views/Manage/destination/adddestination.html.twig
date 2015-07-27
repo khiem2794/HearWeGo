@@ -37,6 +37,11 @@
             {{ form_label(form.location) }}
             {{ form_widget(form.location, { 'attr' : { 'class' : 'form-control', 'placeholder': 'Enter Location'}  }) }}
         </div>
+        <div class="form-group">
+            {{ form_label(form.article) }}
+            {{ form_widget(form.article, { 'id':'articlecontent', 'attr' : { 'class' : 'form-control input-lg','rows': '25', 'placeholder': 'Content goes here ...', 'style':'display: none;', 'visibility':'hidden'}  }) }}
+            <div id="summernote"></div>
+        </div>
         {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary'}  }) }}
 
     </div>
@@ -45,10 +50,43 @@
 
 
 {% block pagejsplugin %}
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/summernote.css') }}">
+    <script src="{{ asset('bundles/hearwegohearwego/js/summernote.min.js') }}"></script>
 {% endblock %}
 
 
 {% block pagejscode %}
+    <script>
+        $(function () {
+            // Init page helpers (Summernote + CKEditor plugins)
+            App.initHelpers([]);
+            $(" #article_type_destination option:first-child").html("Travel Guide");
+            $(" #imgpath ").html("Set Image");
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#previewHolder').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#article_type_img").change(function () {
+            readURL(this);
+        });
+
+        $('#summernote').summernote({
+            height: 300,
+            onKeyup: function (e) {
+                $("#articlecontent").val($("#summernote").code());
+            }
+        });
+
+    </script>
 {% endblock %}
 
 

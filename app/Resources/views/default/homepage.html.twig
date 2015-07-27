@@ -126,7 +126,7 @@
                     <div class="row my-slider-wrapper no-offset">
                         <div class="col-md-12">
                             <div class="my-slider">
-                                <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider.png') }}"/></div>
+                                <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/audio/area3.png') }}"/></div>
                                 <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider2.jpg') }}"/></div>
                                 <div><img class="resize" src="{{ asset('bundles/hearwegohearwego/images/homepage/slider3.jpg') }}"/></div>
                             </div>
@@ -134,13 +134,15 @@
                     </div>
                     <!--End Slider-->
 
+                    <!-- Top New -->
                     <div class="row my-top-gallery no-offset">
                         <div class="col-md-12 no-inset">
                             <div class="my-top-bot">
                                 <img class="my-news" src="{{ asset('bundles/hearwegohearwego/images/homepage/topnew.png') }}"/>
                                 <div class="col-md-10 col-md-offset-1">
-                                    <ul class="my-slide-top">
-                                        <li>
+                                    {% block topnew %}
+                                        <ul class="my-slide-top">
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -149,8 +151,8 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -159,8 +161,8 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -169,8 +171,8 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -179,8 +181,8 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -189,8 +191,8 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                        <li>
+                                            </li>
+                                            <li>
                                             <span>
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
@@ -199,12 +201,15 @@
                                                 <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
                                                 <label>abc</label>
                                             </span>
-                                        </li>
-                                    </ul>
+                                            </li>
+                                        </ul>
+                                    {% endblock %}
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- End Top New -->
+
 
                     <div class="row my-top-gallery no-offset">
                         <div class="col-md-12 no-inset">
@@ -354,10 +359,26 @@
                     <div class="row my-navbar">
                         <div class="col-md-1">
                             <ul class="my-navbar">
-                                <li class="item"><img  class="icon"src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}" alt="Home icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}" alt="Map icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/audio.png') }}" alt="Audio icon"></li>
-                                <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}" alt="News icon"></li>
+                                <a href="{{ path('homepage') }}">
+                                    <li class="item"><img class="icon"
+                                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}"
+                                                          alt="Home icon"></li>
+                                </a>
+                                <a href="{{ path('map') }}">
+                                    <li class="item"><img class="icon"
+                                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}"
+                                                          alt="Map icon"></li>
+                                </a>
+                                <a href="{{ path('destination') }}">
+                                    <li class="item"><img class="icon"
+                                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/nav-destination.png') }}"
+                                                          alt="Destination icon"></li>
+                                </a>
+                                <a href="{{ path('blog') }}">
+                                    <li class="item"><img class="icon"
+                                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}"
+                                                          alt="News icon"></li>
+                                </a>
                             </ul>
                         </div>
                     </div>
@@ -375,8 +396,8 @@
                         </div>
                     </div>
                     {% endblock %}
-                    <!--EndLogin/Reg bar-->
-                    <!--Register Form-->
+                    <!-- EndLogin/Reg bar -->
+                    <!-- Register Form -->
                     <div class="my-reg-form modal fade" role="dialog">
                         <div class="modal-dialog">
                             <!--Form content-->

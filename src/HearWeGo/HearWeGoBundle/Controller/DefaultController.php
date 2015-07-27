@@ -46,14 +46,21 @@ class DefaultController extends Controller
      * @Route("/blog", name="blog")
      */
     public function Action(){
-        return $this->render('HearWeGoHearWeGoBundle:Default/HandBook:articles.html.twig');
+        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig');
     }
 
     /**
      * @Route("/blog/{id}", name="article")
      */
     public function articleAction( $id ){
-        return $this->render('HearWeGoHearWeGoBundle:Default/HandBook:article.html.twig');
+        return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig');
+    }
+
+    /**
+     * @Route("/map", name="map")
+     */
+    public function mapAction(  ){
+        return $this->render('HearWeGoHearWeGoBundle:Default/Map:map.html.twig');
     }
 
 }

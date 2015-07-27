@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Security;
@@ -16,25 +17,31 @@ class UserController extends Controller
     /**
      * @Route("/register", name="register")
      */
-    public function registerAction(){
+    public function registerAction()
+    {
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirect($this->generateUrl('homepage'));
         }
-
+        $session = $this->get('session');
         $request = $this->get('request');
+        if ($request->getMethod() == 'GET') {
+            $routeName = $request->get('_route');
+            if ($routeName == 'register') return $this->redirect($this->generateUrl('homepage'));
+        }
         $user = new User();
         $form = $this->createForm(new Form\UserRegisterType(), $user, array(
             'method' => 'POST',
             'action' => $this->generateUrl("register")
         ));
-        $form->add('confirm','password',array('mapped'=>false));
-        $form->add('submit','submit',array(
-            'label'=>'',
-            'attr'=>array('class'=>'reg-submit')
+        $form->add('confirm', 'password', array('mapped' => false));
+        $form->add('submit', 'submit', array(
+            'label' => '',
+            'attr' => array('class' => 'reg-submit')
         ));
 
-        if ( $request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
+            if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $roleUser = $em->getRepository('HearWeGoHearWeGoBundle:Role')->getRoleUser();
                 $roleUser->addUser($user);
@@ -45,7 +52,9 @@ class UserController extends Controller
                 $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
                 $this->get('security.token_storage')->setToken($token);
                 return $this->redirect($this->generateUrl('homepage'));
-
+            } else {
+                $session -> getFlashBag()->add('error', $form->getErrors());
+            }
         }
         return $this->render('HearWeGoHearWeGoBundle:Default/SubView:register.html.twig', array(
             'form' => $form->createView()
@@ -56,17 +65,19 @@ class UserController extends Controller
     /**
      * @Route("/login", name="user_login")
      */
-    public function userLoginAction(){
+    public function userLoginAction()
+    {
         $session = $this->get('session');
         $request = $this->get('request');
 
+        $routeName = $request->get('_route');
+        if ($routeName == 'user_login') return $this->redirect($this->generateUrl('homepage'));
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED'))
             return $this->redirectToRoute('homepage');
 
-        if ( $request->attributes->has(Security::AUTHENTICATION_ERROR)){
+        if ($request->attributes->has(Security::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->has(Security::AUTHENTICATION_ERROR);
-        }
-        else {
+        } else {
             $error = $session->get(Security::AUTHENTICATION_ERROR);
             $session->remove(Security::AUTHENTICATION_ERROR);
         }
@@ -88,14 +99,16 @@ class UserController extends Controller
     /**
      * @Route("/login_check", name="user_login_check")
      */
-    public function userLoginCheckAction(){
+    public function userLoginCheckAction()
+    {
 
     }
 
     /**
      * @Route("/logout", name="user_logout")
      */
-    public function userLogoutAction(){
+    public function userLogoutAction()
+    {
 
     }
 
@@ -103,42 +116,38 @@ class UserController extends Controller
     /**
      * @Route("/profile",name="edit_profile")
      */
-    public function editProfile() {
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
-            return  $this->redirect($this->generateUrl('homepage'));
+    public function editProfile()
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('homepage'));
         }
 
         $this->denyAccessUnlessGranted('ROLE_USER', null, 'Unable to access this page!');
 
         $request = $this->get('request');
-        $user=$this->get('security.token_storage')->getToken()->getUser();
-        $pass=$user->getPassword();
-        $form=$this->createForm(new Form\UserEditType($user),$user,array('method'=>'POST','action'=>$this->generateUrl('edit_profile')));
-        $form->add('confirm','password',array('mapped'=>false));
-        $form->add('submit','submit',array(
-            'label'=>'',
-            'attr'=>array('class'=>'my-custom-button')
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $pass = $user->getPassword();
+        $form = $this->createForm(new Form\UserEditType($user), $user, array('method' => 'POST', 'action' => $this->generateUrl('edit_profile')));
+        $form->add('confirm', 'password', array('mapped' => false));
+        $form->add('submit', 'submit', array(
+            'label' => '',
+            'attr' => array('class' => 'my-custom-button')
         ));
-        if ($request->getMethod()=='POST')
-        {
+        if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-            if ($form->isValid())
-            {
-                if ($pass==$form->get('confirm')->getData())
-                {
-                    $em=$this->getDoctrine()->getEntityManager();
+            if ($form->isValid()) {
+                if ($pass == $form->get('confirm')->getData()) {
+                    $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($user);
                     $em->flush();
-                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
-                }
-                else
-                {
-                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
+                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
+                } else {
+                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
                 }
             }
         }
 
-        return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig',array("form"=>$form->createView()));
+        return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
     }
 
 }

@@ -14,19 +14,86 @@
         </div>
         <!--End Banner-->
         <!--Search bar-->
-        <div class="row my-search no-offset">
+        <div class="row my-search no-offset ">
             <div class="col-md-12">
-                <form>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <button class="btn btn-default btn-tape" type="submit"></button>
-                        </span>
-                        <input type="text" class="form-control" aria-label="search...">
-                        <span class="input-group-addon">
-                            <button class="btn btn-default btn-filter" type="submit"></button>
-                        </span>
-                    </div>
-                </form>
+                <div class="input-group inputgroup ">
+                    <span class="input-group-addon inputgroup-addon">
+                    <button class="btn btn-default btn-tape" type="submit"></button>
+                    </span>
+                    <input type="text" class="form-control" aria-label="search...">
+                    <span class="input-group-addon inputgroup-addon">
+                        <button class="btn btn-default btn-filter dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" aria-haspopup="true"></button>
+                        <div class="filter dropdown-menu col-md-6" role="menu" aria-labelledby="filter_btn">
+                            <div role="presentation" class="row criteria no-offset">
+                                <div class="picture text-center col-md-3">
+                                    <img class="price" src="{{ asset('bundles/hearwegohearwego/images/searchbar/price.png') }}">
+                                </div>
+                                <div class="col-md-9 row tick">
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  <1.000.000</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  <3.000.000</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  <5.000.000</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  >5.000.000</i></p>
+                                    </label>
+                                </div>
+                            </div>
+                            <div role="presentation" class="divider"></div>
+                            <div role="presentation" class="row criteria no-offset">
+                                <div class="picture text-center col-md-3">
+                                    <img class="discount" src="{{ asset('bundles/hearwegohearwego/images/searchbar/discount.png') }}">
+                                </div>
+                                <div class="col-md-9 row tick">
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  0-20%</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  20-40%</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  40-60%</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>  >60%</i></p>
+                                    </label>
+                                </div>
+                            </div>
+                            <div role="presentation" class="divider"></div>
+                            <div role="presentation" class="row criteria no-offset">
+                                <div class="picture text-center col-md-3">
+                                    <img class="destination" src="{{ asset('bundles/hearwegohearwego/images/searchbar/destination.png') }}">
+                                </div>
+                                <div class="col-md-9 row tick">
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>Ha Noi</i></p>
+                                        <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
+                                        <p><input type="checkbox" ><i>Da Nang</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>Ha Noi</i></p>
+                                        <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
+                                        <p><input type="checkbox" ><i>Da Nang</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>Ha Noi</i></p>
+                                        <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
+                                        <p><input type="checkbox" ><i>Da Nang</i></p>
+                                    </label>
+                                    <label class="col-md-3">
+                                        <p><input type="checkbox" ><i>Ha Noi</i></p>
+                                        <p><input type="checkbox" ><i>Ho Chi Minh</i></p>
+                                        <p><input type="checkbox" ><i>Da Nang</i></p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
             </div>
         </div>
         <!--End Search bar-->
@@ -181,10 +248,26 @@
         <div class="row my-navbar">
             <div class="col-md-1">
                 <ul class="my-navbar">
-                    <li class="item"><img  class="icon"src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}" alt="Home icon"></li>
-                    <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}" alt="Map icon"></li>
-                    <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/audio.png') }}" alt="Audio icon"></li>
-                    <li class="item"><img class="icon" src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}" alt="News icon"></li>
+                    <a href="{{ path('homepage') }}">
+                        <li class="item"><img class="icon"
+                                              src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}"
+                                              alt="Home icon"></li>
+                    </a>
+                    <a href="{{ path('map') }}">
+                        <li class="item"><img class="icon"
+                                              src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}"
+                                              alt="Map icon"></li>
+                    </a>
+                    <a href="{{ path('destination') }}">
+                        <li class="item"><img class="icon"
+                                              src="{{ asset('bundles/hearwegohearwego/images/homepage/nav-destination.png') }}"
+                                              alt="Destination icon"></li>
+                    </a>
+                    <a href="{{ path('blog') }}">
+                        <li class="item"><img class="icon"
+                                              src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}"
+                                              alt="News icon"></li>
+                    </a>
                 </ul>
             </div>
         </div>

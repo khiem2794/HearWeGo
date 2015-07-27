@@ -17,6 +17,7 @@ class DestinationType extends AbstractType
                     'required' => true
                 ))
                 ->add('location')
+                ->add('article', 'textarea')
 
         ;
     }
