@@ -9,31 +9,36 @@
 
 
         <form>
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
-        </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}">
+            </div>
 
-        <div class="modal-body">
-            <div class="form-group input-group">
-                <span class="input-group-addon" id="id_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon">
+            <div class="modal-body">
+                <div class="form-group input-group">
+                <span class="input-group-addon" id="id_addon"><img
+                            src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon">
                     {% if app.user.role is defined %}
-                    {{ app.user.name }}
+                        {{ app.user.name }}
                     {% else %}
-                    {{ app.user.firstName }}
+                        {{ app.user.firstName }}
                     {% endif %}
                 </span>
 
-            </div>
-            <div class="form-group input-group">
-                <span class="input-group-addon" id="pass_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}" class="pass_icon"></span>
-            </div>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon" id="pass_addon"><img
+                                src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}"
+                                class="pass_icon"></span>
+                </div>
 
-        </div>
-        <div class="modal-footer">
-            <a href="{{ path('user_logout') }}"><button type="button" class="btn btn-danger" >Sign Out</button></a>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <a href="{{ path('user_logout') }}">
+                    <button type="button" class="btn btn-danger">Sign Out</button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </form>
 
 
@@ -46,9 +51,9 @@
 {% block register %}
 
     {% if app.user %}
-{% else %}
-    {% render controller('HearWeGoHearWeGoBundle:User:register') %}
-{% endif %}
+    {% else %}
+        {% render controller('HearWeGoHearWeGoBundle:User:register') %}
+    {% endif %}
 {% endblock %}
 
 {% block reglogbutton %}
@@ -58,9 +63,11 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                 {% else %}
-                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
+                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
                 {% endif %}
-                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
+                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
             </ul>
         </div>
     </div>
@@ -70,6 +77,66 @@
 
 
 {% block topnew %}
+    {% set newcount = 0 %}
+    {% for new in topnews %}
+        {% set newcount = newcount + 1 %}
+    {% endfor %}
+    {{ topnews|length  }}
+
+    <ul class="my-slide-top">
+        {% for new in topnews %}
+        {% endfor %}
+        <li>
+            <span>
+                <a href="{{ path('homepage') }}" ><img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/></a>
+                <label>abc</label>
+            </span>
+            <span>
+                <a href="{{ path('homepage') }}" ><img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/></a>
+                <label>abc</label>
+            </span>
+        </li>
+        <li>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+        </li>
+        <li>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+        </li>
+        <li>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+        </li>
+        <li>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+            <span>
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
+                <label>abc</label>
+            </span>
+        </li>
+    </ul>
 
 {% endblock %}
 

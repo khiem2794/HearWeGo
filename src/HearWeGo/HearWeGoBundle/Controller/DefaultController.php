@@ -4,10 +4,11 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\HttpFoundation\Response;
 use HearWeGo\HearWeGoBundle\Entity\Company;
 use HearWeGo\HearWeGoBundle\Entity\User;
-
+use HearWeGo\HearWeGoBundle\Entity\Article;
 
 
 class DefaultController extends Controller
@@ -18,11 +19,13 @@ class DefaultController extends Controller
     public function indexAction()
     {
 
-        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
-        $name = 'guest';
-        if ($currentUser instanceof User) $name = $currentUser->getFirstName();
-        if ($currentUser instanceof Company) $name = $currentUser->getName()." company";
-        return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array('name' => $name));
+        $em = $this->getDoctrine()->getManager();
+        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
+        $topnews = $articlerepo->findLimit(8);
+        //return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
+        return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
+            'topnews' => $topnews
+        ));
     }
 
     /**
@@ -59,7 +62,7 @@ class DefaultController extends Controller
     /**
      * @Route("/map", name="map")
      */
-    public function mapAction(  ){
+    public function mapAction(){
         return $this->render('HearWeGoHearWeGoBundle:Default/Map:map.html.twig');
     }
 

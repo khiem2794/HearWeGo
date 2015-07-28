@@ -18,4 +18,11 @@ class ArticleRepository extends EntityRepository
         );
         return $query->getResult();
     }
+
+    public function findLimit( $num ){
+        $query = $this->getEntityManager()->createQuery(
+          "SELECT a FROM HearWeGoHearWeGoBundle:Article a ORDER BY a.createdAt DESC"
+        )->setMaxResults( $num );
+        return $query->getResult();
+    }
 }
