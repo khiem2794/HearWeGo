@@ -1,0 +1,27 @@
+.searchbar{
+  .search{
+    .filter{
+      width: 762px !important;
+      .criteria{
+        .picture{
+          border: solid 1px #ffffff;
+          border-right-color: #000000;
+          img{
+            width: 50%;
+            height: 50%;
+            margin: 10px;
+          }
+        }
+        .tick{
+          p{
+            font-size: 15px;
+            input{
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

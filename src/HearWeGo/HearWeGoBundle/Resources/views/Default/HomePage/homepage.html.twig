@@ -77,15 +77,8 @@
 
 
 {% block topnew %}
-    {% set newcount = 0 %}
-    {% for new in topnews %}
-        {% set newcount = newcount + 1 %}
-    {% endfor %}
-    {{ topnews|length  }}
 
     <ul class="my-slide-top">
-        {% for new in topnews %}
-        {% endfor %}
         <li>
             <span>
                 <a href="{{ path('homepage') }}" ><img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/></a>

@@ -1,0 +1,252 @@
+/* common */
+.no-offset {
+  margin: 0 !important; }
+
+.no-inset {
+  padding: 0 !important; }
+
+/* pages */
+.my-page .my-banner img {
+  width: 100%; }
+.my-page .my-content {
+  background: #50E91B; }
+  .my-page .my-content .my-search {
+    height: 50px;
+    padding: 8px; }
+    .my-page .my-content .my-search .inputgroup {
+      width: 30%;
+      margin: 0 auto; }
+    .my-page .my-content .my-search .inputgroup-addon {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: 0; }
+    .my-page .my-content .my-search .btn-tape, .my-page .my-content .my-search .btn-filter {
+      padding: 0;
+      border: 0;
+      width: 100%;
+      height: 100%; }
+    .my-page .my-content .my-search .btn-tape {
+      background: url(../../images/homepage/search_btn.png) no-repeat top left;
+      background-size: 32px 32px; }
+    .my-page .my-content .my-search .btn-filter {
+      background: url(../../images/homepage/filter_btn.png) no-repeat top left;
+      background-size: 32px 32px; }
+    .my-page .my-content .my-search .filter {
+      width: 372px !important; }
+      .my-page .my-content .my-search .filter .criteria .picture {
+        border: solid 1px #ffffff;
+        border-right-color: #000000; }
+        .my-page .my-content .my-search .filter .criteria .picture .price {
+          width: 50%;
+          height: 50%;
+          margin: 10px; }
+        .my-page .my-content .my-search .filter .criteria .picture .discount {
+          width: 75%;
+          height: 75%;
+          margin: 10px; }
+        .my-page .my-content .my-search .filter .criteria .picture .destination {
+          width: 75%;
+          height: 75%;
+          margin: 10px; }
+      .my-page .my-content .my-search .filter .criteria .tick p {
+        font-size: 9px; }
+  .my-page .my-content .my-slider {
+    width: 100%;
+    height: 486px;
+    margin: 0; }
+    .my-page .my-content .my-slider .slick-slide img {
+      width: 100%; }
+    .my-page .my-content .my-slider .slick-dots {
+      z-index: 100;
+      bottom: 40px; }
+      .my-page .my-content .my-slider .slick-dots li {
+        border: 1px solid #ffffff;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px; }
+        .my-page .my-content .my-slider .slick-dots li.slick-active {
+          background-color: #ffffff; }
+        .my-page .my-content .my-slider .slick-dots li button {
+          opacity: 0.01; }
+    .my-page .my-content .my-slider .slick-prev, .my-page .my-content .my-slider .slick-next {
+      display: none !important; }
+  .my-page .my-content .my-top-gallery {
+    background-color: white;
+    position: relative; }
+    .my-page .my-content .my-top-gallery .my-top-bot {
+      background-color: #DCFBD1;
+      height: 400px;
+      margin-top: 100px;
+      text-align: center; }
+      .my-page .my-content .my-top-gallery .my-top-bot .my-news {
+        width: 280px;
+        margin-top: -33px; }
+      .my-page .my-content .my-top-gallery .my-top-bot ul {
+        padding: 0; }
+        .my-page .my-content .my-top-gallery .my-top-bot ul li {
+          float: left;
+          margin-right: 10px; }
+          .my-page .my-content .my-top-gallery .my-top-bot ul li span {
+            position: relative;
+            border: 2px solid white;
+            width: 100%;
+            float: left;
+            margin: 5px; }
+            .my-page .my-content .my-top-gallery .my-top-bot ul li span img {
+              width: 100%;
+              height: 100%; }
+            .my-page .my-content .my-top-gallery .my-top-bot ul li span label {
+              background-color: rgba(255, 255, 255, 0.6);
+              position: absolute;
+              bottom: -5px;
+              left: 0;
+              width: 100%;
+              line-height: 36px;
+              text-indent: 10px; }
+  .my-page .my-content .my-navbar {
+    position: fixed;
+    width: 25px;
+    right: 40px;
+    top: -5px; }
+    .my-page .my-content .my-navbar .icon {
+      width: 40px;
+      height: 40px;
+      background-color: white; }
+    .my-page .my-content .my-navbar .item {
+      list-style: none; }
+  .my-page .my-content .my-reg-log-bar {
+    position: fixed;
+    width: 25px;
+    right: 40px;
+    top: 250px; }
+    .my-page .my-content .my-reg-log-bar .icon {
+      width: 40px;
+      height: 40px;
+      background-color: white; }
+    .my-page .my-content .my-reg-log-bar .item {
+      list-style: none; }
+  .my-page .my-content .my-reg-form .avatar, .my-page .my-content .my-log-form .avatar {
+    margin: -25px 250px 10px;
+    width: 80px;
+    height: 80px; }
+  .my-page .my-content .my-reg-form .title, .my-page .my-content .my-log-form .title {
+    width: 100%;
+    height: 100%; }
+  .my-page .my-content .my-reg-form .fb_signup, .my-page .my-content .my-log-form .fb_signin {
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-top: -10px; }
+  .my-page .my-content .my-reg-form .fb_signup img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+  .my-page .my-content .my-reg-form .reg-submit, .my-page .my-content .my-log-form .log-submit {
+    border-radius: 10px;
+    padding: 0; }
+  .my-page .my-content .my-reg-form .reg-submit img, .my-page .my-content .my-log-form .log-submit img {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    margin: 0; }
+  .my-page .my-content .my-log-form .fb_signin img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+  .my-page .my-content .my-log-form .id_icon {
+    width: 20px;
+    height: 20px; }
+  .my-page .my-content .my-log-form .pass_icon {
+    width: 20px;
+    height: 20px; }
+  .my-page .my-content .separator {
+    height: 60px;
+    background-color: white; }
+  .my-page .my-content .my-topnew {
+    background-color: #dde8ca; }
+    .my-page .my-content .my-topnew .title {
+      margin: -67px auto 0px;
+      /*top: 50%;*/
+      left: 50%;
+      right: 50%;
+      width: 100%;
+      height: 100%; }
+      .my-page .my-content .my-topnew .title .resize {
+        width: 30%;
+        height: 30%; }
+    .my-page .my-content .my-topnew .my-sync-slider-new {
+      margin-left: 60px;
+      height: 360px; }
+      .my-page .my-content .my-topnew .my-sync-slider-new .resize {
+        margin-bottom: 6px;
+        /*margin: 0 auto;*/
+        width: 50%;
+        height: 50%; }
+      .my-page .my-content .my-topnew .my-sync-slider-new .item {
+        position: relative; }
+        .my-page .my-content .my-topnew .my-sync-slider-new .item .caption {
+          position: absolute;
+          bottom: 0;
+          left: 0px;
+          width: 100%;
+          height: 40px; }
+        .my-page .my-content .my-topnew .my-sync-slider-new .item img {
+          position: absolute;
+          top: 0;
+          left: 0px;
+          width: 100%; }
+        .my-page .my-content .my-topnew .my-sync-slider-new .item .item-top, .my-page .my-content .my-topnew .my-sync-slider-new .item .item-bot {
+          height: 50%; }
+
+.my-footer .menu {
+  background-color: #4DE919; }
+  .my-footer .menu .left-side img {
+    width: 75%;
+    height: 75%;
+    margin-top: 50px;
+    margin-bottom: 50px; }
+  .my-footer .menu .right-side {
+    border-left: 1px solid #fff;
+    margin: 44px 0; }
+    .my-footer .menu .right-side .assist {
+      margin-bottom: 30px; }
+      .my-footer .menu .right-side .assist h4 {
+        text-decoration: underline;
+        color: #ffffff;
+        margin: 0 0 10px 0; }
+      .my-footer .menu .right-side .assist a {
+        color: #ffffff; }
+    .my-footer .menu .right-side .hotline h5 {
+      color: #ffffff;
+      margin-bottom: -20px; }
+    .my-footer .menu .right-side .hotline h3 {
+      color: #ffffff;
+      font-size: 30px; }
+    .my-footer .menu .right-side .hotline p {
+      color: #ffffff; }
+    .my-footer .menu .right-side .hotline .last {
+      margin: 0; }
+.my-footer .social {
+  padding: 30px 10px;
+  background-color: #171C1D; }
+  .my-footer .social .left-side {
+    padding-right: 40px; }
+    .my-footer .social .left-side .chanel {
+      float: right; }
+      .my-footer .social .left-side .chanel img {
+        width: 48px;
+        height: 48px; }
+  .my-footer .social .right-side {
+    padding-left: 50px;
+    margin-left: 30px;
+    border-left: 1px dashed #ffffff; }
+    .my-footer .social .right-side img {
+      width: 300px;
+      height: 48px; }
+.my-footer .end-line {
+  width: 100%;
+  height: 20px;
+  background-color: #222A2B; }
+
+/*# sourceMappingURL=homepage.css.map */
