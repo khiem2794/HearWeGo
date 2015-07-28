@@ -14,6 +14,7 @@ use HearWeGo\HearWeGoBundle\Entity\Article;
 class DefaultController extends Controller
 {
     public function filerHot( $array ){
+        if (count($array) == 0 ) return array();
         $array_filter = array();
         $count = 0;
         $filter_ele = 0;
