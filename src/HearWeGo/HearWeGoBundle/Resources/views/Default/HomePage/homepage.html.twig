@@ -62,6 +62,15 @@
         <div class="col-md-1">
             <ul class="my-reg-log-bar">
                 {% if app.user %}
+                    {% if app.user.name is defined %}
+                        <a href="{{ path('company_edit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                    {% else %}
+                        <a href="{{ path('edit_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                    {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
                                           src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
@@ -76,18 +85,18 @@
 {% endblock %}
 
 
-{% block topnew %}
+{% block hotplaces %}
 
-    {% set newcount = topnews_filter|length %}
+    {% set descount = hotplaces_filter|length %}
     <ul class="my-slide-top">
-        {% for newpair in topnews_filter %}
+        {% for despair in hotplaces_filter %}
 
             <li>
 
-                {% for new in newpair %}
+                {% for des in despair %}
                     <span>
-                        <a href="{{ path('homepage') }}" ><img src="{{ new.getWebPath }}"/></a>
-                        <label>{{ new.title }}</label>
+                        <a href="{{ des[2] }}" ><img src="{{ des[1] }}"/></a>
+                        <label>{{ des[0] }}</label>
                     </span>
                 {% endfor %}
 

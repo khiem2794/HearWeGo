@@ -37,20 +37,35 @@ class DefaultController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
-        $topnews = $articlerepo->findLimit(8);
-        $topnews_filter = $this->filerHot( $topnews );
 
+        /**
+         * Hot Places Block
+         */
         $audiorepo = $em->getRepository('HearWeGoHearWeGoBundle:Audio');
         $hotaudio = $audiorepo->findHotAudio(10);
         $hotplaces = array();
         foreach( $hotaudio as $audio){
-            $hotplaces[] = $audio->getDestination();
+            $place = array();
+            $destination = $audio->getDestination();
+            $photos = $destination->getPhotos()->toArray();
+            $place[0] = $destination->getName();
+            $place[1] = $photos[array_rand($photos)]->getWebPath();
+            $place[2] = $this->generateUrl('detail',array(
+                "id" => $destination->getID()
+            ));
+            $hotplaces[] = $place;
         }
         $hotplaces_filter = $this->filerHot($hotplaces);
 
+        /**
+         * New Tours Block
+         */
+        $toursrepo = $em->getRepository('HearWeGoHearWeGoBundle:Tour');
+        $newTours = $toursrepo->findNewTour( 16 );
+        $newtoursfilter = $this->filerHot( $newTours );
         return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
-            'topnews_filter' => $topnews_filter
+            'hotplaces_filter' => $hotplaces_filter,
+            'newtourfilter' => $newtoursfilter
         ));
     }
 
@@ -63,9 +78,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/detail", name="detail")
+     * @Route("/destination/{id} ", name="detail")
      */
-    public function detailAction(){
+    public function detailAction( $id ){
         return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig');
 
     }

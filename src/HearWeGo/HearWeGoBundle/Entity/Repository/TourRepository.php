@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class TourRepository extends EntityRepository
 {
+    public function findNewTour( $num ){
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT t FROM HearWeGoHearWeGoBundle:Tour t ORDER BY t.createdAt DESC'
+        )->setMaxResults( $num );
+        return $query->getResult();
+    }
 }
