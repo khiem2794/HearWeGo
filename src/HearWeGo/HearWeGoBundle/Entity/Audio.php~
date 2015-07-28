@@ -1,11 +1,8 @@
 <?php
-
 namespace HearWeGo\HearWeGoBundle\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 /**
  * Audio
  *
@@ -29,7 +26,7 @@ class Audio
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      */
     private $name;
 
@@ -38,15 +35,13 @@ class Audio
      *
      * @ORM\Column(name="audiopath", type="string", length=255)
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      */
     private $audiopath;
-
     /**
      * @Assert\File( maxSize="600000")
      */
     private $audio;
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -55,7 +50,6 @@ class Audio
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="audio")
      */
     private $rates;
-
     /**
      * @ORM\OneToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="audio")
      * @Assert\NotBlank(message="This field must be filled")
@@ -64,19 +58,22 @@ class Audio
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-
     /**
-     * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="audios")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="audios")
      */
     private $orders;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sales;
 
     public function getId()
     {
         return $this->id;
     }
-
     /**
      * Set name
      *
@@ -86,42 +83,18 @@ class Audio
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
-
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Audio
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
     /**
      * Constructor
      */
@@ -130,8 +103,8 @@ class Audio
         $this->rates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->sales = 0;
     }
-
     /**
      * Add rates
      *
@@ -141,10 +114,8 @@ class Audio
     public function addRate(\HearWeGo\HearWeGoBundle\Entity\Rating $rates)
     {
         $this->rates[] = $rates;
-
         return $this;
     }
-
     /**
      * Remove rates
      *
@@ -154,17 +125,15 @@ class Audio
     {
         $this->rates->removeElement($rates);
     }
-
     /**
      * Get rates
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRates()
     {
         return $this->rates;
     }
-
     /**
      * Set destination
      *
@@ -174,20 +143,17 @@ class Audio
     public function setDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destination = null)
     {
         $this->destination = $destination;
-
         return $this;
     }
-
     /**
      * Get destination
      *
-     * @return \HearWeGo\HearWeGoBundle\Entity\Destination 
+     * @return \HearWeGo\HearWeGoBundle\Entity\Destination
      */
     public function getDestination()
     {
         return $this->destination;
     }
-
     /**
      * Add orders
      *
@@ -197,10 +163,8 @@ class Audio
     public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
     {
         $this->orders[] = $orders;
-
         return $this;
     }
-
     /**
      * Remove orders
      *
@@ -210,17 +174,15 @@ class Audio
     {
         $this->orders->removeElement($orders);
     }
-
     /**
      * Get orders
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getOrders()
     {
         return $this->orders;
     }
-
     /**
      * @return string
      */
@@ -228,7 +190,6 @@ class Audio
     {
         return $this->audiopath;
     }
-
     /**
      * @param string $audiopath
      */
@@ -236,7 +197,6 @@ class Audio
     {
         $this->audiopath = $audiopath;
     }
-
     /**
      * @return mixed
      */
@@ -244,7 +204,6 @@ class Audio
     {
         return $this->audio;
     }
-
     /**
      * @param mixed $audio
      */
@@ -252,60 +211,71 @@ class Audio
     {
         $this->audio = $audio;
     }
-
-
     public function getAbsolutePath()
     {
         return null === $this->audiopath
             ? null
             : $this->getUploadRootDir().'/'.$this->audiopath;
     }
-
     public function getWebPath()
     {
         return null === $this->audiopath
             ? null
             : $this->getUploadDir().'/'.$this->audiopath;
     }
-
     protected function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
         return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
-
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
         return '/bundles/hearwegohearwego/uploads/audio';
     }
-
     public function upload()
     {
         // the file property can be empty if the field is not required
         if (null === $this->getAudio()) {
             return;
         }
-
         // use the original file name here but you should
         // sanitize it at least to avoid any security issues
-
         // move takes the target directory and then the
         // target filename to move to
         $this->getAudio()->move(
             $this->getUploadRootDir(),
             $this->getAudio()->getClientOriginalName()
         );
-
         // set the path property to the filename where you've saved the file
         $this->audiopath = $this->getAudio()->getClientOriginalName();
-
         // clean up the file property as you won't need it anymore
         $this->audio = null;
     }
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Audio
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
 
-
-
+    public function increaseSale(){
+        $this->sales += 1;
+    }
 }

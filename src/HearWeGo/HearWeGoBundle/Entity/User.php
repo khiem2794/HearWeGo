@@ -5,16 +5,12 @@
  * Date: 13/07/2015
  * Time: 16:08
  */
-
 namespace HearWeGo\HearWeGoBundle\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-
 /**
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\UserRepository")
  * @ORM\Table(name="user")
@@ -23,49 +19,43 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface
 {
-
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      */
     private $password;
-
     /**
      * @ORM\Column(type="string",name="email",unique=true)
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      * @Assert\Email(message="Not a valid email")
      */
     private $email;
-
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      * @Assert\Length(max=30,maxMessage="Cannot be longer than 30 characters")
      */
     private $firstName;
-
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      * @Assert\Length(max=30,maxMessage="Cannot be longer than 30 characters")
      */
     private $lastName;
-
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      * @Assert\DateTime()
      */
     private $dateOfBirth;
@@ -80,29 +70,24 @@ class User implements UserInterface
      * @Assert\Length(min=9, max=11)
      */
     private $phone;
-
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="user")
      */
     private $comments;
-
     /**
      * @ORM\ManyToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Role", mappedBy="users")
      */
     private $roles;
-
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="user")
      * @Assert\NotBlank(message="This field must be filled")
-     * 
+     *
      */
     private $rates;
-
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="user")
      */
     private $orders;
-
     function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -111,17 +96,15 @@ class User implements UserInterface
         $this->orders = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
-
     /**
      * Set password
      *
@@ -131,21 +114,17 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
-
         return $this->password;
     }
-
     /**
      * Set email
      *
@@ -155,20 +134,17 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
         return $this->email;
     }
-
     /**
      * Set firstName
      *
@@ -178,20 +154,17 @@ class User implements UserInterface
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
-
         return $this;
     }
-
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
         return $this->firstName;
     }
-
     /**
      * Set lastName
      *
@@ -201,20 +174,17 @@ class User implements UserInterface
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-
         return $this;
     }
-
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
         return $this->lastName;
     }
-
     /**
      * Set dateOfBirth
      *
@@ -224,20 +194,17 @@ class User implements UserInterface
     public function setDateOfBirth($dateOfBirth)
     {
         $this->dateOfBirth = $dateOfBirth;
-
         return $this;
     }
-
     /**
      * Get dateOfBirth
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateOfBirth()
     {
         return $this->dateOfBirth;
     }
-
     /**
      * Set phone
      *
@@ -247,20 +214,17 @@ class User implements UserInterface
     public function setPhone($phone)
     {
         $this->phone = $phone;
-
         return $this;
     }
-
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
         return $this->phone;
     }
-
     /**
      * Add comments
      *
@@ -270,10 +234,8 @@ class User implements UserInterface
     public function addComment(\HearWeGo\HearWeGoBundle\Entity\Comment $comments)
     {
         $this->comments[] = $comments;
-
         return $this;
     }
-
     /**
      * Remove comments
      *
@@ -283,17 +245,15 @@ class User implements UserInterface
     {
         $this->comments->removeElement($comments);
     }
-
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {
         return $this->comments;
     }
-
     /**
      * Add roles
      *
@@ -303,10 +263,8 @@ class User implements UserInterface
     public function addRole(\HearWeGo\HearWeGoBundle\Entity\Role $roles)
     {
         $this->roles[] = $roles;
-
         return $this;
     }
-
     /**
      * Remove roles
      *
@@ -316,11 +274,10 @@ class User implements UserInterface
     {
         $this->roles->removeElement($roles);
     }
-
     /**
      * Get roles
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRoles()
     {
@@ -330,7 +287,6 @@ class User implements UserInterface
         return $user_role;
         //return array('ROLE_ADMIN');
     }
-
     /**
      * Add rates
      *
@@ -340,10 +296,8 @@ class User implements UserInterface
     public function addRate(\HearWeGo\HearWeGoBundle\Entity\Rating $rates)
     {
         $this->rates[] = $rates;
-
         return $this;
     }
-
     /**
      * Remove rates
      *
@@ -353,17 +307,15 @@ class User implements UserInterface
     {
         $this->rates->removeElement($rates);
     }
-
     /**
      * Get rates
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRates()
     {
         return $this->rates;
     }
-
     /**
      * Add orders
      *
@@ -373,10 +325,8 @@ class User implements UserInterface
     public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
     {
         $this->orders[] = $orders;
-
         return $this;
     }
-
     /**
      * Remove orders
      *
@@ -386,17 +336,15 @@ class User implements UserInterface
     {
         $this->orders->removeElement($orders);
     }
-
     /**
      * Get orders
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getOrders()
     {
         return $this->orders;
     }
-
     public function getSalt(){
         return null;
     }
@@ -404,7 +352,6 @@ class User implements UserInterface
         return $this->email;
     }
     public function eraseCredentials(){}
-
     /**
      * Set createdAt
      *
@@ -414,14 +361,12 @@ class User implements UserInterface
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
-
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {

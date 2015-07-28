@@ -13,6 +13,22 @@ use HearWeGo\HearWeGoBundle\Entity\Article;
 
 class DefaultController extends Controller
 {
+    public function filerHot( $array ){
+        $array_filter = array();
+        $count = 0;
+        $filter_ele = 0;
+        while ( $count <= count($array)){
+
+            $array_filter[$filter_ele] = array();
+            $array_filter[$filter_ele][] = $array[$count];
+            if ( $count + 1 < count($array) )
+                $array_filter[$filter_ele][] = $array[$count + 1];
+            else break;
+            $filter_ele++;
+            $count +=2;
+        }
+        return $array_filter;
+    }
     /**
      * @Route("/", name="homepage")
      */
@@ -22,9 +38,18 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
         $topnews = $articlerepo->findLimit(8);
-        //return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
+        $topnews_filter = $this->filerHot( $topnews );
+
+        $audiorepo = $em->getRepository('HearWeGoHearWeGoBundle:Audio');
+        $hotaudio = $audiorepo->findHotAudio(10);
+        $hotplaces = array();
+        foreach( $hotaudio as $audio){
+            $hotplaces[] = $audio->getDestination();
+        }
+        $hotplaces_filter = $this->filerHot($hotplaces);
+
         return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
-            'topnews' => $topnews
+            'topnews_filter' => $topnews_filter
         ));
     }
 
@@ -66,4 +91,10 @@ class DefaultController extends Controller
         return $this->render('HearWeGoHearWeGoBundle:Default/Map:map.html.twig');
     }
 
+    /**
+     * @Route("/test", name="test")
+     */
+    public function testAction() {
+        return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
+    }
 }

@@ -18,4 +18,11 @@ class AudioRepository extends EntityRepository
         );
         return $query->getResult();
     }
+
+    public function findHotAudio( $num ){
+        $query = $this->getEntityManager()->createQuery(
+          "SELECT a FROM HearWeGoHearWeGoBundle:Audio a ORDER BY a.sales ASC"
+        )->setMaxResults( $num );
+        return $query->getResult();
+    }
 }

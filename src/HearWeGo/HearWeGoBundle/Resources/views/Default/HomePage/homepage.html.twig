@@ -78,57 +78,23 @@
 
 {% block topnew %}
 
+    {% set newcount = topnews_filter|length %}
     <ul class="my-slide-top">
-        <li>
-            <span>
-                <a href="{{ path('homepage') }}" ><img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/></a>
-                <label>abc</label>
-            </span>
-            <span>
-                <a href="{{ path('homepage') }}" ><img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/></a>
-                <label>abc</label>
-            </span>
-        </li>
-        <li>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-        </li>
-        <li>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-        </li>
-        <li>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-        </li>
-        <li>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-            <span>
-                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/slider1.jpg') }}"/>
-                <label>abc</label>
-            </span>
-        </li>
+        {% for newpair in topnews_filter %}
+
+            <li>
+
+                {% for new in newpair %}
+                    <span>
+                        <a href="{{ path('homepage') }}" ><img src="{{ new.getWebPath }}"/></a>
+                        <label>{{ new.title }}</label>
+                    </span>
+                {% endfor %}
+
+            </li>
+
+        {% endfor %}
+
     </ul>
 
 {% endblock %}

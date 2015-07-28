@@ -27,4 +27,6 @@ class DestinationRepository extends EntityRepository
         $query='SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d NOT IN (SELECT IDENTITY (a.destination) FROM HearWeGoHearWeGoBundle:Audio a)';
         return $this->getEntityManager()->createQuery($query)->getResult();
     }
+
+
 }

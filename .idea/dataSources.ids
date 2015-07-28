@@ -13,6 +13,7 @@
       <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="content" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <column name="imgpath" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_23A0E66816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_DFFE13277294869C" table="article_tags" schema="" catalog="hearwego" columns="article_id"/>
@@ -33,9 +34,10 @@
       <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="audiopath" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_187D3695816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK_9BE342683A3123C7" table="order_audio" schema="" catalog="hearwego" columns="audio_id"/>
+      <exported-key name="FK_F5299398E24BDB15" table="order" schema="" catalog="hearwego" columns="audios_id"/>
       <exported-key name="FK_D88926223A3123C7" table="rating" schema="" catalog="hearwego" columns="audio_id"/>
       <index name="UNIQ_187D3695816C6140" unique="true" columns="destination_id"/>
     </table>
@@ -45,6 +47,7 @@
       <column name="article_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_9474526C7294869C" columns="article_id" ref-table="article" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_9474526CA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
@@ -59,6 +62,7 @@
       <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="role" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_6AD1F969979B1AD6" table="tour" schema="" catalog="hearwego" columns="company_id"/>
       <index name="UNIQ_4FBF094FE7927C74" unique="true" columns="email"/>
@@ -66,8 +70,9 @@
     <table name="destination" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="location" sqlType="DECIMAL" precision="10" scale="4" nullable="false" jdbcType="3"/>
       <column name="region_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="article" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_3EC63EAA98260155" columns="region_id" ref-table="region" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_23A0E66816C6140" table="article" schema="" catalog="hearwego" columns="destination_id"/>
@@ -78,7 +83,7 @@
     </table>
     <table name="gallery" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="imgpath" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="imgpath" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_472B783A816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -86,27 +91,21 @@
     </table>
     <table name="order" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="audios_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_F5299398A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK_9BE342688D9F6D38" table="order_audio" schema="" catalog="hearwego" columns="order_id"/>
+      <foreign-key name="FK_F5299398E24BDB15" columns="audios_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="IDX_F5299398A76ED395" unique="false" columns="user_id"/>
-    </table>
-    <table name="order_audio" schema="" catalog="hearwego" type="TABLE">
-      <column name="order_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="audio_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="order_id,audio_id"/>
-      <foreign-key name="FK_9BE342683A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <foreign-key name="FK_9BE342688D9F6D38" columns="order_id" ref-table="order" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <index name="IDX_9BE342683A3123C7" unique="false" columns="audio_id"/>
-      <index name="IDX_9BE342688D9F6D38" unique="false" columns="order_id"/>
+      <index name="IDX_F5299398E24BDB15" unique="false" columns="audios_id"/>
     </table>
     <table name="rating" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="audio_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="stars" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_D88926223A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_D8892622A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -141,6 +140,7 @@
       <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="discount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="info" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_6AD1F969816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_6AD1F969979B1AD6" columns="company_id" ref-table="company" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -155,6 +155,7 @@
       <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="date_of_birth" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="phone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_9474526CA76ED395" table="comment" schema="" catalog="hearwego" columns="user_id"/>
       <exported-key name="FK_F5299398A76ED395" table="order" schema="" catalog="hearwego" columns="user_id"/>
