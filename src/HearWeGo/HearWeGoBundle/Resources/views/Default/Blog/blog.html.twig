@@ -64,8 +64,8 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
-                        <a href="{{ path('company_edit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
                         <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
                                                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
                     {% else %}
