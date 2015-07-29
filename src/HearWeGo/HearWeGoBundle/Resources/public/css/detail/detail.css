@@ -92,6 +92,26 @@
       .my-page .comments .comment .cmt .head .date {
         color: #00CC00;
         margin-top: 25px; }
+      .my-page .comments .new-comment{
+          background-color: #ffffff;
+          margin-left: 0px;
+          margin-right: 0px;
+          border-top: solid grey;
+          padding-top: 10px;
+          padding-bottom: 5px;
+      }
+      .my-page .comments .new-comment .avatar img{
+          width: 80px;
+          height: 80px;
+          border: solid grey;
+      }
+      .my-page .comments .new-comment .text{
+          resize: none;
+          margin-bottom: 5px;
+      }
+      .my-page .comments .new-comment .send_btn{
+          float: right;
+      }
   .my-page .articles {
     margin-top: 40px;
     margin-bottom: 10px; }
@@ -180,7 +200,7 @@
     height: 20px; }
 
 .my-footer .menu {
-  background-color: #4DE919; }
+  background-color: #26AC4A; }
   .my-footer .menu .left-side img {
     width: 75%;
     height: 75%;

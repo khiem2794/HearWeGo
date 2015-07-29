@@ -1,37 +1,47 @@
-.no-inset{
+.no-inset {
   padding: 0 !important;
 }
-.no-offset{
+
+.no-offset {
   margin: 0 !important;
 }
-.my-page{
-  background-color: rgba(220,251,209,255);
-  .gallery{
+
+.my-page {
+  background-color: #dcfbd1;
+
+  .gallery {
     height: 450px;
-    background-color: rgba(220,251,209,255);
-    .coverflow{
+    background-color: #dcfbd1;
+
+    .coverflow {
       margin: auto;
+
       .cover {
         background-color: #ffffff;
-        img{
-        width: 300px;
-        height: 300px;
-        margin: 10px;}
+
+        img {
+          width: 300px;
+          height: 300px;
+          margin: 10px;
+        }
       }
     }
-    .name{
+
+    .name {
       width: 320px;
       height: 120px;
       position: relative;
-      background-color: rgb(255,255,255);
+      background-color: white;
       margin-left: 410px;
       margin-top: 0px;
-      .caption{
-        position: absolute;
-        p{
 
+      .caption {
+        position: absolute;
+
+        p {
           font-size: large;
-          b{
+
+          b {
             margin-left: 50px;
             text-align: center;
           }
@@ -39,128 +49,147 @@
       }
     }
   }
-  .content{
+
+  .content {
     width: 100%;
-    .info{
-      .title{
-        img{
-          width: 100%;
-        }
+
+    .info {
+      .title img {
+        width: 100%;
       }
-      .article{
+
+      .article {
         background-color: #ffffff;
       }
     }
-    .audio-map{
-      .audio{
+
+    .audio-map {
+      .audio {
         height: 35px;
       }
-      .map{
+
+      .map {
         .map-img {
           width: 100%;
           height: 100%;
         }
-        .download{
-          background-color: rgba(255,255,255,0.6);
+
+        .download {
+          background-color: rgba(255, 255, 255, 0.6);
           height: 50px;
           width: 100%;
           position: relative;
           margin-top: -100px;
-          .icon{
+
+          .icon {
             width: 48px;
             height: 48px;
             margin-left: 155px;
             margin-top: 2px;
-            position:absolute;
-            background-color: rgba(255,255,255,0.6);
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
           }
         }
       }
-      .listtour{
-        .title{
+
+      .listtour {
+        .title {
           margin-top: 85px;
-          img{
+
+          img {
             width: 100%;
             height: 40px;
           }
         }
-        .tours{
-          .tour{
-            margin-top: 10px;
-            background-color: #ffffff;
-            margin-left: 0px;
-            margin-right: 0px;
-            .logo{
-              border: #ffffff solid 1px;
-              border-right-color:  #000000;
-              img{
-                margin-left: -10px;
-              }
+
+        .tours .tour {
+          margin-top: 10px;
+          background-color: #ffffff;
+          margin-left: 0px;
+          margin-right: 0px;
+
+          .logo {
+            border: #ffffff solid 1px;
+            border-right-color: #000000;
+
+            img {
+              margin-left: -10px;
             }
           }
         }
       }
     }
   }
-  .comments{
+
+  .comments {
     margin-bottom: 35px;
-    .title{
+
+    .title {
       margin-bottom: 10px;
-      img{
+
+      img {
         width: 100%;
         height: 40px;
       }
     }
-    .comment{
+
+    .comment {
       background-color: #ffffff;
       margin-right: 0px;
       margin-left: 0px;
-      .avatar{
+
+      .avatar {
         width: 90px;
-        img{
+
+        img {
           width: 80px;
           height: 80px;
           border: solid gray;
         }
       }
-      .cmt{
-        .head{
-          .username{
-            color: #00CC00;
-          }
-          .date{
-            color: #00CC00;
-            margin-top: 25px;
-          }
+
+      .cmt .head {
+        .username {
+          color: #00CC00;
+        }
+
+        .date {
+          color: #00CC00;
+          margin-top: 25px;
         }
       }
     }
   }
-  .articles{
+
+  .articles {
     margin-top: 40px;
     margin-bottom: 10px;
-    .title{
-      img{
-        width: 310px;
-        height: 40px;
-      }
+
+    .title img {
+      width: 310px;
+      height: 40px;
     }
-    .article{
+
+    .article {
       margin: 20px 20px 10px 80px;
-      .item{
+
+      .item {
         width: 250px;
         height: 250px;
-        img{
+
+        img {
           width: 100%;
           height: 100%;
         }
-        .caption{
+
+        .caption {
           position: relative;
           height: 50px;
           width: 100%;
           background-color: rgba(255, 255, 255, 0.6);
           margin-top: -50px;
-          .title{
+
+          .title {
             position: absolute;
             margin-left: 15px;
             margin-right: auto;
@@ -169,130 +198,198 @@
       }
     }
   }
-  .divider{
+
+  .divider {
     width: auto;
     height: 8px;
     background-color: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
   .my-navbar {
-    position: fixed; width: 25px; right: 40px; top: -5px;
+    position: fixed;
+    width: 25px;
+    right: 40px;
+    top: -5px;
+
     .icon {
-      width: 40px; height: 40px; background-color: white;
+      width: 40px;
+      height: 40px;
+      background-color: white;
     }
+
     .item {
-      list-style: none
+      list-style: none;
     }
   }
+
   .my-reg-log-bar {
-    position: fixed; width: 25px; right: 40px; top: 250px;
+    position: fixed;
+    width: 25px;
+    right: 40px;
+    top: 250px;
+
     .icon {
-      width: 40px; height: 40px; background-color: white;
+      width: 40px;
+      height: 40px;
+      background-color: white;
     }
+
     .item {
-      list-style: none
+      list-style: none;
     }
   }
-  .my-reg-form , .my-log-form {
-    .avatar {
-      margin: -25px 250px 10px; width: 80px; height: 80px;
+
+  .my-reg-form .avatar, .my-log-form .avatar {
+    margin: -25px 250px 10px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .my-reg-form .title, .my-log-form .title {
+    width: 100%;
+    height: 100%;
+  }
+
+  .my-reg-form .fb_signup, .my-log-form .fb_signin {
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+
+  .my-reg-form {
+    .fb_signup img {
+      border-radius: 10px;
+      width: 100%;
+      margin: 0;
     }
-    .title {
-      width: 100%; height: 100%;
+
+    .reg-submit {
+      border-radius: 10px;
+      padding: 0;
     }
   }
-  .my-reg-form .fb_signup,  .my-log-form .fb_signin {
-    border-radius: 10px; padding: 0; margin-bottom: 10px; margin-top: -10px;
+
+  .my-log-form .log-submit {
+    border-radius: 10px;
+    padding: 0;
   }
-  .my-reg-form .fb_signup img {
-    border-radius: 10px; width: 100%; margin: 0;
+
+  .my-reg-form .reg-submit img {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    margin: 0;
   }
-  .my-reg-form .reg-submit,  .my-log-form .log-submit {
-    border-radius: 10px; padding: 0;
-  }
-  .my-reg-form .reg-submit img, .my-log-form .log-submit img {
-    border-radius: 10px; width: 150px; height: 50px; margin: 0;
-  }
-  .my-log-form .fb_signin img {
-    border-radius: 10px; width: 100%; margin: 0;
-  }
-  .my-log-form .id_icon {
-    width: 20px; height: 20px;
-  }
-  .my-log-form .pass_icon {
-    width: 20px; height: 20px;
+
+  .my-log-form {
+    .log-submit img {
+      border-radius: 10px;
+      width: 150px;
+      height: 50px;
+      margin: 0;
+    }
+
+    .fb_signin img {
+      border-radius: 10px;
+      width: 100%;
+      margin: 0;
+    }
+
+    .id_icon, .pass_icon {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
+
 .my-footer {
-  .menu{
-    background-color: #4DE919;
-    .left-side{
-      img{
-        width: 75%;
-        height: 75%;
-        margin-top: 50px;
-        margin-bottom: 50px;
-      }
+  .menu {
+    background-color: #26AC4A;
+
+    .left-side img {
+      width: 75%;
+      height: 75%;
+      margin-top: 50px;
+      margin-bottom: 50px;
     }
-    .right-side{
+
+    .right-side {
       border-left: 1px solid #fff;
       margin: 44px 0;
-      .assist{
+
+      .assist {
         margin-bottom: 30px;
-        h4{
+
+        h4 {
           text-decoration: underline;
           color: #ffffff;
           margin: 0 0 10px 0;
         }
-        a{
+
+        a {
           color: #ffffff;
         }
       }
-      .hotline{
-        h5{
+
+      .hotline {
+        h5 {
           color: #ffffff;
           margin-bottom: -20px;
         }
-        h3{
+
+        h3 {
           color: #ffffff;
           font-size: 30px;
         }
-        p{
+
+        p {
           color: #ffffff;
         }
-        .last{
+
+        .last {
           margin: 0;
         }
       }
     }
   }
-  .social{
+
+  .social {
     padding: 30px 10px;
     background-color: #171C1D;
-    .left-side{
+
+    .left-side {
       padding-right: 40px;
-      .chanel{
+
+      .chanel {
         float: right;
-        img{
+
+        img {
           width: 48px;
           height: 48px;
         }
       }
     }
-    .right-side{
+
+    .right-side {
       padding-left: 50px;
       margin-left: 30px;
       border-left: 1px dashed #ffffff;
-      img{
+
+      img {
         width: 300px;
         height: 48px;
       }
     }
   }
-  .end-line{
+
+  .end-line {
     width: 100%;
     height: 20px;
     background-color: #222A2B;
   }
 }
+
+/*# sourceMappingURL=detail.css.map */

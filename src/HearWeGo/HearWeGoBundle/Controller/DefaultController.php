@@ -61,7 +61,7 @@ class DefaultController extends Controller
          * New Tours Block
          */
         $toursrepo = $em->getRepository('HearWeGoHearWeGoBundle:Tour');
-        $newTours = $toursrepo->findNewTour( 16 );
+        $newTours = $toursrepo->findNewTour( 2 );
         $newtoursfilter = $this->filerHot( $newTours );
         return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
             'hotplaces_filter' => $hotplaces_filter,

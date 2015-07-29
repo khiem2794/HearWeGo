@@ -278,4 +278,27 @@ class Audio
     public function increaseSale(){
         $this->sales += 1;
     }
+
+    /**
+     * Set sales
+     *
+     * @param integer $sales
+     * @return Audio
+     */
+    public function setSales($sales)
+    {
+        $this->sales = $sales;
+
+        return $this;
+    }
+
+    /**
+     * Get sales
+     *
+     * @return integer 
+     */
+    public function getSales()
+    {
+        return $this->sales;
+    }
 }
