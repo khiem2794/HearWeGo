@@ -85,3 +85,68 @@
 
 
 {% endblock %}
+
+
+{% block coverflow %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/coverflow.html.twig') with { 'photos': photos } %}
+{% endblock %}
+
+
+{% block sliderTitle %}
+    <p class="text-center" style="text-align: center">{{ destination.getName }}
+{% endblock %}
+
+
+{% block detail %}
+    {{ destination.getArticle|raw }}
+{% endblock %}
+
+{% block audioblock %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') %}
+{% endblock %}
+
+{% block listtour %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') %}
+{% endblock %}
+
+
+{% block comments %}
+    {% for i in 1..3 %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'user': 'khiem'} %}
+    {% endfor %}
+{% endblock %}
+
+{% block relativearticle %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

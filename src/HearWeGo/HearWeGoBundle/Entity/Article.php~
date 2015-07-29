@@ -59,10 +59,7 @@ class Article
      */
     private $createdAt;
 
-    /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
-     */
-    private $comments;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="articles")
@@ -82,7 +79,6 @@ class Article
     {
         $this->createdAt = new \DateTime();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->comments = new ArrayCollection();
     }
 
     /**

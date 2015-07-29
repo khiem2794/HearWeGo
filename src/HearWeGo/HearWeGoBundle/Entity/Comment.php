@@ -55,12 +55,12 @@ class Comment
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="comments")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      * 
      */
-    private $article;
+    private $destination;
 
     function __construct()
     {
@@ -190,5 +190,28 @@ class Comment
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set destination
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Destination $destination
+     * @return Comment
+     */
+    public function setDestination(\HearWeGo\HearWeGoBundle\Entity\Destination $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * Get destination
+     *
+     * @return \HearWeGo\HearWeGoBundle\Entity\Destination 
+     */
+    public function getDestination()
+    {
+        return $this->destination;
     }
 }

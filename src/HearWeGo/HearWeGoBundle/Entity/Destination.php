@@ -78,6 +78,11 @@ class Destination
     private $photos;
 
     /**
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comments;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -86,6 +91,7 @@ class Destination
         $this->tours = new ArrayCollection();
         $this->photos = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -356,5 +362,38 @@ class Destination
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Comment $comments
+     * @return Destination
+     */
+    public function addComment(\HearWeGo\HearWeGoBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \HearWeGo\HearWeGoBundle\Entity\Comment $comments
+     */
+    public function removeComment(\HearWeGo\HearWeGoBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

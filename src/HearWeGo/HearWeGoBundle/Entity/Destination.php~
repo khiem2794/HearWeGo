@@ -78,6 +78,11 @@ class Destination
     private $photos;
 
     /**
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
+     */
+    private $comments;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -86,6 +91,7 @@ class Destination
         $this->tours = new ArrayCollection();
         $this->photos = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->comments = new ArrayCollection();
     }
 
     /**

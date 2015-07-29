@@ -8,27 +8,18 @@
 </head>
 <body>
     <div class="my-page container .no-offset">
+
         <div class=" gallery">
             <div class="coverflow">
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh2.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh5.jpg') }}">
-                </div>
+                {% block coverflow %}
+
+                {% endblock %}
             </div>
             <div class="name text-center">
                 <div class="caption">
-                    <p class="text-center"><b>Destination name</b></p>
+                    {% block sliderTitle %}
+
+                    {% endblock %}
                 </div>
             </div>
         </div>
@@ -41,59 +32,28 @@
                     <img src="{{ asset('bundles/hearwegohearwego/images/detail/detail_title.png') }}">
                 </div>
                 <div class="article">
-                    bndsnmndsvndfn
+                    {% block detail %}
+
+                    {% endblock %}
                 </div>
             </div>
             <div class="audio-map col-md-4">
-                <div class="audio">
-                    <audio controls>
-                        <source src="#" type="audio/mpeg">
-                        Your browser does not support this audio type
-                    </audio>
-                </div>
-                <div class="map">
-                    <img class="map-img" src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                    <div class="download">
-                        <img class="icon" src="{{ asset('bundles/hearwegohearwego/images/detail/download.png') }}">
-                    </div>
-                </div>
+
+                {% block audioblock %}
+
+                {% endblock %}
+                {# List Tour#}
+
                 <div class="listtour">
                     <div class="title">
                         <img src="{{ asset('bundles/hearwegohearwego/images/detail/listtour_title.png') }}">
                     </div>
                     <div class="tours">
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
+
+                        {% block listtour %}
+
+                        {% endblock %}
+
                     </div>
                 </div>
             </div>
@@ -103,81 +63,24 @@
                 <div class="title">
                     <img src="{{ asset('bundles/hearwegohearwego/images/detail/comment_title.png') }}">
                 </div>
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
+                {% block comments %}
+
+                {% endblock %}
+
             </div>
         </div>
         <div class="divider"></div>
+
+        {# Relative Article#}
         <div class="articles row">
             <div class="title text-center">
                 <img src="{{ asset('bundles/hearwegohearwego/images/detail/article_title.png') }}">
             </div>
             <div class="article row">
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh2.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
 
+                {% block relativearticle %}
+
+                {% endblock %}
             </div>
         </div>
         <!--Navigation bar-->
