@@ -49,7 +49,7 @@ class DefaultController extends Controller
             $destination = $audio->getDestination();
             $photos = $destination->getPhotos()->toArray();
             $place[0] = $destination->getName();
-            $place[1] = $photos[array_rand($photos)]->getWebPath();
+            $place[1] = (count($photos)>0) ? $photos[array_rand($photos)]->getWebPath() : "";
             $place[2] = $this->generateUrl('detail',array(
                 "id" => $destination->getID()
             ));

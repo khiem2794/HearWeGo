@@ -69,15 +69,15 @@ class CompanyController extends Controller
                 $em=$this->getDoctrine()->getEntityManager();
                 $em->persist($tour);
                 $em->flush();
-                return new Response(' Success ');
+                return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
             }
-            return new Response('not valid');
+            return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
         }
-        return $this->render('HearWeGoHearWeGoBundle:Company:companySubmit.html.twig',array('form1'=>$form->createView()));
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
     }
 
     /**
-     * @Route("/company/edit",name="company_edit")
+     * @Route("/company/profile",name="company_profile")
      */
     public function editCompany(Request $request)
     {
@@ -89,7 +89,7 @@ class CompanyController extends Controller
 
         $company=$this->get('security.token_storage')->getToken()->getUser();
 
-        $form=$this->createForm(new CompanyEditType($company),$company,array('method'=>'POST','action'=>$this->generateUrl('company_edit')));
+        $form=$this->createForm(new CompanyEditType($company),$company,array('method'=>'POST','action'=>$this->generateUrl('company_profile')));
         $form->add('submit','submit');
         if ($request->getMethod()=='POST')
         {
@@ -99,10 +99,10 @@ class CompanyController extends Controller
                 $em=$this->getDoctrine()->getEntityManager();
                 $em->persist($company);
                 $em->flush();
-                return $this->render('HearWeGoHearWeGoBundle:Company:companyEdit.html.twig',array('form'=>$form->createView()));
+                return $this->render('HearWeGoHearWeGoBundle:Company/profile:company.html.twig',array('form'=>$form->createView()));
             }
         }
-        return $this->render('HearWeGoHearWeGoBundle:Company:companyEdit.html.twig',array('form'=>$form->createView()));
+        return $this->render('HearWeGoHearWeGoBundle:Company/profile:company.html.twig',array('form'=>$form->createView()));
     }
 
     /**

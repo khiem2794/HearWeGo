@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>User Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/hearwegohearwego/css/profile.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ asset('bundles/hearwegohearwego/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
+</head>
+
+<body>
+<div id="toppage">
+    <img src="{{ asset('bundles/hearwegohearwego/images/banner.png') }}" style="width:100%">
+</div>
+<div class="container" align="center">
+    <img src="{{ asset('bundles/hearwegohearwego/images/personal/profile.png') }}" style="height:40px">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+</body>
+
+</html>

@@ -36,8 +36,6 @@ class CompanySubmitTourType extends AbstractType
                 'required' => true
             ))
             ;
-        $builder->get('destination')
-            ->addModelTransformer($this->destinationTransformer);
 
     }
 
