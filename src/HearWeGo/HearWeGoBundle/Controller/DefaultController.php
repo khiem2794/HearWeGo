@@ -174,7 +174,12 @@ class DefaultController extends Controller
      */
     public function articleAction($id)
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('HearWeGoHearWeGoBundle:Article')->find($id);
+
+        return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig', array(
+            'article' => $article
+        ));
     }
 
     /**

@@ -113,102 +113,14 @@
     <!--End Search bar-->
     <div class="content col-md-12">
         <div class="row article">
-            <div class="text col-md-9">
-                <div class="title text-center">
-                    <h2><b>This is the title of the article</b></h2>
-                </div>
-                <div class="date">
-                    <h5><i>21 July 2015</i></h5>
-                </div>
-                <div class="paragraph">
-                    <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended HTML
-                        and dynamic code. But as time passed, other template languages - like Twig 1 - were created to
-                        make
-                        templating even better.
-                        Use Twig templating format for your templates.
-                        Generally speaking, PHP templates are much more verbose than Twig templates because they lack
-                        native
-                        support for lots of modern features needed by templates, like inheritance, automatic escaping
-                        and named
-                        arguments for filters and functions.
-                        Twig is the default templating format in Symfony and has the largest community support of all
-                        non-PHP
-                        template engines (it's used in high profile projects such as Drupal 8).
-                        In addition, Twig is the only template format with guaranteed support in Symfony 3.0. As a
-                        matter of
-                        fact, PHP may be removed from the officially supported template engines.
-                    </p>
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
+            {% block mainarticle %}
 
-                    <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended HTML
-                        and dynamic code. But as time passed, other template languages - like Twig 1 - were created to
-                        make
-                        templating even better.
-                        Use Twig templating format for your templates.
-                        Generally speaking, PHP templates are much more verbose than Twig templates because they lack
-                        native
-                        support for lots of modern features needed by templates, like inheritance, automatic escaping
-                        and named
-                        arguments for filters and functions.
-                        Twig is the default templating format in Symfony and has the largest community support of all
-                        non-PHP
-                        template engines (it's used in high profile projects such as Drupal 8).
-                        In addition, Twig is the only template format with guaranteed support in Symfony 3.0. As a
-                        matter of
-                        fact, PHP may be removed from the officially supported template engines.
-                    </p>
-                </div>
-            </div>
+            {% endblock %}
 
             <div class="relative col-md-3">
-                <div class="relative-new">
-                    <div>
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                    </div>
-                    <div class="title">
-                        <h2 class="tit">This is a title</h2>
-                        <h4 class="date">21 July 2015</h4>
-                    </div>
-                    <div class="subcontent">
-                        <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended
-                            HTML
-                            and dynamic code. But as time passed, other template languages - like Twig 1 - were created
-                            to make
-                            templating even better.</p>
-                    </div>
-                </div>
-                <div class="relative-new">
-                    <div>
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                    </div>
-                    <div class="title">
-                        <h2 class="tit">This is a title</h2>
-                        <h4 class="date">21 July 2015</h4>
-                    </div>
-                    <div class="subcontent">
-                        <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended
-                            HTML
-                            and dynamic code. But as time passed, other template languages - like Twig 1 - were created
-                            to make
-                            templating even better.</p>
-                    </div>
-                </div>
-                <div class="relative-new">
-                    <div>
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                    </div>
-                    <div class="title">
-                        <h2 class="tit">This is a title</h2>
-                        <h4 class="date">21 July 2015</h4>
-                    </div>
-                    <div class="subcontent">
-                        <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended
-                            HTML
-                            and dynamic code. But as time passed, other template languages - like Twig 1 - were created
-                            to make
-                            templating even better.</p>
-                    </div>
-                </div>
+                {% block relativearticle %}
+
+                {% endblock %}
             </div>
         </div>
     </div>

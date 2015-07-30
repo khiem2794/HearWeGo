@@ -57,10 +57,9 @@ class ManageController extends Controller
      */
     public function manageArticleAction()
     {
-
-        return $this->render('@HearWeGoHearWeGo/Manage/article/article.html.twig');
+        $articles = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/article/article.html.twig', array('articles' => $articles));
     }
-
 
     /**
      * @Route("/admin/article/add", name="add_article")
@@ -103,13 +102,50 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/article/{id}",name="edit_article")
+     */
+    public function editArticleAction($id, Request $request)
+    {
+        $article = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->findById($id);
+        $form = $this->createForm(new Form\ArticleType(), $article, array('method' => 'POST', 'action' => $this->generateUrl('edit_article', array('id' => $id))));
+        $form->add('submit', 'submit');
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $article->upload();
+                $em->persist($article);
+                $em->flush();
+                return $this->render('@HearWeGoHearWeGo/Manage/article/editarticle.html.twig', array(
+                    'form' => $form->createView(), 'article' => $article));
+            }
+        }
+        return $this->render('@HearWeGoHearWeGo/Manage/article/editarticle.html.twig', array(
+            'form' => $form->createView(), 'article' => $article
+        ));
+    }
+
+    /**
+     * @Route("/admin/article/delete/{id}",name="delete_article")
+     */
+    public function deleteArticleAction($id)
+    {
+        $article = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->findById($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($article);
+        $em->flush();
+        return $this->redirectToRoute('manage_article');
+    }
+
+
+
+    /**
      * @Route("/admin/audio", name="manage_audio")
      */
     public function manageAudioAction()
     {
-
-        return $this->render('@HearWeGoHearWeGo/Manage/audio/audio.html.twig');
-
+        $audios = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/audio/audio.html.twig', array('audios' => $audios));
     }
 
     /**
@@ -154,6 +190,19 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/audio/{id}",name="edit_audio")
+     */
+    public function editAudioAction($id, Request $request)
+    {
+        $audio = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findById($id);
+        $form = $this->createForm(new EditAudioType(), $audio, array(
+            'method' => 'POST',
+            'action' => $this->generateUrl('edit_audio', array('id' => $id))
+        ));
+        return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig', array($form->createView()));
+    }
+
+    /**
      * @Route("/admin/audio/assign",name="assign_audio")
      */
     public function assignAudioAction()
@@ -166,8 +215,10 @@ class ManageController extends Controller
      */
     public function manageDestinationAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/destination/destination.html.twig');
+        $destinations = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/destination/destination.html.twig', array('destinations' => $destinations));
     }
+
 
     /**
      * @Route("/admin/destination/add",name="add_destination")
@@ -210,11 +261,44 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/destination/{id}",name="edit_destination")
+     */
+    public function editDestinationAction($id, Request $request)
+    {
+        $destination = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findById($id);
+        $form = $this->createForm(new Form\DestinationType(), $destination, array('method' => 'POST', 'action' => $this->generateUrl('edit_destination', array('id' => $id))));
+        $form->add('submit', 'submit');
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($destination);
+                $em->flush();
+                return $this->render('@HearWeGoHearWeGo/Manage/destination/editdestination.html.twig', array('form' => $form->createView()));
+            }
+        }
+        return $this->render('@HearWeGoHearWeGo/Manage/destination/editdestination.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/admin/destination/delete/{id}",name="delete_destination")
+     */
+    public function deleteDestinationAction($id)
+    {
+        $destination = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findById($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($destination);
+        $em->flush();
+        return $this->redirectToRoute('manage_destination');
+    }
+
+    /**
      * @Route("/admin/company",name="manage_company")
      */
     public function manageCompanyAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/company/company.html.twig');
+        $companies = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Company')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/company/company.html.twig', array('companies' => $companies));
     }
 
     /**
@@ -230,7 +314,8 @@ class ManageController extends Controller
      */
     public function manageTourAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/tour/tour.html.twig');
+        $tours = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Tour')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/tour/tour.html.twig', array('tours' => $tours));
     }
 
     /**
@@ -257,12 +342,14 @@ class ManageController extends Controller
         return $this->render('@HearWeGoHearWeGo/Manage/rating/audiorating.html.twig');
     }
 
+
     /**
      * @Route("/admin/media", name="manage_media")
      */
     public function manageMediaAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/media/media.html.twig');
+        $images = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Gallery')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/media/media.html.twig', array('images' => $images));
     }
 
     /**
@@ -280,9 +367,9 @@ class ManageController extends Controller
         ));
         $form->add('submit', 'submit');
 
-        if ( $request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-            if ( $form->isValid()){
+            if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $img->upload();
                 $em->persist($img);
@@ -301,15 +388,45 @@ class ManageController extends Controller
     }
 
     /**
+     * @Route("/admin/media/{id}",name="edit_media")
+     */
+    public function editMediaAction($id, Request $request)
+    {
+        $image = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Gallery')->findById($id);
+        $form = $this->createForm(new Form\GalleryType(), $image, array('method' => 'POST', 'action' => $this->generateUrl('edit_media', array('id' => $id))));
+        $form->add('submit', 'submit');
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $image->upload();
+                $em->persist($image);
+                $em->flush();
+                return $this->render('@HearWeGoHearWeGo/Manage/media/editmedia.html.twig', array('form' => $form->createView(), 'image' => $image));
+            }
+        }
+        return $this->render('@HearWeGoHearWeGo/Manage/media/editmedia.html.twig', array('form' => $form->createView(), 'image' => $image));
+    }
+
+    /**
+     * @Route("/admin/media/delete/{id}",name="delete_media")
+     */
+    public function deleteMediaAction($id)
+    {
+        $image = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Gallery')->findById($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($image);
+        $em->flush();
+        return $this->redirectToRoute('manage_media');
+    }
+
+    /**
      * @Route("/admin/comment", name="manage_comment")
      */
     public function manageCommentAction()
     {
         return $this->render('@HearWeGoHearWeGo/Manage/comment/commnent.html.twig');
     }
-
-
-
 
 
 }

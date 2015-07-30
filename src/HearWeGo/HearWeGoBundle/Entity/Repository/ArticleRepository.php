@@ -25,4 +25,8 @@ class ArticleRepository extends EntityRepository
         )->setMaxResults( $num );
         return $query->getResult();
     }
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE a.id=:id')->setParameter('id',$id)->getOneOrNullResult();
+    }
 }

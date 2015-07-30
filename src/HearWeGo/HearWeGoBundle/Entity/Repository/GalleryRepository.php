@@ -14,8 +14,13 @@ class GalleryRepository extends EntityRepository
 {
     public function findAll(){
         $query = $this->getEntityManager()->createQuery(
-          "SELECT g FROM HearWeGoHearWeGoBundle:Gallery g"
+            "SELECT g FROM HearWeGoHearWeGoBundle:Gallery g"
         );
         return $query->getResult();
+    }
+
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT g FROM HearWeGoHearWeGoBundle:Gallery g WHERE g.id=:id')->setParameter('id',$id)->getOneOrNullResult();
     }
 }

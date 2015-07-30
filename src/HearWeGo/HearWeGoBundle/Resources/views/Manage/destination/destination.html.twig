@@ -1,25 +1,45 @@
 {% extends('admin/admin.html.twig') %}
 
-
-
 {% block mainpageheader %}
-    <h1 class="page-heading">mainpageheader</h1>
+    <h1 class="page-heading">DESTINATION MANAGEMENT</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">mainpagecontainerheader</h3>
+    <h3 class="block-title">Destinations</h3>
 {% endblock %}
 
 
 {% block mainpagecontainer %}
-    <h3 class="block-title">mainpagecontainer</h3>
+    <h3 class="block-title">Brief details</h3>
+    <div class="block">
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Name</th>
+                    <th class="hidden-xs" style="width: 70%%;">Article</th>
+                    <th class="text-center" style="width: 100px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for destination in destinations %}
+                    <tr>
+                        <td class="text-center">{{ destination.id }}</td>
+                        <td>{{ destination.name }}</td>
+                        <td>
+                            {% set seg=destination.article|split('.') %}
+                            {{ seg[0]|raw }}
+                        </td>
+                        <td>
+                            <a href="{{ path('edit_destination',{'id':destination.id}) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></button></a>
+                            <a href="{{ path('delete_destination',{'id':destination.id}) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
-
-
-
-
-
-
-
-

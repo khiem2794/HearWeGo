@@ -1,0 +1,43 @@
+{% extends('@HearWeGoHearWeGo/Manage/article/addarticle.html.twig') %}
+
+{% block mainpageheader %}
+    <h1 class="page-heading">EDIT ARTICLE</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">Edit {{ form.title.vars.value }}</h3>
+{% endblock %}
+
+{% block mainpagecontainer %}
+    {{ form_start(form) }}
+    <div class="col-md-7 block">
+        <div class="form-group">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter title'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tags) }}
+            {{ form_widget(form.tags, { 'attr' : { 'class' : 'form-control input-lg', 'placeholder': 'Enter Tags'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.content) }}
+            {{ form.content.vars.value|raw }}
+            {{ form_widget(form.content, { 'id':'articlecontent', 'attr' : { 'class' : 'form-control input-lg','rows': '25', 'style':'display: none', 'visibility':'hidden'}  }) }}
+            <div id="summernote"></div>
+        </div>
+    </div>
+    <div class="col-md-5 block form-group">
+        <div class="form-group">
+            {{ form_label(form.destination) }}
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.img,null,  { 'label_attr': {'id': 'imgpath'}}  ) }}
+            {{ form_widget(form.img, { 'attr' : { 'class' : 'form-control input-lg'}} )}}
+            <img id="previewHolder" width="100%" height="100%" src="{{ article.getWebPath }}"/>
+        </div>
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary pull-right', 'label': 'Enter'}  }) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
