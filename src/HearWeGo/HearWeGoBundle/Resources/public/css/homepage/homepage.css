@@ -9,7 +9,7 @@
 .my-page .my-banner img {
   width: 100%; }
 .my-page .my-content {
-  background: #50E91B; }
+  background: #26AC4A; }
   .my-page .my-content .my-search {
     height: 50px;
     padding: 8px; }
@@ -95,7 +95,7 @@
             margin: 5px; }
             .my-page .my-content .my-top-gallery .my-top-bot ul li span img {
               width: 100%;
-              height: 130px; }
+              height: 120px; }
             .my-page .my-content .my-top-gallery .my-top-bot ul li span label {
               background-color: rgba(255, 255, 255, 0.6);
               position: absolute;
@@ -200,7 +200,7 @@
           height: 50%; }
 
 .my-footer .menu {
-  background-color: #4DE919; }
+  background-color: #26AC4A; }
   .my-footer .menu .left-side img {
     width: 75%;
     height: 75%;
