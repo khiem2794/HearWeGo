@@ -64,13 +64,22 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
-                        <a href="{{ path('company_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
-                        <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                     src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
+                        <a href="{{ path('company_submit') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                     {% else %}
-                        <a href="{{ path('edit_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('edit_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                     {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
@@ -83,4 +92,50 @@
     </div>
 
 
+{% endblock %}
+
+
+{% block articlecol1 %}
+    {% for article in blog1 %}
+        <div class="article row">
+            <div class="image col-md-5">
+                <img src="{{ article.getWebPath }}">
+            </div>
+            <div class="text col-md-7">
+                <div class="title">
+                    <h4><b>{{ article.title }}</b></h4>
+                </div>
+                <div class="date">
+                    <i>{{ article.getCreatedAt|date('m-d-Y') }}</i>
+                </div>
+                <div class="sub-content">
+                    <p> {{ article.content|slice(0,15)|raw }} ...</p>
+                    <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block articlecol2 %}
+    {% for article in blog2 %}
+        <div class="article row">
+            <div class="image col-md-5">
+                <img src="{{ article.getWebPath }}">
+            </div>
+            <div class="text col-md-7">
+                <div class="title">
+                    <h4><b>{{ article.title }}</b></h4>
+                </div>
+                <div class="date">
+                    <i>{{ article.getCreatedAt|date('m-d-Y') }}</i>
+                </div>
+                <div class="sub-content">
+                    <p> {{ article.content|slice(0,15)|raw }} ...</p>
+                    <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

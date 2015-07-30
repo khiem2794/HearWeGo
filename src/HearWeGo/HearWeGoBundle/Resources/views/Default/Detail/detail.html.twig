@@ -102,11 +102,11 @@
 {% endblock %}
 
 {% block audioblock %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath } %}
 {% endblock %}
 
 {% block listtour %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
 {% endblock %}
 
 

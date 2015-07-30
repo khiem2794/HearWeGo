@@ -12,10 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class TourRepository extends EntityRepository
 {
+
     public function findNewTour( $num ){
+        $date = new \DateTime();
         $query = $this->getEntityManager()->createQuery(
-            'SELECT t FROM HearWeGoHearWeGoBundle:Tour t ORDER BY t.createdAt DESC'
-        )->setMaxResults( $num );
+            'SELECT t FROM HearWeGoHearWeGoBundle:Tour t WHERE t.startdate > :date AND t.status = 1 ORDER BY t.createdAt DESC'
+        )->setParameter('date', $date)->setMaxResults( $num );
         return $query->getResult();
     }
+
+    public function findSaleTour( $num ){
+        $date = new \DateTime();
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT t FROM HearWeGoHearWeGoBundle:Tour t WHERE t.startdate > :date AND t.status = 1 ORDER BY t.discount DESC'
+        )->setParameter('date', $date)->setMaxResults( $num );
+        return $query->getResult();
+    }
+
 }

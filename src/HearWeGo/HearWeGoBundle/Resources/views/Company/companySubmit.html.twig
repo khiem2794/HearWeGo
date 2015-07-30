@@ -1,8 +1,55 @@
-<html>
-<head>
-    <title>Company Submit Tour</title>
-</head>
-<body>
-    {{ form(form1) }}
-</body>
-</html>
+
+<div id="page-container" class="">
+    {{ form_start(form) }}
+    <div class="col-md-5 block">
+
+        <div class="form-group">
+            <div class="col-xs-12">
+                {{ form_label(form.name,null, { 'label_attr': { 'class': 'pull-left' } } ) }}
+            </div>
+            {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                {{ form_label(form.startdate,null, { 'label_attr': { 'class': 'pull-left' } } ) }}
+            </div>
+            {{ form_widget(form.startdate, { 'attr' : { }  }) }}
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                {{ form_label(form.enddate,null, { 'label_attr': { 'class': 'pull-left' } } ) }}
+            </div>
+            {{ form_widget(form.enddate, { 'attr' : { }  }) }}
+        </div>
+        <div class="form-group ">
+            <div class="col-xs-12">
+                {{ form_label(form.discount,null, { 'label_attr': { 'class': 'pull-left' } } ) }}
+            </div>
+            <div class="input-group col-xs-12">
+                {{ form_widget(form.discount, { 'attr' : { 'class' : 'form-control'}  }) }}
+                <span class="input-group-addon">%</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                {{ form_label(form.destination,null, { 'label_attr': { 'class': 'pull-left' } } ) }}
+            </div>
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+
+
+    </div>
+    <div class="col-md-7 block form-group">
+        <div class="form-group">
+            {{ form_label(form.info,null) }}
+            {{ form_widget(form.info, { 'id':'info', 'attr' : { 'class' : 'form-control input-lg','rows': '25', 'placeholder': 'Content goes here ...', 'style':'display: none;', 'visibility':'hidden'}  }) }}
+            <div id="summernote"></div>
+        </div>
+
+        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary pull-right', 'label': 'Enter'}  }) }}
+    </div>
+    {{ form_end(form) }}
+</div>
+
+
+

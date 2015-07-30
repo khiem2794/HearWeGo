@@ -14,7 +14,7 @@ class ArticleRepository extends EntityRepository
 {
     public function findAll(){
         $query = $this->getEntityManager()->createQuery(
-          "SELECT a FROM HearWeGoHearWeGoBundle:Article a"
+          "SELECT a FROM HearWeGoHearWeGoBundle:Article a ORDER BY a.createdAt DESC"
         );
         return $query->getResult();
     }

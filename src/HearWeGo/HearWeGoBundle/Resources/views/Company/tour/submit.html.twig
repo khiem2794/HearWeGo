@@ -1,5 +1,12 @@
 {% extends('company/company_base.html.twig') %}
 
+
+{% block mainpageheader %}
+    <h1 class="page-heading">Submit Tour</h1>
+{% endblock %}
+
+
+
 {% block content %}
 
 {%  include 'HearWeGoHearWeGoBundle:Company:companySubmit.html.twig' %}
@@ -9,6 +16,26 @@
 
 
 
+{% block jsinclude %}
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/summernote.css') }}">
+    <script src="{{ asset('bundles/hearwegohearwego/js/summernote.min.js') }}"></script>
+{% endblock %}
+
+{% block jscode %}
+    <script>
+        $(function () {
+
+        });
+
+        $('#summernote').summernote({
+            height: 300,
+            onKeyup: function (e) {
+                $("#info").val($("#summernote").code());
+            }
+        });
+    </script>
+
+{% endblock %}
 
 
 

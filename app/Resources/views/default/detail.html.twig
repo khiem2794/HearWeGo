@@ -63,49 +63,11 @@
                 <div class="title">
                     <img src="{{ asset('bundles/hearwegohearwego/images/detail/comment_title.png') }}">
                 </div>
-<<<<<<< HEAD
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment row">
-                    <div class="avatar col-md-3">
-                        <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-                    </div>
-                    <div class="cmt col-md-9">
-                        <div class="head row">
-                            <h3 class="username col-md-5">User Name Here</h3>
-                            <span class="date col-md-4">01/01/2015</span>
-                        </div>
-                        <div class="body">
-                            <p>ndfsnmfsdnmbsdfnmbnmfsbnbfnmbfsnmbfdsnmbsdfmbfbnmm</p>
-                        </div>
-                    </div>
-                </div>
+
+                {% block comments %}
+
+                {% endblock %}
+
                 <div class="new-comment row">
                     <div class="avatar col-md-2">
                         <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
@@ -117,9 +79,7 @@
                         </form>
                     </div>
                 </div>
-                {% block comments %}
 
-                {% endblock %}
 
             </div>
         </div>

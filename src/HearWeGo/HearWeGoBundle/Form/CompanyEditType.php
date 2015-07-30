@@ -39,7 +39,9 @@ class CompanyEditType extends AbstractType
             ->add('email','email',array('data'=>$this->company->getEmail()))
             ->add('phone','text',array('data'=>$this->company->getPhone()))
             ->add('address','text',array('data'=>$this->company->getAddress()))
-            ->add('password','password')
+            ->add('password','password', array(
+                'label' => 'New Password'
+            ))
             ->add('role', 'hidden', array(
                 'data' => "ROLE_COMPANY"
             ))

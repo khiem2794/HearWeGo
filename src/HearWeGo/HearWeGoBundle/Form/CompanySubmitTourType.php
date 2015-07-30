@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use HearWeGo\HearWeGoBundle\Form\Transformer\DestinationTransformer;
+use Symfony\Component\Validator\Constraints\Date;
 
 class CompanySubmitTourType extends AbstractType
 {
@@ -19,17 +20,21 @@ class CompanySubmitTourType extends AbstractType
     }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
+        $date = new \DateTime();
         $builder
             ->add('name','text')
             ->add('startdate','date', array(
-                'years' => range(date('Y'), date('Y')+1)
+                'years' => range(date('Y'), date('Y')+1),
+                'data' => new \DateTime()
             ))
             ->add('enddate','date', array(
-                'years' => range(date('Y'), date('Y')+1)
+                'years' => range(date('Y'), date('Y')+1),
+                'data' => new \DateTime()
             ))
             ->add('discount','number')
-            ->add('info','text')
+            ->add('info','textarea', array(
+                'label' => 'Tour information'
+            ))
             ->add('destination', 'entity', array(
                 'class'=>'HearWeGoHearWeGoBundle:Destination',
                 'property'=>'name',

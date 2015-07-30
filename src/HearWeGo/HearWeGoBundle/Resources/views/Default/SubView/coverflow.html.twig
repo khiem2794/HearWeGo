@@ -1,6 +1,12 @@
 
+{% if photos|length == 0 %}
+    <div class="cover">
+        <img src="{{ asset('/bundles/hearwegohearwego/images/No image.jpg') }}">
+    </div>
+    {% else %}
 {% for photo in photos %}
     <div class="cover">
         <img src="{{ photo.getWebPath }}">
     </div>
 {% endfor %}
+{% endif %}
