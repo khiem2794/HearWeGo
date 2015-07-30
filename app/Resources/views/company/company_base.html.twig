@@ -25,15 +25,25 @@
 
 <div class="container" align="center">
 
-    <img src="{{ asset('bundles/hearwegohearwego/images/personal/profile.png') }}" style="height:40px">
 
+    <main id="main-container">
+        <!-- Page Header -->
+        <div class="content bg-gray-lighter">
+            <div class="row items-push">
+                <div class="col-sm-7">
+                    {% block mainpageheader %}
+                        <h1 class="page-heading">mainpageheader</h1>
+                    {% endblock %}
+                </div>
 
-
+            </div>
+        </div>
         {% block content %}
+
 
         {% endblock %}
 
-
+</main>
 
 </div>
 
@@ -58,7 +68,11 @@
 <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/js.cookie.min.js') }}"></script>
 <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/app.js') }}"></script>
 
+{% block jsinclude %}
+{% endblock %}
 
+{% block jscode %}
+{% endblock %}
 </body>
 
 </html>

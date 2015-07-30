@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class TourRepository extends EntityRepository
 {
+
     public function findNewTour( $num ){
         $date = new \DateTime();
         $query = $this->getEntityManager()->createQuery(

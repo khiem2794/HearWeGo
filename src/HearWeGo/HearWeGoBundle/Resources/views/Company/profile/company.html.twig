@@ -1,8 +1,17 @@
 {% extends('company/company_base.html.twig') %}
 
+
+{% block mainpageheader %}
+    <h1 class="page-heading">Company Profile</h1>
+{% endblock %}
+
+
+
 {% block content %}
 
 {%  include("HearWeGoHearWeGoBundle:Company:companyEdit.html.twig")  %}
 
-
 {% endblock %}
+
+
+

@@ -69,11 +69,11 @@ class CompanyController extends Controller
                 $em=$this->getDoctrine()->getEntityManager();
                 $em->persist($tour);
                 $em->flush();
-                return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
+                return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
             }
-            return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
+            return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
         }
-        return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form1'=>$form->createView()));
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
     }
 
     /**
