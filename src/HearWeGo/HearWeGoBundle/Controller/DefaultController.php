@@ -2,6 +2,7 @@
 
 namespace HearWeGo\HearWeGoBundle\Controller;
 
+use Doctrine\ORM\NoResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Console\Helper\Helper;
@@ -13,23 +14,25 @@ use HearWeGo\HearWeGoBundle\Entity\Article;
 
 class DefaultController extends Controller
 {
-    public function filerHot( $array ){
-        if (count($array) == 0 ) return array();
+    public function filerHot($array)
+    {
+        if (count($array) == 0) return array();
         $array_filter = array();
         $count = 0;
         $filter_ele = 0;
-        while ( $count <= count($array)){
+        while ($count <= count($array)) {
 
             $array_filter[$filter_ele] = array();
             $array_filter[$filter_ele][] = $array[$count];
-            if ( $count + 1 < count($array) )
+            if ($count + 1 < count($array))
                 $array_filter[$filter_ele][] = $array[$count + 1];
             else break;
             $filter_ele++;
-            $count +=2;
+            $count += 2;
         }
         return $array_filter;
     }
+
     /**
      * @Route("/", name="homepage")
      */
@@ -44,13 +47,13 @@ class DefaultController extends Controller
         $audiorepo = $em->getRepository('HearWeGoHearWeGoBundle:Audio');
         $hotaudio = $audiorepo->findHotAudio(10);
         $hotplaces = array();
-        foreach( $hotaudio as $audio){
+        foreach ($hotaudio as $audio) {
             $place = array();
             $destination = $audio->getDestination();
             $photos = $destination->getPhotos()->toArray();
             $place[0] = $destination->getName();
-            $place[1] = $photos[array_rand($photos)]->getWebPath();
-            $place[2] = $this->generateUrl('detail',array(
+            $place[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : "";
+            $place[2] = $this->generateUrl('detail', array(
                 "id" => $destination->getID()
             ));
             $hotplaces[] = $place;
@@ -61,8 +64,8 @@ class DefaultController extends Controller
          * New Tours Block
          */
         $toursrepo = $em->getRepository('HearWeGoHearWeGoBundle:Tour');
-        $newTours = $toursrepo->findNewTour( 2 );
-        $newtoursfilter = $this->filerHot( $newTours );
+        $newTours = $toursrepo->findNewTour(16);
+        $newtoursfilter = $this->filerHot($newTours);
         return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
             'hotplaces_filter' => $hotplaces_filter,
             'newtourfilter' => $newtoursfilter
@@ -74,43 +77,64 @@ class DefaultController extends Controller
      */
     public function destinationAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig',array());
+        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array());
     }
 
     /**
      * @Route("/destination/{id} ", name="detail")
      */
-    public function detailAction( $id ){
-        return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig');
+    public function detailAction($id)
+    {
+
+        $request = $this->get('request');
+        $session = $this->get('session');
+
+        $em = $this->getDoctrine()->getManager();
+        $destinationrepo = $em->getRepository('HearWeGoHearWeGoBundle:Destination');
+
+        $destination = $destinationrepo->find($id);
+
+        if ($destination == NULL)
+            return $this->redirect($this->generateUrl('destination'));
+        else {
+            $photos = $destination->getPhotos();
+            return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig', array(
+                'destination' => $destination,
+                'photos' => $photos->toArray()
+            ));
+        }
 
     }
-
 
     /**
      * @Route("/blog", name="blog")
      */
-    public function Action(){
+    public function blogAction()
+    {
         return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig');
     }
 
     /**
      * @Route("/blog/{id}", name="article")
      */
-    public function articleAction( $id ){
+    public function articleAction($id)
+    {
         return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig');
     }
 
     /**
      * @Route("/map", name="map")
      */
-    public function mapAction(){
+    public function mapAction()
+    {
         return $this->render('HearWeGoHearWeGoBundle:Default/Map:map.html.twig');
     }
 
     /**
      * @Route("/test", name="test")
      */
-    public function testAction() {
+    public function testAction()
+    {
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
 }

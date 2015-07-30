@@ -1,1 +1,86 @@
 {% extends('default/blog.html.twig') %}
+
+
+{% block loginform %}
+
+    {% if not app.user %}
+        {% render controller('HearWeGoHearWeGoBundle:User:userLogin') %}
+    {% else %}
+
+
+
+        <form>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}">
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group input-group">
+                <span class="input-group-addon" id="id_addon"><img
+                            src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon">
+                    {% if app.user.role is defined %}
+                        {{ app.user.name }}
+                    {% else %}
+                        {{ app.user.firstName }}
+                    {% endif %}
+                </span>
+
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon" id="pass_addon"><img
+                                src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}"
+                                class="pass_icon"></span>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="{{ path('user_logout') }}">
+                    <button type="button" class="btn btn-danger">Sign Out</button>
+                </a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+
+
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block register %}
+
+    {% if app.user %}
+    {% else %}
+        {% render controller('HearWeGoHearWeGoBundle:User:register') %}
+    {% endif %}
+{% endblock %}
+
+{% block reglogbutton %}
+
+    <div class="row my-reg-log-bar">
+        <div class="col-md-1">
+            <ul class="my-reg-log-bar">
+                {% if app.user %}
+                    {% if app.user.name is defined %}
+                        <a href="{{ path('company_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                     src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                    {% else %}
+                        <a href="{{ path('edit_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
+                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                    {% endif %}
+                {% else %}
+                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
+                {% endif %}
+                <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}

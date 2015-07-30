@@ -8,27 +8,18 @@
 </head>
 <body>
     <div class="my-page container .no-offset">
+
         <div class=" gallery">
             <div class="coverflow">
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh2.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                </div>
-                <div class="cover">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh5.jpg') }}">
-                </div>
+                {% block coverflow %}
+
+                {% endblock %}
             </div>
             <div class="name text-center">
                 <div class="caption">
-                    <p class="text-center"><b>Destination name</b></p>
+                    {% block sliderTitle %}
+
+                    {% endblock %}
                 </div>
             </div>
         </div>
@@ -41,59 +32,28 @@
                     <img src="{{ asset('bundles/hearwegohearwego/images/detail/detail_title.png') }}">
                 </div>
                 <div class="article">
-                    bndsnmndsvndfn
+                    {% block detail %}
+
+                    {% endblock %}
                 </div>
             </div>
             <div class="audio-map col-md-4">
-                <div class="audio">
-                    <audio controls>
-                        <source src="#" type="audio/mpeg">
-                        Your browser does not support this audio type
-                    </audio>
-                </div>
-                <div class="map">
-                    <img class="map-img" src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                    <div class="download">
-                        <img class="icon" src="{{ asset('bundles/hearwegohearwego/images/detail/download.png') }}">
-                    </div>
-                </div>
+
+                {% block audioblock %}
+
+                {% endblock %}
+                {# List Tour#}
+
                 <div class="listtour">
                     <div class="title">
                         <img src="{{ asset('bundles/hearwegohearwego/images/detail/listtour_title.png') }}">
                     </div>
                     <div class="tours">
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
-                        <div class="row tour">
-                            <div class="logo col-md-5">
-                                <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
-                            </div>
-                            <div class="info col-md-7">
-                                1.000.000 VND
-                            </div>
-                        </div>
+
+                        {% block listtour %}
+
+                        {% endblock %}
+
                     </div>
                 </div>
             </div>
@@ -103,6 +63,7 @@
                 <div class="title">
                     <img src="{{ asset('bundles/hearwegohearwego/images/detail/comment_title.png') }}">
                 </div>
+<<<<<<< HEAD
                 <div class="comment row">
                     <div class="avatar col-md-3">
                         <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
@@ -156,39 +117,24 @@
                         </form>
                     </div>
                 </div>
+                {% block comments %}
+
+                {% endblock %}
+
             </div>
         </div>
         <div class="divider"></div>
+
+        {# Relative Article#}
         <div class="articles row">
             <div class="title text-center">
                 <img src="{{ asset('bundles/hearwegohearwego/images/detail/article_title.png') }}">
             </div>
             <div class="article row">
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh2.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
-                <div class="item col-md-4">
-                    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                    <div class="caption">
-                        <p class="title"><a href="#">Caption here</a></p>
-                    </div>
-                </div>
 
+                {% block relativearticle %}
+
+                {% endblock %}
             </div>
         </div>
         <!--Navigation bar-->
@@ -222,16 +168,18 @@
 
 
         <!--Login/Reg bar-->
-        <div class="row my-reg-log-bar">
-            <div class="col-md-1">
-                <ul class="my-reg-log-bar">
-                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
-                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
-                </ul>
+        {% block reglogbutton %}
+            <div class="row my-reg-log-bar">
+                <div class="col-md-1">
+                    <ul class="my-reg-log-bar">
+                        <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
+                        <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <!--EndLogin/Reg bar-->
-        <!--Register Form-->
+        {% endblock %}
+        <!-- EndLogin/Reg bar -->
+        <!-- Register Form -->
         <div class="my-reg-form modal fade" role="dialog">
             <div class="modal-dialog">
                 <!--Form content-->
@@ -243,49 +191,11 @@
                     </div>
                     <div class="modal-body">
                         <button class="fb_signup" type="button"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/fbsignup.png') }}"></button>
-                        <form>
-                            <div class="form-group">
-                                <label>Email address</label>
-                                <input type="email" class="form-control" id="Email" placeholder="Email">
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" id="Password" placeholder="Password">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Confirm Password</label>
-                                    <input type="password" class="form-control" id="confPass" placeholder="Enter Password again">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>First Name</label>
-                                    <input type="text" class="form-control" id="Fname" placeholder="First name">
-                                    <!-- label>Last Name</label>
-                                    <input type="text" class="form-control" id="Lname" placeholder="Last name"> -->
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Last Name</label>
-                                    <input type="text" class="form-control" id="Lname" placeholder="Last name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Date of Birth</label>
-                                <select id="year"></select>
-                                <select id="month"></select>
-                                <select id="day"></select>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone number</label>
-                                <input type="text" class="form-control" id="PhoneNum" placeholder="Telephone number">
-                            </div>
-                        </form>
+                        {% block register %}
+
+                        {% endblock %}
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="reg-submit btn btn-default"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/signup_btn.png') }}"></button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -296,35 +206,9 @@
             <div class="modal-dialog">
                 <!--Form content-->
                 <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
-                            <img class="modal-title title" src="{{ asset('bundles/hearwegohearwego/images/homepage/login_title.png') }}">
-                        </div>
+                    {% block loginform %}
 
-                        <div class="modal-body">
-                            <button class="fb_signin" type="button"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/fb_login.png') }}"></button>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon" id="id_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/ID.png') }}" class="id_icon"></span>
-                                <input type="email" class="form-control" id="Email" placeholder="Email" aria-describedby="id_addon">
-                            </div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon" id="pass_addon"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/pass.png') }}" class="pass_icon"></span>
-                                <input type="password" class="form-control" id="Password" placeholder="Password" aria-describedby="pass_addon">
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6" ><a href="#">Forgot Password</a></div>
-                                <div class="form-group col-md-6">
-                                    <label><input type="checkbox" name="remember"> Remember Me!</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="log-submit btn btn-default"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/signin_btn.png') }}"></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
+                    {% endblock %}
                 </div>
             </div>
         </div>

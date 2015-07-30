@@ -55,12 +55,12 @@ class Comment
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Article", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="comments")
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Assert\NotBlank()
      * 
      */
-    private $article;
+    private $destination;
 
     function __construct()
     {
