@@ -17,7 +17,6 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_23A0E66816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_DFFE13277294869C" table="article_tags" schema="" catalog="hearwego" columns="article_id"/>
-      <exported-key name="FK_9474526C7294869C" table="comment" schema="" catalog="hearwego" columns="article_id"/>
       <index name="IDX_23A0E66816C6140" unique="false" columns="destination_id"/>
     </table>
     <table name="article_tags" schema="" catalog="hearwego" type="TABLE">
@@ -35,6 +34,7 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="audiopath" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="sales" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_187D3695816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_F5299398E24BDB15" table="order" schema="" catalog="hearwego" columns="audios_id"/>
@@ -44,14 +44,14 @@
     <table name="comment" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="article_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="FK_9474526C7294869C" columns="article_id" ref-table="article" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK_9474526C816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_9474526CA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <index name="IDX_9474526C7294869C" unique="false" columns="article_id"/>
+      <index name="IDX_9474526C816C6140" unique="false" columns="destination_id"/>
       <index name="IDX_9474526CA76ED395" unique="false" columns="user_id"/>
     </table>
     <table name="company" schema="" catalog="hearwego" type="TABLE">
@@ -77,6 +77,7 @@
       <foreign-key name="FK_3EC63EAA98260155" columns="region_id" ref-table="region" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_23A0E66816C6140" table="article" schema="" catalog="hearwego" columns="destination_id"/>
       <exported-key name="FK_187D3695816C6140" table="audio" schema="" catalog="hearwego" columns="destination_id"/>
+      <exported-key name="FK_9474526C816C6140" table="comment" schema="" catalog="hearwego" columns="destination_id"/>
       <exported-key name="FK_472B783A816C6140" table="gallery" schema="" catalog="hearwego" columns="destination_id"/>
       <exported-key name="FK_6AD1F969816C6140" table="tour" schema="" catalog="hearwego" columns="destination_id"/>
       <index name="IDX_3EC63EAA98260155" unique="false" columns="region_id"/>

@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $array_filter = array();
         $count = 0;
         $filter_ele = 0;
-        while ($count <= count($array)) {
+        while ($count < count($array)) {
 
             $array_filter[$filter_ele] = array();
             $array_filter[$filter_ele][] = $array[$count];
@@ -59,7 +59,6 @@ class DefaultController extends Controller
             $hotplaces[] = $place;
         }
         $hotplaces_filter = $this->filerHot($hotplaces);
-
         /**
          * New Tours Block
          */
@@ -98,9 +97,11 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl('destination'));
         else {
             $photos = $destination->getPhotos();
+            $tours = $destination->getTours();
             return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig', array(
                 'destination' => $destination,
-                'photos' => $photos->toArray()
+                'photos' => $photos->toArray(),
+                'tours' => $tours->toArray()
             ));
         }
 
