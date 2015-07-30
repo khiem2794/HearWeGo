@@ -55,3 +55,168 @@ a
 {
     margin-top:10px;
 }
+.my-navbar {
+    position: fixed;
+    width: 25px;
+    right: 16px;
+    top: -5px; }
+.my-navbar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: white; }
+.my-navbar .item {
+    list-style: none;
+    margin-bottom: -2px;
+    border:none}
+.my-reg-log-bar {
+    position: fixed;
+    width: 25px;
+    right: 40px;
+    top: 250px; }
+.my-reg-log-bar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: white; }
+.my-reg-log-bar .item {
+    list-style: none; }
+.my-reg-form .avatar,  .my-log-form .avatar {
+    margin: -25px 250px 10px;
+    width: 80px;
+    height: 80px; }
+.my-reg-form .title,  .my-log-form .title {
+    width: 100%;
+    height: 100%; }
+.my-reg-form .fb_signup,  .my-log-form .fb_signin {
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-top: -10px; }
+.my-reg-form .fb_signup img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+.my-reg-form .reg-submit,  .my-log-form .log-submit {
+    border-radius: 10px;
+    padding: 0; }
+.my-reg-form .reg-submit img,  .my-log-form .log-submit img {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    margin: 0; }
+.my-log-form .fb_signin img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+.my-log-form .id_icon {
+    width: 20px;
+    height: 20px; }
+.my-log-form .pass_icon {
+    width: 20px;
+    height: 20px; }
+/*.my-navbar {*/
+    /*position: fixed;*/
+    /*width: 25px;*/
+    /*right: 40px;*/
+    /*top: -5px; }*/
+/*.my-navbar .icon {*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*background-color: white; }*/
+/*.my-navbar .item {*/
+    /*list-style: none; }*/
+.my-reg-log-bar {
+    position: fixed;
+    width: 25px;
+    right: 16px;
+    top: 250px; }
+.my-reg-log-bar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: white; }
+.my-reg-log-bar .item {
+    list-style: none;
+    border:none;
+    margin-bottom: -2px;}
+.my-reg-form .avatar,  .my-log-form .avatar {
+    margin: -25px 250px 10px;
+    width: 80px;
+    height: 80px; }
+.my-reg-form .title, .my-log-form .title {
+    width: 100%;
+    height: 15%; }
+.my-reg-form .fb_signup,  .my-log-form .fb_signin {
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 10px;
+    margin-top: -10px; }
+.my-reg-form .fb_signup img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+.my-reg-form .reg-submit,  .my-log-form .log-submit {
+    border-radius: 10px;
+    padding: 0; }
+.my-reg-form .reg-submit img,  .my-log-form .log-submit img {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    margin: 0; }
+.my-log-form .fb_signin img {
+    border-radius: 10px;
+    width: 100%;
+    margin: 0; }
+.my-log-form .id_icon {
+    width: 20px;
+    height: 20px; }
+.my-log-form .pass_icon {
+    width: 20px;
+    height: 20px; }
+.my-footer .menu {
+    background-color: #26AC4A; }
+.my-footer .menu .left-side img {
+    width: 75%;
+    height: 40%;
+    margin-top: 50px;
+    margin-bottom: 50px; }
+.my-footer .menu .right-side {
+    border-left: 1px solid #fff;
+    margin: 44px 0; }
+.my-footer .menu .right-side .assist {
+    margin-bottom: 30px; }
+.my-footer .menu .right-side .assist h4 {
+    text-decoration: underline;
+    color: #ffffff;
+    margin: 0 0 10px 0; }
+.my-footer .menu .right-side .assist a {
+    color: #ffffff; }
+.my-footer .menu .right-side .hotline h5 {
+    color: #ffffff;
+    margin-bottom: -20px; }
+.my-footer .menu .right-side .hotline h3 {
+    color: #ffffff;
+    font-size: 30px; }
+.my-footer .menu .right-side .hotline p {
+    color: #ffffff; }
+.my-footer .menu .right-side .hotline .last {
+    margin: 0; }
+.my-footer .social {
+    padding: 30px 10px;
+    background-color: #171C1D; }
+.my-footer .social .left-side {
+    padding-right: 40px; }
+.my-footer .social .left-side .chanel {
+    float: right; }
+.my-footer .social .left-side .chanel img {
+    width: 48px;
+    height: 48px; }
+.my-footer .social .right-side {
+    padding-left: 50px;
+    margin-left: 30px;
+    border-left: 1px dashed #ffffff; }
+.my-footer .social .right-side img {
+    width: 300px;
+    height: 48px; }
+.my-footer .end-line {
+    width: 100%;
+    height: 20px;
+    background-color: #222A2B; }
