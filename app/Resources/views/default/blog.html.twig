@@ -101,126 +101,22 @@
         <div class="content">
             <div class="articles row">
                 <div class="column col-md-6">
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    {% block articlecol1 %}
+
+                    {% endblock %}
+
                 </div>
 
                 <div class="column col-md-6">
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="article row">
-                        <div class="image col-md-5">
-                            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh1.jpg') }}">
-                        </div>
-                        <div class="text col-md-7">
-                            <div class="title">
-                                <h4><b>This is the title of article</b></h4>
-                            </div>
-                            <div class="date">
-                                <i>20 Jul 2015</i>
-                            </div>
-                            <div class="sub-content">
-                                <p>The official jQuery website ( http://jquery.com/ ) is always the most up-to-date
-                                    resource for code and news related to the library. the latest uncompressed
-                                    version will be <a href="#">Continue reading...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    {% block articlecol2 %}
+
+                    {% endblock %}
+
                 </div>
+
+                {% block pagination %}
                 <div class="text-center">
                     <ul class="pagination" >
                         <li>
@@ -240,6 +136,8 @@
                         </li>
                     </ul>
                 </div>
+                {% endblock %}
+
             </div>
         </div>
         <!--End Content-->

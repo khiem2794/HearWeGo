@@ -63,13 +63,30 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
-                        <a href="{{ path('company_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
-                        <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
+                        <a href="{{ path('company_submit') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                     {% else %}
-                        <a href="{{ path('edit_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                            <a href="{{ path('admin_index') }}">
+                                <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                </li>
+                            </a>
+                        {% endif %}
+                        <a href="{{ path('edit_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
+
                     {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
@@ -94,7 +111,7 @@
 
                 {% for des in despair %}
                     <span>
-                        <a href="{{ des[2] }}" ><img src="{{ des[1] }}"/></a>
+                        <a href="{{ des[2] }}"><img src="{{ des[1] }}"/></a>
                         <label>{{ des[0] }}</label>
                     </span>
                 {% endfor %}
@@ -108,8 +125,46 @@
 {% endblock %}
 
 
+{% block newtours %}
+
+    <ul class="my-slide-top">
+        {% for tourpair in newtourfilter %}
+            <li>
+
+                {% for tour in tourpair %}
+                    <span>
+                        <a href="{{ tour[2] }}"><img src="{{ tour[1] }}"/></a>
+                        <label>{{ tour[0] }}</label>
+                    </span>
+                {% endfor %}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}
 
 
+{% block saletours %}
 
+    <ul class="my-slide-top">
+        {% for tourpair in saletoursfilter %}
+            <li>
 
+                {% for tour in tourpair %}
+                    <span>
+                        <a href="{{ tour[2] }}"><img src="{{ tour[1] }}"/></a>
+                        <label>{{ tour[0] }}</label>
+                    </span>
+                {% endfor %}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}
 

@@ -52,22 +52,60 @@ class DefaultController extends Controller
             $destination = $audio->getDestination();
             $photos = $destination->getPhotos()->toArray();
             $place[0] = $destination->getName();
-            $place[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : "";
+            $place[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : "/bundles/hearwegohearwego/images/No image.jpg";
             $place[2] = $this->generateUrl('detail', array(
                 "id" => $destination->getID()
             ));
             $hotplaces[] = $place;
         }
         $hotplaces_filter = $this->filerHot($hotplaces);
+
         /**
          * New Tours Block
          */
         $toursrepo = $em->getRepository('HearWeGoHearWeGoBundle:Tour');
-        $newTours = $toursrepo->findNewTour(16);
-        $newtoursfilter = $this->filerHot($newTours);
+
+        $newtoursraw = $toursrepo->findNewTour(16);
+        $newtours = array();
+        foreach ($newtoursraw as $tourraw ) {
+            $tour = array();
+            $destination = $tourraw->getDestination();
+            $photos = $destination->getPhotos()->toArray();
+            $tour[0] = $tourraw->getName();
+            $tour[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : "/bundles/hearwegohearwego/images/No image.jpg";
+            $tour[2] = $this->generateUrl('detail', array(
+                "id" => $destination->getID()
+            ));
+
+            $newtours[] = $tour;
+        }
+
+        $newtoursfilter = $this->filerHot($newtours);
+
+        /**
+         * Sale Tours
+         */
+        $saletoursraw = $toursrepo->findSaleTour(16);
+        $saletours = array();
+        foreach ($saletoursraw as $tourraw ) {
+            $tour = array();
+            $destination = $tourraw->getDestination();
+            $photos = $destination->getPhotos()->toArray();
+            $tour[0] = $tourraw->getName();
+            $tour[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : '/bundles/hearwegohearwego/images/No image.jpg';
+            $tour[2] = $this->generateUrl('detail', array(
+                "id" => $destination->getID()
+            ));
+
+            $saletours[] = $tour;
+        }
+        $saletoursfilter = $this->filerHot($saletours);
+
+
         return $this->render('HearWeGoHearWeGoBundle:Default/HomePage:homepage.html.twig', array(
             'hotplaces_filter' => $hotplaces_filter,
-            'newtourfilter' => $newtoursfilter
+            'newtourfilter' => $newtoursfilter,
+            'saletoursfilter' => $saletoursfilter
         ));
     }
 
@@ -112,11 +150,27 @@ class DefaultController extends Controller
      */
     public function blogAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
+        $blog = $articlerepo->findAll();
+        $blog1 = array();
+        $blog2 = array();
+        $count = 0;
+        foreach ( $blog as $article){
+            if ( $count % 2 == 1)
+                $blog1[] = $article;
+            else
+                $blog2[] = $article;
+            $count++;
+        }
+        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig', array(
+            'blog1' => $blog1,
+            'blog2' => $blog2
+        ));
     }
 
     /**
-     * @Route("/blog/{id}", name="article")
+     * @Route("/article/{id}", name="article")
      */
     public function articleAction($id)
     {

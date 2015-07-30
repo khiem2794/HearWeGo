@@ -82,7 +82,7 @@ class CompanyController extends Controller
     public function editCompany(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
-            return  new Response('Please login');
+            return $this->redirect($this->generateUrl('user_login'));
         }
 
         $this->denyAccessUnlessGranted('ROLE_COMPANY', null, 'Unable to access this page!');
@@ -111,7 +111,7 @@ class CompanyController extends Controller
     public function deleteCompany(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
-            return  new Response('Please login');
+            return $this->redirect($this->generateUrl('user_login'));
         }
 
         $this->denyAccessUnlessGranted('ROLE_COMPANY', null, 'Unable to access this page!');
