@@ -23,13 +23,6 @@ class Comment
      */
     private $id;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $date;
 
     /**
      * @var string
@@ -77,28 +70,7 @@ class Comment
         return $this->id;
     }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Comment
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
 
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set content
@@ -146,28 +118,7 @@ class Comment
         return $this->user;
     }
 
-    /**
-     * Set article
-     *
-     * @param \HearWeGo\HearWeGoBundle\Entity\Article $article
-     * @return Comment
-     */
-    public function setArticle(\HearWeGo\HearWeGoBundle\Entity\Article $article = null)
-    {
-        $this->article = $article;
 
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \HearWeGo\HearWeGoBundle\Entity\Article 
-     */
-    public function getArticle()
-    {
-        return $this->article;
-    }
 
     /**
      * Set createdAt

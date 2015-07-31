@@ -139,12 +139,21 @@ class DefaultController extends Controller
             $tours = $destination->getTours();
             $comments = $destination->getComments();
 
+            $comment = new Comment();
+            $commentForm = $this->createForm(new CommentType(), $comment, array(
+                'method' => 'POST',
+                'action'=> $this->generateUrl('create_comment', array(
+                    'desID' => $id
+                ))
+            ));
+            $commentForm->add('submit', 'submit');
 
             return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig', array(
                 'destination' => $destination,
                 'photos' => $photos->toArray(),
                 'tours' => $tours->toArray(),
-                'comments' => $comments->toArray()
+                'comments' => $comments->toArray(),
+                'commentForm' => $commentForm->createView()
             ));
         }
 

@@ -65,13 +65,22 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
-                        <a href="{{ path('company_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
-                        <a href="{{ path('company_submit') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                     src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('company_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
+                        <a href="{{ path('company_submit') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                     {% else %}
-                        <a href="{{ path('edit_profile') }}"><li class="item"><img type="button" class="icon"  data-target=".my-reg-form"
-                                                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li></a>
+                        <a href="{{ path('edit_profile') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                     {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
@@ -93,37 +102,45 @@
 
 
 {% block sliderTitle %}
-    <p class="text-center" style="text-align: center">{{ destination.getName }}
-{% endblock %}
+<p class="text-center" style="text-align: center">{{ destination.getName }}
+    {% endblock %}
 
-{% block detail %}
-    {{ destination.getArticle|raw }}
-{% endblock %}
+    {% block detail %}
+        {{ destination.getArticle|raw }}
+    {% endblock %}
 
-{% block audioblock %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': photos[0].getWebPath } %}
-{% endblock %}
+    {% block audioblock %}
+        {% if photos|length == 0 %}
+            {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': '/bundles/hearwegohearwego/images/No image.jpg' } %}
+        {% else %}
+            {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': photos[0].getWebPath } %}
+        {% endif %}
+    {% endblock %}
 
-{% block listtour %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
-{% endblock %}
+    {% block listtour %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
+    {% endblock %}
 
-{% block comments %}
+    {% block comments %}
     {% for comment in comments %}
         {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'comments': comment } %}
     {% endfor %}
 
+    {% if app.user.firstName is defined %}
     <div class="new-comment row">
         <div class="avatar col-md-2">
             <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
         </div>
-        <div class="col-md-8 row">
-            <form role="form">
-                <textarea class="text form-control" placeholder="Your comment here..."></textarea>
-                <input type="submit" class="col-md-2 send_btn" value="Send">
-            </form>
+        <div class="col-md-10 row">
+            {{ form_start(commentForm) }}
+            {{ form_widget(commentForm.content, { 'attr': { 'class': 'text form-control', 'placeholder': 'Your comment here ...'} }) }}
+            {{ form_widget(commentForm.submit, { 'attr': { 'class': 'col-md-2 btn send_btn btn-primary', 'value': 'Comment' } } ) }}
+            {{ form_end(commentForm) }}
         </div>
     </div>
+    {% endif %}
+
+
 {% endblock %}
 
 {% block relativearticle %}

@@ -152,12 +152,39 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/comment",name="create_comment")
+     * @Route("/comment/{desID}",name="create_comment")
      */
-    public function commentAction(){
+    public function commentAction( $desID ){
         $request = $this->get('request');
 
-        $comment = new Comment();
+        $comment = new Comment(  );
+        $commentForm = $this->createForm(new Form\CommentType(), $comment, array(
+            'method' => 'POST',
+            'action'=> $this->generateUrl('create_comment', array(
+                'desID'=>$desID
+            ))
+        ));
+        $commentForm->add('submit', 'submit');
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('HearWeGoHearWeGoBundle:User')->find($this->get('security.token_storage')->getToken()->getUser()->getID());
+        $destination = $em->getRepository('HearWeGoHearWeGoBundle:Destination')->find($desID);
+
+        $comment->setUser($user);
+        $comment->setDestination($destination);
+        if ($request->getMethod() == 'POST') {
+            $commentForm->handleRequest($request);
+            if ($commentForm->isValid()){
+                $em->persist($comment);
+                $em->flush();
+                return $this->redirect($this->generateUrl('detail', array(
+                    'id' => $desID
+                )));
+            }
+        }
+        return $this->redirect($this->generateUrl('detail', array(
+            'id' => $desID
+        )));
+
     }
 
 }
