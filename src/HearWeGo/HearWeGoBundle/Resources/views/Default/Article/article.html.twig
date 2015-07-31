@@ -106,7 +106,7 @@
         </div>
 
         <div class="paragraph">
-            <img src="{{ article.getWebPath }} " style="max-height: 300px">
+            <img src="{{ article.getWebPath }} " style="max-height: 300px;width:auto">
 
             {{ article.content|raw }}
         </div>
@@ -116,20 +116,37 @@
 
 
 {% block relativearticle %}
-    <div class="relative-new">
-        <div>
-            <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">
+    {#<div class="relative-new">#}
+        {#<div>#}
+            {#<img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh3.jpg') }}">#}
+        {#</div>#}
+        {#<div class="title">#}
+            {#<h2 class="tit">This is a title</h2>#}
+            {#<h4 class="date">21 July 2015</h4>#}
+        {#</div>#}
+        {#<div class="subcontent">#}
+            {#<p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended#}
+                {#HTML#}
+                {#and dynamic code. But as time passed, other template languages - like Twig 1 - were created#}
+                {#to make#}
+                {#templating even better.</p>#}
+        {#</div>#}
+    {#</div>#}
+    {% for relative in relatives %}
+        <div class="relative-new">
+            <div>
+                <img src="{{ relative.getWebpath }}"
+            </div>
+            <div class="title">
+                <a href="{{ path('article',{'id':relative.id}) }}"><h2 class="tit">{{ relative.title }}</h2></a>
+                <h4 class="date">{{ relative.createdAt|date('Y-m-d') }}</h4>
+            </div>
+            <div class="subcontent">
+                <p>
+                {% set seg=article.content|split('.') %}
+                {{ seg[0]|raw }}
+                </p>
+            </div>
         </div>
-        <div class="title">
-            <h2 class="tit">This is a title</h2>
-            <h4 class="date">21 July 2015</h4>
-        </div>
-        <div class="subcontent">
-            <p>When PHP was created 20 years ago, developers loved its simplicity and how well it blended
-                HTML
-                and dynamic code. But as time passed, other template languages - like Twig 1 - were created
-                to make
-                templating even better.</p>
-        </div>
-    </div>
+    {% endfor %}
 {% endblock %}
