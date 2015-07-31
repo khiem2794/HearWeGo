@@ -69,6 +69,7 @@ class Destination
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Region", inversedBy="destinations")
+     * @ORM\JoinColumn(name="region_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $region;
 

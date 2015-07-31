@@ -118,7 +118,6 @@ class DefaultController extends Controller
     {
         return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array());
     }
-
     /**
      * @Route("/destination/{id} ", name="detail")
      */

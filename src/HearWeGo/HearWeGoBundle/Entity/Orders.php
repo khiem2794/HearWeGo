@@ -11,10 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\OrderRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="`order`")
+ * @ORM\Table(name="`orders`")
  *
  */
-class Order
+class Orders
 {
     /**
      * @ORM\Column(type="integer")
@@ -31,10 +31,12 @@ class Order
     private $date;
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="orders")
+     * @ORM\JoinColumn(name="audio_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $audios;
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank(message="This field must be filled")
      *
      */

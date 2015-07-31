@@ -63,6 +63,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="articles")
+     * @ORM\JoinColumn(name="destination_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $destination;
 

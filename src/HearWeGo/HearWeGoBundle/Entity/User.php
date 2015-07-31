@@ -85,7 +85,7 @@ class User implements UserInterface
      */
     private $rates;
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Orders", mappedBy="user")
      */
     private $orders;
     function __construct()

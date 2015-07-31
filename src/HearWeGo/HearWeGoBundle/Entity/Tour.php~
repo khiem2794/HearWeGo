@@ -78,11 +78,13 @@ class Tour
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Company", inversedBy="tours")
+     * @ORM\JoinColumn(name="company_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $company;
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="tour")
+     * @ORM\JoinColumn(name="destination_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $destination;
 
