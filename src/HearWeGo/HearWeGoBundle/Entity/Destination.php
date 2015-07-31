@@ -79,7 +79,7 @@ class Destination
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="destination")
      */
     private $comments;
 

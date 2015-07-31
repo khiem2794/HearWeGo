@@ -3,6 +3,8 @@
 namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
+use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Console\Helper\Helper;
@@ -140,10 +142,23 @@ class DefaultController extends Controller
         else {
             $photos = $destination->getPhotos();
             $tours = $destination->getTours();
+            $comments = $destination->getComments();
+
+            $comment = new Comment();
+            $commentForm = $this->createForm(new CommentType(), $comment, array(
+                'method' => 'POST',
+                'action'=> $this->generateUrl('create_comment', array(
+                    'desID' => $id
+                ))
+            ));
+            $commentForm->add('submit', 'submit');
+
             return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig', array(
                 'destination' => $destination,
                 'photos' => $photos->toArray(),
-                'tours' => $tours->toArray()
+                'tours' => $tours->toArray(),
+                'comments' => $comments->toArray(),
+                'commentForm' => $commentForm->createView()
             ));
         }
 
