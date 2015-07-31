@@ -62,7 +62,7 @@ class Audio
      * @return integer
      */
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Order", mappedBy="audios")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Orders", mappedBy="audios")
      */
     private $orders;
 

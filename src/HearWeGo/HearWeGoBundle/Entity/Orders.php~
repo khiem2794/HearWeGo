@@ -11,10 +11,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\OrderRepository")
  * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="`order`")
+ * @ORM\Table(name="`orders`")
  *
  */
-class Order
+class Orders
 {
     /**
      * @ORM\Column(type="integer")
