@@ -153,6 +153,8 @@
 
 
 {% block relativearticle %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') %}
+    {% for article in destination.articles %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') with {'article':article} %}
+    {% endfor %}
 {% endblock %}
 
