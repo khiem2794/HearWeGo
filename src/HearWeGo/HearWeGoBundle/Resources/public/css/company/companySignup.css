@@ -1,0 +1,13 @@
+/* common */
+.no-offset {
+    margin: 0 !important; }
+
+.no-inset {
+    padding: 0 !important; }
+
+/* pages */
+.my-page .my-banner img {
+    width: 100%; }
+.my-page .text{
+
+}
