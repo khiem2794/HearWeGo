@@ -116,7 +116,12 @@ class DefaultController extends Controller
      */
     public function destinationAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array());
+        $regions=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Region')->findAll();
+        foreach ($regions as $region)
+        {
+            $destinations[$region->getId()]=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findByRegion($region->getId());
+        }
+        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array('destinations'=>$destinations));
     }
     /**
      * @Route("/destination/{id} ", name="detail")

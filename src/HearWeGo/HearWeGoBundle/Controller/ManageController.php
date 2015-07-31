@@ -28,12 +28,13 @@ class ManageController extends Controller
     }
 
     /**
-     * <<<<<<< HEAD
+     *
      * @Route("/admin/user", name="manage_user")
      */
     public function manageUserAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Manage/user:user.html.twig');
+        $users=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findAll();
+        return $this->render('HearWeGoHearWeGoBundle:Manage/user:user.html.twig',array('users'=>$users));
     }
 
     /**
@@ -201,15 +202,6 @@ class ManageController extends Controller
         ));
         return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig', array($form->createView()));
     }
-
-    /**
-     * @Route("/admin/audio/assign",name="assign_audio")
-     */
-    public function assignAudioAction()
-    {
-        return $this->render('@HearWeGoHearWeGo/Manage/audio/assign.html.twig');
-    }
-
     /**
      * @Route("/admin/destination",name="manage_destination")
      */

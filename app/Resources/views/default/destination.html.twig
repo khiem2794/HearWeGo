@@ -27,48 +27,8 @@
             <img src="{{ asset('bundles/hearwegohearwego/images/destination/7.png') }}" id="area7">
         </div>
         <div id="city" class="col-md-3">
-            <nav id="place1" hidden>
-                <ul>
-                    <li><a href="#">Sa Pa</a></li>
-                    <li><a href="#">Fansipan</a></li>
-                </ul>
-            </nav>
-            <nav id="place2" hidden>
-                <ul>
-                    <li><a href="#">Ho Guom</a></li>
-                    <li><a href="#">Ha Long</a></li>
-                </ul>
-            </nav>
-            <nav id="place3" hidden>
-                <ul>
-                    <li><a href="#">Cau song Han</a></li>
-                    <li><a href="#">Co do Hue</a></li>
-                </ul>
-            </nav>
-            <nav id="place4" hidden>
-                <ul>
-                    <li><a href="#">Bien Nha Trang</a></li>
-                    <li><a href="#">Bien Mui Ne</a></li>
-                </ul>
-            </nav>
-            <nav id="place5" hidden>
-                <ul>
-                    <li><a href="#">Cao nguyen Lang Biang</a></li>
-                    <li><a href="#">Thac Cam Ly</a></li>
-                </ul>
-            </nav>
-            <nav id="place6" hidden>
-                <ul>
-                    <li><a href="#">Dinh Doc lap</a></li>
-                    <li><a href="#">Nha tho Phuc Nhac</a></li>
-                </ul>
-            </nav>
-            <nav id="place7" hidden>
-                <ul>
-                    <li><a href="#">Mui Ca Mau</a></li>
-                    <li><a href="#">Phu Quoc</a></li>
-                </ul>
-            </nav>
+            {% block regions %}
+            {% endblock %}
         </div>
     </div>
 </div>

@@ -44,5 +44,8 @@ class DestinationRepository extends EntityRepository
         return $result;
     }
 
-
+    public function findByRegion($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE IDENTITY (d.region)=:id')->setParameter('id',$id)->getResult();
+    }
 }

@@ -3,11 +3,10 @@
 
 {% block loginform %}
 
+
     {% if not app.user %}
         {% render controller('HearWeGoHearWeGoBundle:User:userLogin') %}
     {% else %}
-
-
 
         <form>
             <div class="modal-header">
@@ -49,6 +48,7 @@
 {% endblock %}
 
 
+
 {% block register %}
 
     {% if app.user %}
@@ -58,7 +58,9 @@
 {% endblock %}
 
 
+
 {% block reglogbutton %}
+
 
     <div class="row my-reg-log-bar">
         <div class="col-md-1">
@@ -93,55 +95,61 @@
     </div>
 
 
+
 {% endblock %}
 
 
+
 {% block coverflow %}
+
     {% include('@HearWeGoHearWeGo/Default/SubView/coverflow.html.twig') with { 'photos': photos } %}
 {% endblock %}
 
 
+
 {% block sliderTitle %}
-<p class="text-center" style="text-align: center">{{ destination.getName }}
-    {% endblock %}
 
-    {% block detail %}
-        {{ destination.getArticle|raw }}
-    {% endblock %}
+    <p class="text-center" style="text-align: center">{{ destination.getName }}</p>
+{% endblock %}
 
-    {% block audioblock %}
-        {% if photos|length == 0 %}
-            {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': '/bundles/hearwegohearwego/images/No image.jpg' } %}
-        {% else %}
-            {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': photos[0].getWebPath } %}
-        {% endif %}
-    {% endblock %}
 
-    {% block listtour %}
-        {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
-    {% endblock %}
+{% block detail %}
+    {{ destination.getArticle|raw }}
+{% endblock %}
 
-    {% block comments %}
+{% block audioblock %}
+    {% if destination.getAudio is not null %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath } %}
+    {% endif %}
+{% endblock %}
+
+{% block listtour %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
+{% endblock %}
+
+
+{% block comments %}
     {% for comment in comments %}
         {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'comments': comment } %}
     {% endfor %}
 
     {% if app.user.firstName is defined %}
-    <div class="new-comment row">
-        <div class="avatar col-md-2">
-            <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
+        <div class="new-comment row">
+            <div class="avatar col-md-2">
+                <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
+            </div>
+            <div class="col-md-10 row">
+                {{ form_start(commentForm) }}
+                {{ form_widget(commentForm.content, { 'attr': { 'class': 'text form-control', 'placeholder': 'Your comment here ...'} }) }}
+                {{ form_widget(commentForm.submit, { 'attr': { 'class': 'col-md-2 btn send_btn btn-primary', 'value': 'Comment' } } ) }}
+                {{ form_end(commentForm) }}
+            </div>
         </div>
-        <div class="col-md-10 row">
-            {{ form_start(commentForm) }}
-            {{ form_widget(commentForm.content, { 'attr': { 'class': 'text form-control', 'placeholder': 'Your comment here ...'} }) }}
-            {{ form_widget(commentForm.submit, { 'attr': { 'class': 'col-md-2 btn send_btn btn-primary', 'value': 'Comment' } } ) }}
-            {{ form_end(commentForm) }}
-        </div>
-    </div>
     {% endif %}
 
 
 {% endblock %}
+
 
 {% block relativearticle %}
     {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') %}
