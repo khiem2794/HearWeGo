@@ -52,6 +52,7 @@ class Audio
     private $rates;
     /**
      * @ORM\OneToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="audio")
+     * @ORM\JoinColumn(name="destination_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank(message="This field must be filled")
      */
     private $destination;

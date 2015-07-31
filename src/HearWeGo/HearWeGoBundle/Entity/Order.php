@@ -31,10 +31,12 @@ class Order
     private $date;
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="orders")
+     * @ORM\JoinColumn(name="audio_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $audios;
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank(message="This field must be filled")
      *
      */

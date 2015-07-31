@@ -47,7 +47,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="comments")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank()
      * 
      */
@@ -56,7 +56,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="comments")
-     * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ORM\JoinColumn(name="destination_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank()
      * 
      */
