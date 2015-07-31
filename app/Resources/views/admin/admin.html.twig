@@ -261,12 +261,6 @@
                                 <li>
                                     <a {{ (app.request.attributes.get('_route') == 'manage_user') ? ' class="active"' }} href="{{ path('manage_user') }}">All Users</a>
                                 </li>
-                                <li>
-                                    <a {{ (app.request.attributes.get('_route') == 'add_user') ? ' class="active"' }} href="{{ path('add_user') }}">Add New</a>
-                                </li>
-                                <li>
-                                    <a {{ (app.request.attributes.get('_route') == 'user_profile') ? ' class="active"' }} href="{{ path('user_profile') }}">Your Profile</a>
-                                </li>
                             </ul>
                         </li>
 

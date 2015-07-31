@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
+<<<<<<< HEAD
     <data-source name="MySQL - hearwego@localhost" uuid="9ee96a14-ebdf-40aa-aef5-3f8694cf5db9">
+=======
+    <data-source name="MySQL - hearwego@localhost" uuid="47c1ca56-5bbf-4a4a-aefc-382605cb256f">
+>>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
       <schema-pattern>hearwego.*</schema-pattern>

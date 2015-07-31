@@ -18,7 +18,10 @@ class AudioRepository extends EntityRepository
         );
         return $query->getResult();
     }
-
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT a FROM HearWeGoHearWeGoBundle:Audio a WHERE a.id=:id')->setParameter('id',$id)->getOneOrNullResult();
+    }
     public function findHotAudio( $num ){
         $query = $this->getEntityManager()->createQuery(
           "SELECT a FROM HearWeGoHearWeGoBundle:Audio a ORDER BY a.sales ASC"

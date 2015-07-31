@@ -3,6 +3,8 @@
 namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
+use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Console\Helper\Helper;
@@ -114,9 +116,13 @@ class DefaultController extends Controller
      */
     public function destinationAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array());
+        $regions=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Region')->findAll();
+        foreach ($regions as $region)
+        {
+            $destinations[$region->getId()]=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findByRegion($region->getId());
+        }
+        return $this->render('HearWeGoHearWeGoBundle:Default/Destination:destination.html.twig', array('destinations'=>$destinations));
     }
-
     /**
      * @Route("/destination/{id} ", name="detail")
      */
@@ -136,10 +142,23 @@ class DefaultController extends Controller
         else {
             $photos = $destination->getPhotos();
             $tours = $destination->getTours();
+            $comments = $destination->getComments();
+
+            $comment = new Comment();
+            $commentForm = $this->createForm(new CommentType(), $comment, array(
+                'method' => 'POST',
+                'action'=> $this->generateUrl('create_comment', array(
+                    'desID' => $id
+                ))
+            ));
+            $commentForm->add('submit', 'submit');
+
             return $this->render('HearWeGoHearWeGoBundle:Default/Detail:detail.html.twig', array(
                 'destination' => $destination,
                 'photos' => $photos->toArray(),
-                'tours' => $tours->toArray()
+                'tours' => $tours->toArray(),
+                'comments' => $comments->toArray(),
+                'commentForm' => $commentForm->createView()
             ));
         }
 
@@ -174,7 +193,12 @@ class DefaultController extends Controller
      */
     public function articleAction($id)
     {
-        return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('HearWeGoHearWeGoBundle:Article')->find($id);
+
+        return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig', array(
+            'article' => $article
+        ));
     }
 
     /**

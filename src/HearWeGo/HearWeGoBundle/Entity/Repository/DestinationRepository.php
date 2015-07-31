@@ -27,6 +27,25 @@ class DestinationRepository extends EntityRepository
         $query='SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d NOT IN (SELECT IDENTITY (a.destination) FROM HearWeGoHearWeGoBundle:Audio a)';
         return $this->getEntityManager()->createQuery($query)->getResult();
     }
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE d.id=:id')->setParameter('id',$id)->getOneOrNullResult();
+    }
 
+    public function findByAudioId($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d,HearWeGoHearWeGoBundle:Audio a WHERE d.id=IDENTITY (a.destination)')->getResult();
+    }
 
+    public function findToReplaceAudio($id)
+    {
+        $result=$this->findDestinationWithoutAudio();
+        $result[]=$this->findByAudioId($id);
+        return $result;
+    }
+
+    public function findByRegion($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d WHERE IDENTITY (d.region)=:id')->setParameter('id',$id)->getResult();
+    }
 }

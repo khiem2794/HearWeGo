@@ -39,6 +39,7 @@ class Gallery
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Destination", inversedBy="photos")
+     * @ORM\JoinColumn(name="destination_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $destination;
 

@@ -1,0 +1,33 @@
+{% extends('@HearWeGoHearWeGo/Manage/media/uploadmedia.html.twig') %}
+
+{% block mainpageheader %}
+    <h1 class="page-heading">MEDIA MANAGEMENT</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">EDIT IMAGE</h3>
+{% endblock %}
+
+{% block mainpagecontainer %}
+    {% for flashMessage in app.session.flashbag.get('status') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+    <div class="block col-md-7 col-sm-5 col-xs-5">
+        <div class="form-group">
+            {{ form_label(form.img) }}
+            {{ form_widget(form.img, { 'attr' : { 'class' : 'form-control'}  }) }}
+            <img id="previewHolder"  width="100%" height="100%" src="{{ image.getWebpath }}"/>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.destination) }}
+            {{ form_widget(form.destination, { 'attr' : { 'class' : 'form-control'}  }) }}
+        </div>
+        {{ form_widget(form.submit , { 'attr' : { 'class' : 'btn btn-primary'}  }) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

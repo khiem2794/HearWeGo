@@ -35,7 +35,8 @@ class Rating
     private $stars;
 
     /**
-     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="rates", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\User", inversedBy="rates")
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank(message="This field must be filled")
      * 
      */
@@ -47,7 +48,8 @@ class Rating
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="rates", cascade={"persist"} )
+     * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Audio", inversedBy="rates")
+     * @ORM\JoinColumn(name="audio_id",referencedColumnName="id",onDelete="CASCADE")
      * @Assert\NotBlank(message="This field must be filled")
      * 
      */

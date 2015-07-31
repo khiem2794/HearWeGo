@@ -69,6 +69,7 @@ class Destination
 
     /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Region", inversedBy="destinations")
+     * @ORM\JoinColumn(name="region_id",referencedColumnName="id",onDelete="CASCADE")
      */
     private $region;
 
@@ -78,7 +79,7 @@ class Destination
     private $photos;
 
     /**
-     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Comment", mappedBy="destination")
      */
     private $comments;
 
