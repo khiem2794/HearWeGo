@@ -2,6 +2,7 @@
 
 namespace HearWeGo\HearWeGoBundle\Controller;
 
+use HearWeGo\HearWeGoBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -148,6 +149,15 @@ class UserController extends Controller
         }
 
         return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
+    }
+
+    /**
+     * @Route("/comment",name="create_comment")
+     */
+    public function commentAction(){
+        $request = $this->get('request');
+
+        $comment = new Comment();
     }
 
 }

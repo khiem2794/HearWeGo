@@ -96,57 +96,37 @@
     <p class="text-center" style="text-align: center">{{ destination.getName }}
 {% endblock %}
 
-
 {% block detail %}
     {{ destination.getArticle|raw }}
 {% endblock %}
 
 {% block audioblock %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath } %}
+    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath, 'photo': photos[0].getWebPath } %}
 {% endblock %}
 
 {% block listtour %}
     {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
 {% endblock %}
 
-
 {% block comments %}
-    {% for i in 1..3 %}
-        {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'user': 'khiem'} %}
+    {% for comment in comments %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'comments': comment } %}
     {% endfor %}
+
+    <div class="new-comment row">
+        <div class="avatar col-md-2">
+            <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
+        </div>
+        <div class="col-md-8 row">
+            <form role="form">
+                <textarea class="text form-control" placeholder="Your comment here..."></textarea>
+                <input type="submit" class="col-md-2 send_btn" value="Send">
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block relativearticle %}
     {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
