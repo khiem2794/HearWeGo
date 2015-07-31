@@ -28,12 +28,13 @@ class ManageController extends Controller
     }
 
     /**
-     * <<<<<<< HEAD
+     *
      * @Route("/admin/user", name="manage_user")
      */
     public function manageUserAction()
     {
-        return $this->render('HearWeGoHearWeGoBundle:Manage/user:user.html.twig');
+        $users=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findAll();
+        return $this->render('HearWeGoHearWeGoBundle:Manage/user:user.html.twig',array('users'=>$users));
     }
 
     /**
