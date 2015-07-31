@@ -7,7 +7,7 @@
         {% for dest in destination %}
             <nav id="place{{ i }}" hidden="">
                 <ul>
-                    <li><a href="#">{{ dest.name }}</a></li>
+                    <li><a href="{{ path('detail',{'id':dest.id}) }}">{{ dest.name }}</a></li>
                 </ul>
             </nav>
         {% endfor %}
