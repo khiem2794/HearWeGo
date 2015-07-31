@@ -202,15 +202,6 @@ class ManageController extends Controller
         ));
         return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig', array($form->createView()));
     }
-
-    /**
-     * @Route("/admin/audio/assign",name="assign_audio")
-     */
-    public function assignAudioAction()
-    {
-        return $this->render('@HearWeGoHearWeGo/Manage/audio/assign.html.twig');
-    }
-
     /**
      * @Route("/admin/destination",name="manage_destination")
      */

@@ -1,1 +1,15 @@
 {% extends('default/destination.html.twig') %}
+
+{% block regions %}
+    {% set i=0 %}
+    {% for destination in destinations %}
+        {% set i=i+1 %}
+        {% for dest in destination %}
+            <nav id="place{{ i }}" hidden="">
+                <ul>
+                    <li><a href="#">{{ dest.name }}</a></li>
+                </ul>
+            </nav>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

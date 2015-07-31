@@ -102,7 +102,9 @@
 {% endblock %}
 
 {% block audioblock %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath } %}
+    {% if destination.getAudio is not null %}
+        {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio.getWebPath } %}
+    {% endif %}
 {% endblock %}
 
 {% block listtour %}
