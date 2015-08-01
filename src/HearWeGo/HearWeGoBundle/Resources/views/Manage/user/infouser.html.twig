@@ -1,0 +1,39 @@
+{% extends('admin/admin.html.twig') %}
+
+{% block mainpageheader %}
+    <h1 class="page-heading">USER DETAILS</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">Activities of {{ user.firstName }} {{ user.lastName }}</h3>
+{% endblock %}
+
+{% block mainpagecontainer %}
+    <h3 class="block-title">Comments</h3>
+    <div class="block">
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Name</th>
+                    <th class="hidden-xs" style="width: 70%">Content</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td class="text-center">{{ comment.id }}</td>
+                        <td>{{ comment.title }}</td>
+                        <td>
+                            {% set seg=comment.content|split('.') %}
+                            {{ seg[0]|raw }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

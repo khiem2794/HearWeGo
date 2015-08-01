@@ -11,7 +11,6 @@
 
 
 {% block mainpagecontainer %}
-    <h3 class="block-title">Brief details</h3>
     <div class="block">
         <div class="block-content">
             <table class="table">
@@ -19,7 +18,8 @@
                 <tr>
                     <th class="text-center" style="width: 50px;">#</th>
                     <th>Name</th>
-                    <th class="hidden-xs" style="width: 70%%;">Article</th>
+                    <th class="hidden-xs" style="width: 70%">Article</th>
+                    <th>Location</th>
                     <th class="text-center" style="width: 100px;">Actions</th>
                 </tr>
                 </thead>
@@ -32,6 +32,7 @@
                             {% set seg=destination.article|split('.') %}
                             {{ seg[0]|raw }}
                         </td>
+                        <td>{{ destination.location }}</td>
                         <td>
                             <a href="{{ path('edit_destination',{'id':destination.id}) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></button></a>
                             <a href="{{ path('delete_destination',{'id':destination.id}) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button></a>

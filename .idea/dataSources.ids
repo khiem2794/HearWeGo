@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-<<<<<<< HEAD
-  <data-source name="MySQL - hearwego@localhost" uuid="64e7eb6b-a467-4b84-8a78-eb514c0cba34">
+  <data-source name="MySQL - hearwego@localhost" uuid="2da38b0b-af39-4849-939d-4f304a78e5e9">
     <database-info product="MySQL" version="5.5.43-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
-=======
-  <data-source name="MySQL - hearwego@localhost" uuid="47c1ca56-5bbf-4a4a-aefc-382605cb256f">
-    <database-info product="MySQL" version="5.6.19-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
->>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -101,13 +96,8 @@
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
-<<<<<<< HEAD
       <foreign-key name="FK_E52FFDEE3A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_E52FFDEEA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-=======
-      <foreign-key name="FK_E52FFDEEA76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <foreign-key name="FK_E52FFDEE3A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
->>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
       <index name="IDX_E52FFDEE3A3123C7" unique="false" columns="audio_id"/>
       <index name="IDX_E52FFDEEA76ED395" unique="false" columns="user_id"/>
     </table>
@@ -118,13 +108,8 @@
       <column name="stars" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
-<<<<<<< HEAD
       <foreign-key name="FK_D88926223A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_D8892622A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-=======
-      <foreign-key name="FK_D8892622A76ED395" columns="user_id" ref-table="user" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <foreign-key name="FK_D88926223A3123C7" columns="audio_id" ref-table="audio" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
->>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
       <index name="IDX_D88926223A3123C7" unique="false" columns="audio_id"/>
       <index name="IDX_D8892622A76ED395" unique="false" columns="user_id"/>
     </table>
@@ -158,13 +143,8 @@
       <column name="discount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="info" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
-<<<<<<< HEAD
       <foreign-key name="FK_6AD1F969816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_6AD1F969979B1AD6" columns="company_id" ref-table="company" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-=======
-      <foreign-key name="FK_6AD1F969979B1AD6" columns="company_id" ref-table="company" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
-      <foreign-key name="FK_6AD1F969816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
->>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
       <index name="IDX_6AD1F969816C6140" unique="false" columns="destination_id"/>
       <index name="IDX_6AD1F969979B1AD6" unique="false" columns="company_id"/>
     </table>

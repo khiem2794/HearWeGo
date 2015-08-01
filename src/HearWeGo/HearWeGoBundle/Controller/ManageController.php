@@ -46,11 +46,13 @@ class ManageController extends Controller
     }
 
     /**
-     * @Route("/admin/user/profile",name="user_profile")
+     * @Route("/admin/user/{id}",name="info_user")
      */
-    public function profileAction()
+    public function infoUserAction($id)
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/user/profile.html.twig');
+        $user=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findById($id);
+        $comments=$user->getComments();
+        return $this->render('@HearWeGoHearWeGo/Manage/user/infouser.html.twig',array('user'=>$user,'comments'=>$comments));
     }
 
     /**

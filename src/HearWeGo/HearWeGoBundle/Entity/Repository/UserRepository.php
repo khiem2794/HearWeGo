@@ -18,4 +18,9 @@ class UserRepository extends EntityRepository
         )->setParameter('email', $email );
         return $query->getOneOrNullResult();
     }
+
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT u FROM HearWeGoHearWeGoBundle:User u WHERE u.id=:id')->setParameter('id',$id)->getOneOrNullResult();
+    }
 }
