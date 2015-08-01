@@ -2,7 +2,11 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
 <<<<<<< HEAD
+<<<<<<< HEAD
+    <data-source name="MySQL - hearwego@localhost" uuid="9ee96a14-ebdf-40aa-aef5-3f8694cf5db9">
+=======
     <data-source name="MySQL - hearwego@localhost" uuid="64e7eb6b-a467-4b84-8a78-eb514c0cba34">
+>>>>>>> 152062f34e601629d6c3d74e1182bfdc6231df81
 =======
     <data-source name="MySQL - hearwego@localhost" uuid="47c1ca56-5bbf-4a4a-aefc-382605cb256f">
 >>>>>>> d5f74ff593d3ce37f9cb5ddf21791095963c74e4
