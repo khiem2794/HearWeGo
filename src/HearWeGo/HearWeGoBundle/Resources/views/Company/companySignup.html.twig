@@ -16,29 +16,55 @@
                     </div>
                 <!--End Banner/header-->
                 </div>
-                <div class="text text-center">
-                    {{ form_start(form) }}
-                    <div class="form-group">
-                        {{ form_label(form.name,null) }}
-                        {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control'}  }) }}
+                <div class="text col-md-12">
+                    <div class="title text-center">
+                        <h2>Enter infomation of your company</h2>
                     </div>
-                    <div class="form-group">
-                        {{ form_label(form.email,null) }}
-                        {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control'}  }) }}
+                    <div class="fill">
+                        {{ form_start(form) }}
+                        <div class="form-group row">
+                            <div class="col-md-3 field">
+                                {{ form_label(form.name,null,{'label_attr' :{'class': 'lbl' } }) }}
+                            </div>
+                            <div class="col-md-9">
+                                {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control col-md-9'}  }) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 field">
+                                {{ form_label(form.email,null,{ 'label_attr': { 'class': 'lbl' } }) }}
+                            </div>
+                            <div class="col-md-9">
+                                {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control'}  }) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 field">
+                                {{ form_label(form.password,null,{ 'label_attr': { 'class': 'lbl' } }) }}
+                            </div>
+                            <div class="col-md-9">
+                                {{ form_widget(form.password, { 'attr' : { 'class' : 'form-control'}  }) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 field">
+                                {{ form_label(form.address,null,{ 'label_attr': { 'class': 'lbl' } }) }}
+                            </div>
+                            <div class="col-md-9">
+                                {{ form_widget(form.address, { 'attr' : { 'class' : 'form-control'}  }) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 field">
+                                {{ form_label(form.phone,null,{ 'label_attr': { 'class': 'lbl' } }) }}
+                            </div>
+                            <div class="col-md-9">
+                                {{ form_widget(form.phone, { 'attr' : { 'class' : 'form-control'}  }) }}
+                            </div>
+                        </div>
+                        {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-primary text-center', 'label': 'Submit'}  }) }}
+                        {{ form_end(form) }}
                     </div>
-                    <div class="form-group">
-                        {{ form_label(form.password,null) }}
-                        {{ form_widget(form.password, { 'attr' : { 'class' : 'form-control'}  }) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form.phone,null) }}
-                        {{ form_widget(form.phone, { 'attr' : { 'class' : 'form-control'}  }) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form.address,null) }}
-                        {{ form_widget(form.address, { 'attr' : { 'class' : 'form-control'}  }) }}
-                    </div>
-                    {{ form_end(form) }}
                 </div>
             </div>
         </div>

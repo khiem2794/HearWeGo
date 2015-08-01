@@ -319,7 +319,7 @@ class User implements UserInterface
     /**
      * Add orders
      *
-     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     * @param \HearWeGo\HearWeGoBundle\Entity\Orders $orders
      * @return User
      */
     public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Orders $orders)
