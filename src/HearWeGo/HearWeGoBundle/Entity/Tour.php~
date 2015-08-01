@@ -57,6 +57,12 @@ class Tour
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+    /**
      * @ORM\Column(type="datetime");
      */
     private $createdAt;
@@ -310,5 +316,28 @@ class Tour
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Tour
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

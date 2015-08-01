@@ -319,10 +319,10 @@ class User implements UserInterface
     /**
      * Add orders
      *
-     * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
+     * @param \HearWeGo\HearWeGoBundle\Entity\Orders $orders
      * @return User
      */
-    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Orders $orders)
     {
         $this->orders[] = $orders;
         return $this;
@@ -332,7 +332,7 @@ class User implements UserInterface
      *
      * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
      */
-    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Orders $orders)
     {
         $this->orders->removeElement($orders);
     }

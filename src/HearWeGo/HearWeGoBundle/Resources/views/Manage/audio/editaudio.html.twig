@@ -6,7 +6,7 @@
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">Edit {{ form.name }}</h3>
+    <h3 class="block-title">Edit {{ audio.name }}</h3>
 {% endblock %}
 
 {% block mainpagecontainer %}
@@ -25,6 +25,8 @@
         </div>
         <div class="form-group">
             {{ form_label(form.audio,null,  { 'label_attr': {'id': 'imgpath'} }  ) }}
+            <br>
+            <a href="{{ audio.getWebPath }}">Old Audio</a>
             {{ form_widget(form.audio, { 'attr' : { 'class' : 'form-control' }  }) }}
         </div>
         <div class="form-group">

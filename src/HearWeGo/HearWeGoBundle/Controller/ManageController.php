@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
 use HearWeGo\HearWeGoBundle\Form\AddAudioType;
+use HearWeGo\HearWeGoBundle\Form\EditAudioType;
 
 class ManageController extends Controller
 {
@@ -178,8 +179,7 @@ class ManageController extends Controller
             $destination = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')
                 ->findByName($form->get('destination')->getData()->getName());
             $audio->setDestination($destination);
-            $em = $this->getDoctrine()->getManager();
-
+            $em = $this->getDoctrine()->getEntityManager();
             $audio->upload();
             $em->persist($audio);
             $em->flush();
@@ -202,7 +202,22 @@ class ManageController extends Controller
             'method' => 'POST',
             'action' => $this->generateUrl('edit_audio', array('id' => $id))
         ));
-        return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig', array($form->createView()));
+        $form->add('destination','entity',array(
+            'class'=>'HearWeGo\HearWeGoBundle\Entity\Destination',
+            'choices'=>$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Destination')->findToReplaceAudio($id),
+            'property'=>'name'
+        ));
+        $form->add('submit','submit');
+        if ($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            $em=$this->getDoctrine()->getEntityManager();
+            $audio->upload();
+            $em->persist($audio);
+            $em->flush();
+            return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig',array('form'=>$form->createView(),'audio'=>$audio));
+        }
+        return $this->render('@HearWeGoHearWeGo/Manage/audio/editaudio.html.twig', array('form'=>$form->createView(),'audio'=>$audio));
     }
     /**
      * @Route("/admin/destination",name="manage_destination")

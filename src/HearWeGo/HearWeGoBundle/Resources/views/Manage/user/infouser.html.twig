@@ -17,19 +17,21 @@
                 <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">#</th>
-                    <th>Name</th>
+                    <th>Destination</th>
                     <th class="hidden-xs" style="width: 70%">Content</th>
+                    <th>Posted At</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for comment in comments %}
                     <tr>
                         <td class="text-center">{{ comment.id }}</td>
-                        <td>{{ comment.title }}</td>
+                        <td>{{ comment.destination.name }}</td>
                         <td>
                             {% set seg=comment.content|split('.') %}
                             {{ seg[0]|raw }}
                         </td>
+                        <td>{{ comment.createdAt|date('Y-m-d H:i:s') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

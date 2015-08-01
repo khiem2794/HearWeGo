@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - hearwego@localhost" uuid="2da38b0b-af39-4849-939d-4f304a78e5e9">
+  <data-source name="MySQL - hearwego@localhost" uuid="261c34d0-f0a0-47f7-826d-f4a5e39da508">
     <database-info product="MySQL" version="5.5.43-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -45,7 +45,6 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
@@ -142,6 +141,7 @@
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="discount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="info" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_6AD1F969816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <foreign-key name="FK_6AD1F969979B1AD6" columns="company_id" ref-table="company" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
