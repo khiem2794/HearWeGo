@@ -35,6 +35,7 @@ class CompanySubmitTourType extends AbstractType
             ->add('info','textarea', array(
                 'label' => 'Tour information'
             ))
+            ->add('price', 'number')
             ->add('destination', 'entity', array(
                 'class'=>'HearWeGoHearWeGoBundle:Destination',
                 'property'=>'name',
