@@ -143,6 +143,8 @@ class DefaultController extends Controller
             $photos = $destination->getPhotos();
             $tours = $destination->getTours();
             $comments = $destination->getComments();
+            //$articles=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->findByDestinationId($destination->getId());
+            //$destination->addArticle($articles);
 
             $comment = new Comment();
             $commentForm = $this->createForm(new CommentType(), $comment, array(
@@ -195,9 +197,10 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('HearWeGoHearWeGoBundle:Article')->find($id);
-
+        $relatives=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->findRelativeArticle($id);
         return $this->render('HearWeGoHearWeGoBundle:Default/Article:article.html.twig', array(
-            'article' => $article
+            'article' => $article,
+            'relatives'=>$relatives
         ));
     }
 

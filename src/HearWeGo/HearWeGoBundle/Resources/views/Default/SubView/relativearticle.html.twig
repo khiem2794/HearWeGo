@@ -1,6 +1,10 @@
 <div class="item col-md-4">
-    <img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">
+    {#<img src="{{ asset('bundles/hearwegohearwego/images/detail/hinh4.jpg') }}">#}
+    {#<div class="caption">#}
+        {#<p class="title"><a href="#">Caption here</a></p>#}
+    {#</div>#}
+    <img src="{{ article.getWebPath }}"/>
     <div class="caption">
-        <p class="title"><a href="#">Caption here</a></p>
+        <p class="title"><a href="{{ path('article',{'id':article.id}) }}">{{ article.title }}</a></p>
     </div>
 </div>

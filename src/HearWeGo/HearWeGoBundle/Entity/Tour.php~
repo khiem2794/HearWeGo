@@ -57,6 +57,12 @@ class Tour
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+    /**
      * @ORM\Column(type="datetime");
      */
     private $createdAt;

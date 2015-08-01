@@ -29,4 +29,12 @@ class ArticleRepository extends EntityRepository
     {
         return $this->getEntityManager()->createQuery('SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE a.id=:id')->setParameter('id',$id)->getOneOrNullResult();
     }
+
+    public function findRelativeArticle($id)
+    {
+        $query='SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE (a.id IN ';
+        $query=$query.'(SELECT ar FROM HearWeGoHearWeGoBundle:Article ar,HearWeGoHearWeGoBundle:Destination d WHERE IDENTITY(ar.destination)=d.id) ';
+        $query=$query.'AND a.id!=:id)';
+        return $this->getEntityManager()->createQuery($query)->setParameter('id',$id)->getResult();
+    }
 }
