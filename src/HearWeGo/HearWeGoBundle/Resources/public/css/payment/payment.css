@@ -1,0 +1,88 @@
+/* common */
+.no-offset {
+    margin: 0 !important; }
+
+.no-inset {
+    padding: 0 !important; }
+
+/* pages */
+.my-page .my-banner img {
+    width: 100%; }
+.my-page .my-content {
+    background: #26AC4A; }
+.my-page .my-content .my-search {
+    height: 50px;
+    padding: 8px; }
+.my-page .my-content .my-search .inputgroup {
+    width: 30%;
+    margin: 0 auto; }
+.my-page .my-content .my-search .inputgroup-addon {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 0; }
+.my-page .my-content .my-search .btn-tape, .my-page .my-content .my-search .btn-filter {
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%; }
+.my-page .my-content .my-search .btn-tape {
+    background: url(../../images/homepage/search_btn.png) no-repeat top left;
+    background-size: 32px 32px; }
+.my-page .my-content .my-search .btn-filter {
+    background: url(../../images/homepage/filter_btn.png) no-repeat top left;
+    background-size: 32px 32px; }
+.my-page .my-content .my-search .filter {
+    width: 372px !important; }
+.my-page .my-content .my-search .filter .criteria .picture {
+    border: solid 1px #ffffff;
+    border-right-color: #000000; }
+.my-page .my-content .my-search .filter .criteria .picture .price {
+    width: 50%;
+    height: 50%;
+    margin: 10px; }
+.my-page .my-content .my-search .filter .criteria .picture .discount {
+    width: 75%;
+    height: 75%;
+    margin: 10px; }
+.my-page .my-content .my-search .filter .criteria .picture .destination {
+    width: 75%;
+    height: 75%;
+    margin: 10px; }
+.my-page .my-content .my-search .filter .criteria .tick p {
+    font-size: 9px; }
+.my-page .main{
+    margin-right: 300px;
+    margin-left: 300px;
+    background-color: #DBEAD6;
+}
+.my-page .main .title img{
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+}
+.my-page .main .info{
+
+}
+.my-page .main .info .user-info{
+
+}
+.my-page .main .info .user-info .input-group{
+    padding: 10px 10px 10px 10px;
+}
+.my-page .main .info .user-info .input-group .input-group-addon{
+    background-color: #139B48;
+    color: #ffffff;
+    width: 100px;
+}
+.my-page .main .info .card-info{
+
+}
+.my-page .main .info .card-info .input-group{
+    padding: 10px 10px 10px 10px;
+}
+.my-page .main .info .card-info .input-group .input-group-addon{
+    background-color: #139B48;
+    color: #ffffff;
+    width: 150px;
+}

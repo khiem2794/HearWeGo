@@ -219,4 +219,10 @@ class DefaultController extends Controller
     {
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
+    /**
+     * @Route("/payment" , name="payment")
+     */
+    public  function paymentAction(){
+        return $this->render('HearWeGoHearWeGoBundle:Payment:payment.html.twig');
+    }
 }
