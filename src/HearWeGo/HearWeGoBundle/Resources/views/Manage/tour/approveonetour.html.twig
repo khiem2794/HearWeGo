@@ -1,14 +1,13 @@
 {% extends('admin/admin.html.twig') %}
 
 {% block mainpageheader %}
-    <h1 class="page-heading">TOUR MANAGEMENT</h1>
+    <h1 class="page-heading">APPROVE TOUR</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">Approved Tours</h3>
+    <h3 class="block-title">Approve {{ tour.name }}</h3>
 {% endblock %}
-
 
 {% block mainpagecontainer %}
     <div class="block">
@@ -29,7 +28,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for tour in tours %}
                     <tr>
                         <td class="text-center">{{ tour.id }}</td>
                         <td>{{ tour.name }}</td>
@@ -42,9 +40,15 @@
                         <td>{{ tour.info|raw }}</td>
                         <td>{{ tour.createdAt|date('Y-m-d') }}</td>
                     </tr>
-                {% endfor %}
                 </tbody>
             </table>
+            <form action="{{ path('approve_one_tour',{'id':tour.id}) }}" method="POST">
+                <input type="submit" class="btn btn-primary" value="Approve" style="width:100px"/>
+            </form>
+            <br>
+            <form action="{{ path('approve_tours') }}" method="GET">
+                <input type="submit" class="btn btn-default" value="Cancel" style="width:100px"/>
+            </form>
         </div>
     </div>
 {% endblock %}

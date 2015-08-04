@@ -192,4 +192,23 @@ class CompanyController extends Controller
         ));
 
     }
+
+    /**
+     * @Route("/company/delete/{id}",name="delete_tour")
+     */
+    public function deleteTourAction( $id ){
+        $request = $this->get('request');
+
+        $em = $this->getDoctrine()->getManager();
+        $tourrepo = $em->getRepository('HearWeGoHearWeGoBundle:Tour');
+        $tour = $tourrepo->find($id);
+        $em->remove($tour);
+        $em->flush();
+        $company = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:managetour.html.twig', array(
+            'tours' => $company->getTours()->toArray()
+        ));
+
+    }
 }
