@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Entity\Repository\DoctrineHelp;
 use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -167,27 +168,54 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/blog/{page}", name="blog")
      */
-    public function blogAction()
+    public function blogAction($page)
     {
-        $em = $this->getDoctrine()->getManager();
-        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
-        $blog = $articlerepo->findAll();
-        $blog1 = array();
-        $blog2 = array();
-        $count = 0;
-        foreach ( $blog as $article){
-            if ( $count % 2 == 1)
-                $blog1[] = $article;
+//        $em = $this->getDoctrine()->getManager();
+//        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
+//        $blog = $articlerepo->findAll();
+//        $blog1 = array();
+//        $blog2 = array();
+//        $count = 0;
+//        foreach ( $blog as $article){
+//            if ( $count % 2 == 1)
+//                $blog1[] = $article;
+//            else
+//                $blog2[] = $article;
+//            $count++;
+//        }
+//        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig', array(
+//            'blog1' => $blog1,
+//            'blog2' => $blog2
+//        ));
+        $pageSize=6;
+        $articlesQuery=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->queryAll();
+        $articlesCount=count($articlesQuery->getResult());
+        $paginator=DoctrineHelp::paginate($articlesQuery,$pageSize,$page);
+        $articles=$articlesQuery->getResult();
+        $articles1=array();
+        $articles2=array();
+        $count=1;
+        foreach ($articles as $article)
+        {
+            if ($count%2==0)
+            {
+                $articles1[]=$article;
+            }
             else
-                $blog2[] = $article;
+            {
+                $articles2[]=$article;
+            }
             $count++;
         }
-        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig', array(
-            'blog1' => $blog1,
-            'blog2' => $blog2
-        ));
+        $numPages=ceil(($articlesCount)/$pageSize);
+        return $this->render('@HearWeGoHearWeGo/Default/Blog/blog.html.twig',array(
+            'current'=>$page,
+            'numPages'=>$numPages,
+            'articlesQuery'=>$paginator,
+            'articles1'=>$articles1,
+            'articles2'=>$articles2));
     }
 
     /**

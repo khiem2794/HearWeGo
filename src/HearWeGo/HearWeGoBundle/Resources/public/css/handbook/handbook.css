@@ -57,6 +57,9 @@
     .my-page .content .articles {
       padding-top: 20px;
       background-color: #ffffff; }
+        .my-page .content .articles .column .article{
+            margin-bottom: 10px;
+        }
       .my-page .content .articles .column .article img {
         width: 150px;
         height: 150px; }
@@ -122,7 +125,7 @@
   background-color: #26AC4A; }
   .my-footer .menu .left-side img {
     width: 75%;
-    height: 75%;
+    /*height: 75%;*/
     margin-top: 50px;
     margin-bottom: 50px; }
   .my-footer .menu .right-side {

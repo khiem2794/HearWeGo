@@ -96,7 +96,7 @@
 
 
 {% block articlecol1 %}
-    {% for article in blog1 %}
+    {% for article in articles1 %}
         <div class="article row">
             <div class="image col-md-5">
                 <img src="{{ article.getWebPath }}">
@@ -106,7 +106,7 @@
                     <h4><b>{{ article.title }}</b></h4>
                 </div>
                 <div class="date">
-                    <i>{{ article.getCreatedAt|date('m-d-Y') }}</i>
+                    <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
                     <p> {{ article.content|slice(0,15)|raw }} ...</p>
@@ -119,7 +119,7 @@
 
 
 {% block articlecol2 %}
-    {% for article in blog2 %}
+    {% for article in articles2 %}
         <div class="article row">
             <div class="image col-md-5">
                 <img src="{{ article.getWebPath }}">
@@ -129,7 +129,7 @@
                     <h4><b>{{ article.title }}</b></h4>
                 </div>
                 <div class="date">
-                    <i>{{ article.getCreatedAt|date('m-d-Y') }}</i>
+                    <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
                     <p> {{ article.content|slice(0,15)|raw }} ...</p>
@@ -138,4 +138,43 @@
             </div>
         </div>
     {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    <div class="text-center">
+        <ul class="pagination" >
+            <li>
+                <a href="{{ path('blog',{'page':1}) }}" aria-label="First Page">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {#<li><a href="#">1</a></li>#}
+            {#<li><a href="#">2</a></li>#}
+            {#<li><a href="#">3</a></li>#}
+            {#<li><a href="#">4</a></li>#}
+            {#<li><a href="#">5</a></li>#}
+            {% if current>1 %}
+                <li>
+                    <a href="{{ path('blog',{'page':current-1}) }}">
+                        <span aria-hidden="true">Prev</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for i in 1..numPages %}
+                <li><a href="{{ path('blog',{'page':i}) }}">{{ i }}</a></li>
+            {% endfor %}
+            {% if current<numPages %}
+                <li>
+                    <a href="{{ path('blog',{'page':current+1}) }}">
+                        <span aria-hidden="true">Next</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="{{ path('blog',{'page':numPages}) }}" aria-label="Last Page">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

@@ -66,35 +66,37 @@
         </div>
         <div class="end-line"></div>
     </div>
-    <!--End Footer-->
-    <!--Navigation bar-->
-    <div class="row my-navbar">
-        <div class="col-md-1">
-            <ul class="my-navbar">
-                <a href="{{ path('homepage') }}">
-                    <li class="item"><img class="icon"
-                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}"
-                                          alt="Home icon"></li>
-                </a>
-                <a href="{{ path('map') }}">
-                    <li class="item"><img class="icon"
-                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}"
-                                          alt="Map icon"></li>
-                </a>
-                <a href="{{ path('destination') }}">
-                    <li class="item"><img class="icon"
-                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/nav-destination.png') }}"
-                                          alt="Destination icon"></li>
-                </a>
-                <a href="{{ path('blog') }}">
-                    <li class="item"><img class="icon"
-                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}"
-                                          alt="News icon"></li>
-                </a>
-            </ul>
-        </div>
+</div>
+<!--End Footer-->
+<!--Navigation bar-->
+<div class="row my-navbar">
+    <div class="col-md-1">
+        <ul class="my-navbar">
+            <a href="{{ path('homepage') }}">
+                <li class="item"><img class="icon"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}"
+                                      alt="Home icon"></li>
+            </a>
+            <a href="{{ path('map') }}">
+                <li class="item"><img class="icon"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}"
+                                      alt="Map icon"></li>
+            </a>
+            <a href="{{ path('destination') }}">
+                <li class="item"><img class="icon"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/nav-destination.png') }}"
+                                      alt="Destination icon"></li>
+            </a>
+            <a href="{{ path('blog',{'page':1}) }}">
+                <li class="item"><img class="icon"
+                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}"
+                                      alt="News icon"></li>
+            </a>
+        </ul>
     </div>
-    <!--End Navigation bar-->
+</div>
+<!--End Navigation bar-->
+
 
 
     <!--Login/Reg bar-->
@@ -108,6 +110,7 @@
             </div>
         </div>
     {% endblock %}
+
     <!--EndLogin/Reg bar-->
     <!--Register Form-->
     <div class="my-reg-form modal fade" role="dialog">

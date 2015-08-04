@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <data-source name="MySQL - hearwego@localhost" uuid="f9073f7d-2977-42f6-96a0-d61de2e13828">
     <database-info product="MySQL" version="5.5.44-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
 =======
   <data-source name="MySQL - hearwego@localhost" uuid="261c34d0-f0a0-47f7-826d-f4a5e39da508">
+=======
+  <data-source name="MySQL - hearwego@localhost" uuid="934ad474-a59d-49f1-bc95-949c16368f9c">
+>>>>>>> 6e7b745817a1fb5eb2d04b0201cc297460abe0fd
     <database-info product="MySQL" version="5.5.43-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
 >>>>>>> 055988a9cde0ba5050b909c777f3dccbeb7f0d01
       <extra-name-characters>#@</extra-name-characters>
