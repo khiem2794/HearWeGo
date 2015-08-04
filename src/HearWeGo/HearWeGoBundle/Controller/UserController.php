@@ -187,4 +187,25 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Route("/checkout", name="checkout")
+     */
+    public function checkOutAction(){
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+        $session = $this->get('session');
+        $request = $this->get('request');
+        if ($request->getMethod() == 'GET') {
+            $routeName = $request->get('_route');
+            if ($routeName == 'checkout') return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        $this->createFormBuilder();
+
+        if ($request->getMethod() == 'POST'){
+            
+        }
+    }
+
 }

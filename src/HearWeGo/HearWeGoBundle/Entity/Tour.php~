@@ -317,4 +317,27 @@ class Tour
     {
         return $this->createdAt;
     }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Tour
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

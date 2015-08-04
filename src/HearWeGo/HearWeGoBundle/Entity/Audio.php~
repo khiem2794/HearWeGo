@@ -45,6 +45,12 @@ class Audio
     /**
      * @ORM\Column(type="datetime")
      */
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
+
     private $createdAt;
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="audio")

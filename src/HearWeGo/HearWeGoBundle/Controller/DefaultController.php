@@ -75,8 +75,8 @@ class DefaultController extends Controller
             $photos = $destination->getPhotos()->toArray();
             $tour[0] = $tourraw->getName();
             $tour[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : "/bundles/hearwegohearwego/images/No image.jpg";
-            $tour[2] = $this->generateUrl('detail', array(
-                "id" => $destination->getID()
+            $tour[2] = $this->generateUrl('tour', array(
+                "id" => $tourraw->getID()
             ));
 
             $newtours[] = $tour;
@@ -95,8 +95,8 @@ class DefaultController extends Controller
             $photos = $destination->getPhotos()->toArray();
             $tour[0] = $tourraw->getName();
             $tour[1] = (count($photos) > 0) ? $photos[array_rand($photos)]->getWebPath() : '/bundles/hearwegohearwego/images/No image.jpg';
-            $tour[2] = $this->generateUrl('detail', array(
-                "id" => $destination->getID()
+            $tour[2] = $this->generateUrl('tour', array(
+                "id" => $tourraw->getID()
             ));
 
             $saletours[] = $tour;
@@ -210,6 +210,18 @@ class DefaultController extends Controller
     public function mapAction()
     {
         return $this->render('HearWeGoHearWeGoBundle:Default/Map:map.html.twig');
+    }
+
+    /**
+     * @Route("/tour/{id}", name="tour")
+     */
+    public function tourAction( $id ){
+        $em = $this->getDoctrine()->getManager();
+        $tour = $em->getRepository('HearWeGoHearWeGoBundle:Tour')->find($id);
+        return $this->render('HearWeGoHearWeGoBundle:Tour:tour.html.twig', array(
+            'tour' => $tour,
+            'photos' => $tour->getDestination()->getPhotos()->toArray()
+        ));
     }
 
     /**

@@ -45,6 +45,12 @@ class Audio
     /**
      * @ORM\Column(type="datetime")
      */
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $price;
+
     private $createdAt;
     /**
      * @ORM\OneToMany(targetEntity="HearWeGo\HearWeGoBundle\Entity\Rating", mappedBy="audio")
@@ -301,5 +307,28 @@ class Audio
     public function getSales()
     {
         return $this->sales;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Audio
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

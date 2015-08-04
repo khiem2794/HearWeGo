@@ -1,12 +1,14 @@
-{% extends('default/detail.html.twig') %}
+{% extends(':company:tour_base.html.twig') %}
+
 
 
 {% block loginform %}
 
-
     {% if not app.user %}
         {% render controller('HearWeGoHearWeGoBundle:User:userLogin') %}
     {% else %}
+
+
 
         <form>
             <div class="modal-header">
@@ -48,7 +50,6 @@
 {% endblock %}
 
 
-
 {% block register %}
 
     {% if app.user %}
@@ -57,10 +58,7 @@
     {% endif %}
 {% endblock %}
 
-
-
 {% block reglogbutton %}
-
 
     <div class="row my-reg-log-bar">
         <div class="col-md-1">
@@ -78,11 +76,19 @@
                             </li>
                         </a>
                     {% else %}
+                        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                            <a href="{{ path('admin_index') }}">
+                                <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                </li>
+                            </a>
+                        {% endif %}
                         <a href="{{ path('edit_profile') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
                             </li>
                         </a>
+
                     {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
@@ -91,13 +97,12 @@
                 <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form"
                                       src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
             </ul>
-
         </div>
     </div>
 
 
-
 {% endblock %}
+
 
 
 
@@ -110,51 +115,61 @@
 
 {% block sliderTitle %}
 
-    <p class="text-center" style="text-align: center">{{ destination.getName }}</p>
+    <p class="text-center" style="text-align: center">Tour {{ tour.getName }} </p>
 {% endblock %}
+
+
 
 
 {% block detail %}
-    {{ destination.getArticle|raw }}
-{% endblock %}
-
-{% block audioblock %}
-    {% if destination.getAudio is not null %}
-        {% include('@HearWeGoHearWeGo/Default/SubView/audioblock.html.twig') with { 'audio': destination.getAudio } %}
-    {% endif %}
-{% endblock %}
-
-{% block listtour %}
-    {% include('@HearWeGoHearWeGo/Default/SubView/listtour.html.twig') with { 'tours': tours } %}
+    {{ tour.info|raw }}
 {% endblock %}
 
 
-{% block comments %}
-    {% for comment in comments %}
-        {% include('@HearWeGoHearWeGo/Default/SubView/comment.html.twig') with { 'comments': comment } %}
-    {% endfor %}
+{% block link %}
+    <a class="block">
+        <div class="block-header">
+            <h3 class="block-title text-center">{{ tour.company.name }} company</h3>
+        </div>
+        <div class="block-content block-content-full text-center bg-image" >
+            <div>
+                <table class="table  table-hover">
+                    <tr class="">
+                        <td class="">price</td>
+                        <td class="">{{ tour.price }} $ </td>
 
-    {% if app.user.firstName is defined %}
-        <div class="new-comment row">
-            <div class="avatar col-md-2">
-                <img src="{{ asset('bundles/hearwegohearwego/images/detail/avatar.png') }}">
-            </div>
-            <div class="col-md-10 row">
-                {{ form_start(commentForm) }}
-                {{ form_widget(commentForm.content, { 'attr': { 'class': 'text form-control', 'placeholder': 'Your comment here ...'} }) }}
-                {{ form_widget(commentForm.submit, { 'attr': { 'class': 'col-md-2 btn send_btn btn-primary', 'value': 'Comment' } } ) }}
-                {{ form_end(commentForm) }}
+                    </tr>
+                    <tr class="">
+                        <td class="">Start date</td>
+                        <td class="">{{ tour.startdate|date('d-M-Y') }}</td>
+                    </tr>
+                    <tr class="">
+                        <td class="">End date</td>
+                        <td class="">{{ tour.enddate|date('d-M-Y') }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
-    {% endif %}
-
-
+        <div class="block">
+            <div class="row items-push text-center">
+                <div class="col-xs-6" onclick="">
+                    <div class="push-5"><i class="si si-briefcase fa-2x"></i></div>
+                    <div class="h5 font-w300 text-muted">Comapany Info</div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="push-5"><i class="si si-camera fa-2x"></i></div>
+                    <div class="h5 font-w300 text-muted">Order Tour</div>
+                </div>
+            </div>
+        </div>
+    </a>
 {% endblock %}
 
 
-{% block relativearticle %}
-    {% for article in destination.articles %}
-        {% include('@HearWeGoHearWeGo/Default/SubView/relativearticle.html.twig') with {'article':article} %}
-    {% endfor %}
-{% endblock %}
+
+
+
+
+
+
 
