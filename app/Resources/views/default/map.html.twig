@@ -5,19 +5,21 @@
     <title>Map</title>
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/map/map.css') }}">
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script>
+
+        var currlat ;
+        var currlong ;
         function initialize() {
 
             var markers = [];
             var map = new google.maps.Map(document.getElementById('map-canvas'), {
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.TERRAIN
             });
 
             var defaultBounds = new google.maps.LatLngBounds(
-                    new google.maps.LatLng(10.768451,106.6943626),
-                    new google.maps.LatLng(10.768451,106.6943626));
+                    new google.maps.LatLng(12.238,109.1967),
+                    new google.maps.LatLng(12.238,109.1967));
             map.fitBounds(defaultBounds);
 
             // Create the search box and link it to the UI element.
@@ -50,7 +52,7 @@
                         size: new google.maps.Size(71, 71),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
+                        scaledSize: new google.maps.Size(45, 25)
                     };
 
                     // Create a marker for each place.
@@ -73,9 +75,14 @@
 
             // Bias the SearchBox results towards places that are within the bounds of the
             // current map's viewport.
+
             google.maps.event.addListener(map, 'bounds_changed', function() {
                 var bounds = map.getBounds();
                 searchBox.setBounds(bounds);
+            });
+
+            google.maps.event.addListener(markers, 'title_changed', function( event ){
+                console.log(  this.getPosition().lat()  );
             });
         }
 
@@ -324,17 +331,7 @@
     <script type="text/javascript" src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/hearwegohearwego/js/homepage/select-birthday.js') }}"></script>
     <script type="text/javascript">
-        var today= new Date();
-        var yy= today.getFullYear();
-        var dd=today.getDate();
-        var mm=today.getMonth()+1;
-        selectBirthday("#year", "#month", "#day", {
-            year : 1938,
-            month : mm,
-            day : dd,
-            yearRange : 75,
-            endYear : yy
-        });
+//        console.log("lat: " + currlat + " currlong " + currlong);
     </script>
 </body>
 </html>

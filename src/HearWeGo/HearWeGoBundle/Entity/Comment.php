@@ -70,8 +70,6 @@ class Comment
         return $this->id;
     }
 
-
-
     /**
      * Set content
      *

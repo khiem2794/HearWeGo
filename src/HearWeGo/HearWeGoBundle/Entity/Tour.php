@@ -83,6 +83,11 @@ class Tour
     private $info;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    private $link;
+
+    /**
      * @ORM\ManyToOne(targetEntity="HearWeGo\HearWeGoBundle\Entity\Company", inversedBy="tours")
      * @ORM\JoinColumn(name="company_id",referencedColumnName="id",onDelete="CASCADE")
      */
