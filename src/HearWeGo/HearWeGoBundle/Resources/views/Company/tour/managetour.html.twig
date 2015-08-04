@@ -1,0 +1,117 @@
+{% extends('company/company_base.html.twig') %}
+
+{% block cssinclude %}
+    <link rel="stylesheet" id="css-main" href="{{ asset('bundles/hearwegohearwego/oneUI/css/oneui.css') }}">
+{% endblock %}
+
+
+{% block mainpageheader %}
+    <h1 class="page-heading">Manage Tour</h1>
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-striped table-vcenter">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th style="width: 50%;">Email</th>
+                <th style="width: 15%;">Access</th>
+                <th class="text-center" style="width: 100px;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="font-w600">Julia Cole</td>
+                <td>client1@example.com</td>
+                <td>
+                    <span class="label label-info">Business</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="font-w600">Julia Cole</td>
+                <td>client2@example.com</td>
+                <td>
+                    <span class="label label-danger">Disabled</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="font-w600">Denise Watson</td>
+                <td>client3@example.com</td>
+                <td>
+                    <span class="label label-primary">Personal</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="font-w600">Tiffany Kim</td>
+                <td>client4@example.com</td>
+                <td>
+                    <span class="label label-warning">Trial</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="font-w600">Emma Cooper</td>
+                <td>client5@example.com</td>
+                <td>
+                    <span class="label label-warning">Trial</span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+
+
+
+{% block jsinclude %}
+
+{% endblock %}
+
+{% block jscode %}
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.scrollLock.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.appear.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.countTo.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.placeholder.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/js.cookie.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/app.js') }}"></script>
+{% endblock %}
