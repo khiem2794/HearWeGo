@@ -109,7 +109,10 @@
                     <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
-                    <p> {{ article.content|split('.')|raw }} ...</p>
+                    <p>
+                        {% set seg=article.content|split('.') %}
+                        {{ seg[0]|raw }}
+                    </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
             </div>
@@ -132,7 +135,10 @@
                     <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
-                    <p> {{ article.content|split('.')|raw }} ...</p>
+                    <p>
+                        {% set seg=article.content|split('.') %}
+                        {{ seg[0]|raw }}
+                    </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
             </div>

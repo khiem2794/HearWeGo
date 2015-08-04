@@ -34,6 +34,7 @@
         </div>
         <div class="form-group">
             {{ form_label(form.article) }}
+            <br>
             {{ form.article.vars.value|raw }}
             {{ form_widget(form.article, { 'id':'articlecontent', 'attr' : { 'class' : 'form-control input-lg','rows': '25', 'placeholder': 'Content goes here ...', 'style':'display: none;', 'visibility':'hidden'}  }) }}
             <div id="summernote"></div>

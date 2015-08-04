@@ -210,6 +210,10 @@ class DefaultController extends Controller
             $count++;
         }
         $numPages=ceil(($articlesCount)/$pageSize);
+        if ($numPages==0)
+        {
+            $numPages = 1;
+        }
         return $this->render('@HearWeGoHearWeGo/Default/Blog/blog.html.twig',array(
             'current'=>$page,
             'numPages'=>$numPages,

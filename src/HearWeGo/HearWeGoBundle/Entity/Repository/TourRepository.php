@@ -29,4 +29,18 @@ class TourRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function findUnapprovedTours()
+    {
+        return $this->getEntityManager()->createQuery('SELECT t FROM HearWeGoHearWeGoBundle:Tour t WHERE t.status=FALSE')->getResult();
+    }
+
+    public function findApprovedTours()
+    {
+        return $this->getEntityManager()->createQuery('SELECT t FROM HearWeGoHearWeGoBundle:Tour t WHERE t.status=TRUE')->getResult();
+    }
+
+    public function findById($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT t FROM HearWeGoHearWeGoBundle:Tour t WHERE t.id=:id')->setParameter('id',$id)->getOneOrNullResult();
+    }
 }

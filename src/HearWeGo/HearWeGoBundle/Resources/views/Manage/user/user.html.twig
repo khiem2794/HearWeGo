@@ -37,7 +37,9 @@
                         <td>{{ user.phone }}</td>
                         <td>{{ user.createdAt|date('Y-m-d') }}</td>
                         <td>
-                            <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Click to see detailed info"><i class="fa fa-pencil"></i></button>
+                            <a href="{{ path('info_user',{'id':user.id}) }}">
+                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="See details"><i class="fa fa-street-view"></i></button>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
