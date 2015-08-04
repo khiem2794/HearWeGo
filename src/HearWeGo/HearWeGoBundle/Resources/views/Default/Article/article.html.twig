@@ -138,13 +138,13 @@
                 <img src="{{ relative.getWebpath }}">
             </div>
             <div class="title">
-                <a href="{{ path('article',{'id':relative.id}) }}"><h2 class="tit">{{ relative.title }}</h2></a>
+                <a href="{{ path('article',{'id':relative.id}) }}" style="text-decoration: none"><h2 class="tit">{{ relative.title }}</h2></a>
                 <h4 class="date">{{ relative.createdAt|date('Y-m-d') }}</h4>
             </div>
             <div class="subcontent">
                 <p>
                 {% set seg=relative.content|split('.') %}
-                {{ seg[0]|raw }}pu
+                {{ seg[0]|raw }}
                 </p>
             </div>
         </div>

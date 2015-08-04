@@ -34,14 +34,15 @@ class DestinationRepository extends EntityRepository
 
     public function findByAudioId($id)
     {
-        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d,HearWeGoHearWeGoBundle:Audio a WHERE d.id=IDENTITY (a.destination)')->getResult();
+        return $this->getEntityManager()->createQuery('SELECT d FROM HearWeGoHearWeGoBundle:Destination d,HearWeGoHearWeGoBundle:Audio a WHERE (IDENTITY (a.destination)=d.id AND a.id=:id)')->setParameter('id',$id)->getResult();
     }
 
     public function findToReplaceAudio($id)
     {
-        $result=$this->findDestinationWithoutAudio();
-        $result[]=$this->findByAudioId($id);
-        return $result;
+        //$result=$this->findDestinationWithoutAudio();
+        //$result[]=$this->findByAudioId($id);
+        //$result=$this->findByAudioId($id);
+        return array_merge($this->findDestinationWithoutAudio(),$this->findByAudioId($id));
     }
 
     public function findByRegion($id)
