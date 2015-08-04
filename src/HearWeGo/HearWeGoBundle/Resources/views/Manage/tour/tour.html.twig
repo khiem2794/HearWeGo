@@ -22,6 +22,7 @@
                     <th style="width:15%">Destination</th>
                     <th style="width:20px">Start Date</th>
                     <th style="width:20px">End Date</th>
+                    <th>Price</th>
                     <th>Discount</th>
                     <th style="width:40%">Info</th>
                     <th style="width:20px">Submission Date</th>
@@ -36,8 +37,9 @@
                         <td>{{ tour.destination.name }}</td>
                         <td>{{ tour.startdate|date('Y-m-d') }}</td>
                         <td>{{ tour.enddate|date('Y-m-d') }}</td>
+                        <td>{{ tour.price }}</td>
                         <td>{{ tour.discount }}</td>
-                        <td>{{ tour.info }}</td>
+                        <td>{{ tour.info|raw }}</td>
                         <td>{{ tour.createdAt|date('Y-m-d') }}</td>
                     </tr>
                 {% endfor %}
