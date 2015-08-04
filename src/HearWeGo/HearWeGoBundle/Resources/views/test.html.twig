@@ -1,0 +1,12 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}"/>
+</head>
+
+<body>
+    {% for article in articlesQuery.iterator %}
+        {{ article.title }}<br>
+        {{ article.content|raw }}<br>
+        {{ article.createdAt|date('Y-m-d H:i:s') }}<br>
+        <img src="{{ article.getWebpath }}"><br>
+    {% endfor %}
+</body>

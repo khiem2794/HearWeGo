@@ -1,0 +1,42 @@
+{% extends('admin/admin.html.twig') %}
+
+
+
+{% block mainpageheader %}
+    <h1 class="page-heading">COMMENTS MANAGEMENT</h1>
+{% endblock %}
+
+
+{% block mainpagecontainerheader %}
+    <h3 class="block-title">All Comments</h3>
+{% endblock %}
+
+
+{% block mainpagecontainer %}
+    <div class="block">
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Commented by</th>
+                    <th>Destination</th>
+                    <th>Content</th>
+                    <th>Posted at</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for comment in comments %}
+                    <tr>
+                        <td class="text-center">{{ comment.id }}</td>
+                        <td>{{ comment.user.firstName }} {{ comment.user.lastName }}</td>
+                        <td>{{ comment.destination.name }}</td>
+                        <td>{{ comment.content }}</td>
+                        <td>{{ comment.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

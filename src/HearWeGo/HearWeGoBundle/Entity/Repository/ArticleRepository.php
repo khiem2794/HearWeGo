@@ -37,4 +37,13 @@ class ArticleRepository extends EntityRepository
         $query=$query.'AND a.id!=:id)';
         return $this->getEntityManager()->createQuery($query)->setParameter('id',$id)->getResult();
     }
+
+    public function queryAll()
+    {
+        return $this->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from('HearWeGoHearWeGoBundle:Article','a')
+            ->orderBy('a.createdAt','DESC')
+            ->getQuery();
+    }
 }

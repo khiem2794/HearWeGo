@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function findAllDesc()
+    {
+        return $this->getEntityManager()->createQuery('SELECT c FROM HearWeGoHearWeGoBundle:Comment c ORDER BY c.createdAt DESC')->getResult();
+    }
 }

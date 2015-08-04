@@ -328,10 +328,11 @@ class ManageController extends Controller
     }
 
     /**
-     * @Route("/admin/tour/approve",name="approve_tour")
+     * @Route("/admin/tour/approve",name="approve_tours")
      */
     public function approveTourAction()
     {
+
         return $this->render('@HearWeGoHearWeGo/Manage/tour/approvetour.html.twig');
     }
 
@@ -434,7 +435,8 @@ class ManageController extends Controller
      */
     public function manageCommentAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/comment/commnent.html.twig');
+        $comments=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Comment')->findAllDesc();
+        return $this->render('@HearWeGoHearWeGo/Manage/comment/comment.html.twig',array('comments'=>$comments));
     }
 
 
