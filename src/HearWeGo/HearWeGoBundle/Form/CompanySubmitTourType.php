@@ -36,6 +36,7 @@ class CompanySubmitTourType extends AbstractType
                 'label' => 'Tour information'
             ))
             ->add('price', 'number')
+            ->add('link', 'url')
             ->add('destination', 'entity', array(
                 'class'=>'HearWeGoHearWeGoBundle:Destination',
                 'property'=>'name',

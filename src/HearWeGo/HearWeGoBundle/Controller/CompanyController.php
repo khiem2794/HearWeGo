@@ -71,7 +71,6 @@ class CompanyController extends Controller
                 $em->flush();
                 return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
             }
-            return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
         }
         return $this->render('HearWeGoHearWeGoBundle:Company/tour:submit.html.twig',array('form'=>$form->createView()));
     }
@@ -79,7 +78,7 @@ class CompanyController extends Controller
     /**
      * @Route("/company/profile",name="company_profile")
      */
-    public function editCompany(Request $request)
+    public function editCompanyAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
             return $this->redirect($this->generateUrl('user_login'));
@@ -108,8 +107,7 @@ class CompanyController extends Controller
     /**
      *@Route("/company/delete",name="company_delete")
      */
-    public function deleteCompany(Request $request)
-    {
+    public function deleteCompanyAction(Request $request){
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
             return $this->redirect($this->generateUrl('user_login'));
         }
@@ -138,5 +136,60 @@ class CompanyController extends Controller
                 return new Response('Wrong password!');
         }
         return $this->render('HearWeGoHearWeGoBundle:Company:companyDelete.html.twig',array('form'=>$form->getForm()->createView()));
+    }
+
+    /**
+     *@Route("/company/tour",name="company_manage")
+     */
+    public function manageTourAction(){
+
+        $request = $this->get('request');
+
+        $company = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:managetour.html.twig', array(
+            'tours' => $company->getTours()->toArray()
+        ));
+    }
+
+    /**
+     *@Route("/company/tour/{id}",name="company_update_tour")
+     */
+    public function updateTourAction( $id ){
+
+        $request = $this->get('request');
+
+
+        $em = $this->getDoctrine();
+        $tour = $em->getRepository('HearWeGoHearWeGoBundle:Tour')->find( $id );
+        $form=$this->createForm(new CompanySubmitTourType($this->get('destination.transformer')),$tour,array(
+            'method'=>'POST',
+            'action'=>$this->generateUrl('company_update_tour', array(
+                'id' => $id
+            ))
+        ));
+        $form->add('submit', 'submit');
+
+        if ($request->getMethod()=='POST')
+        {
+            $form->handleRequest($request);
+            if ($form->isValid())
+            {
+                $em=$this->getDoctrine()->getEntityManager();
+                $tour->setStatus(false);
+                $em->persist($tour);
+                $em->flush();
+                $company = $this->get('security.token_storage')->getToken()->getUser();
+                return $this->render('HearWeGoHearWeGoBundle:Company/tour:managetour.html.twig', array(
+                    'tours' => $company->getTours()->toArray()
+                ));
+            }
+        }
+
+
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:updatetour.html.twig', array(
+            'form' => $form->createView()
+        ));
+
     }
 }
