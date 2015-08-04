@@ -328,7 +328,7 @@ class ManageController extends Controller
     }
 
     /**
-     * @Route("/admin/tour/approve",name="approve_tours")
+     * @Route("/admin/tour/approve",name="approve_tour")
      */
     public function approveTourAction()
     {
