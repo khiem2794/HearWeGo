@@ -128,7 +128,10 @@ class UserController extends Controller
         $request = $this->get('request');
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $pass = $user->getPassword();
-        $form = $this->createForm(new Form\UserEditType($user), $user, array('method' => 'POST', 'action' => $this->generateUrl('edit_profile')));
+        $form = $this->createForm(new Form\UserEditType($user), $user, array(
+            'method' => 'POST',
+            'action' => $this->generateUrl('edit_profile')
+        ));
         $form->add('confirm', 'password', array('mapped' => false));
         $form->add('submit', 'submit', array(
             'label' => '',
