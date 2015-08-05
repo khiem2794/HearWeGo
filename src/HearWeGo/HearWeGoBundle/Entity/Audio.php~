@@ -308,4 +308,27 @@ class Audio
     {
         return $this->sales;
     }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     * @return Audio
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

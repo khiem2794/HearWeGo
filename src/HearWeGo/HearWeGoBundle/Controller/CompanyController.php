@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CompanyController extends Controller
 {
     /**
-     * @Route("/company/signup",name="company_signup")
+     * @Route("/signup/company",name="company_signup")
      */
     public function signupAction(Request $request)
     {
@@ -79,7 +79,7 @@ class CompanyController extends Controller
     /**
      * @Route("/company/profile",name="company_profile")
      */
-    public function editCompany(Request $request)
+    public function editCompanyAction(Request $request)
     {
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
             return $this->redirect($this->generateUrl('user_login'));
@@ -108,8 +108,7 @@ class CompanyController extends Controller
     /**
      *@Route("/company/delete",name="company_delete")
      */
-    public function deleteCompany(Request $request)
-    {
+    public function deleteCompanyAction(Request $request){
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
             return $this->redirect($this->generateUrl('user_login'));
         }
@@ -139,4 +138,20 @@ class CompanyController extends Controller
         }
         return $this->render('HearWeGoHearWeGoBundle:Company:companyDelete.html.twig',array('form'=>$form->getForm()->createView()));
     }
+
+    /**
+     *@Route("/company/tour",name="company_manage")
+     */
+    public function manageTourAction(){
+
+        $request = $this->get('request');
+
+        $company = $this->get('security.token_storage')->getToken()->getUser();
+
+        return $this->render('HearWeGoHearWeGoBundle:Company/tour:managetour.html.twig', array(
+            'tours' => $company->getTours()->toArray()
+        ));
+    }
+
+
 }

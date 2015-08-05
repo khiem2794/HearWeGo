@@ -3,6 +3,7 @@
 namespace HearWeGo\HearWeGoBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * TourRepository
@@ -29,4 +30,11 @@ class TourRepository extends EntityRepository
         return $query->getResult();
     }
 
+    public function findCompanyTours( $companyId ){
+        $rsm = new ResultSetMapping();
+        $query =$this->getEntityManager()->createNativeQuery(
+            'SELECT * FROM tour WHERE company_id = ? ORDER BY created_at DESC',$rsm
+        )->setParameter(1,$companyId);
+        return $query->getResult();
+    }
 }
