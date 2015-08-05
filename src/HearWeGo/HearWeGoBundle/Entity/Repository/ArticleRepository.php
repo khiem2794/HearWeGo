@@ -30,12 +30,17 @@ class ArticleRepository extends EntityRepository
         return $this->getEntityManager()->createQuery('SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE a.id=:id')->setParameter('id',$id)->getOneOrNullResult();
     }
 
+    public function findByDestination($id)
+    {
+        return $this->getEntityManager()->createQuery('SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE IDENTITY (a.destination)=:id')->setParameter('id',$id)->getResult();
+    }
+
     public function findRelativeArticle($id)
     {
-        $query='SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE (a.id IN ';
-        $query=$query.'(SELECT ar FROM HearWeGoHearWeGoBundle:Article ar,HearWeGoHearWeGoBundle:Destination d WHERE IDENTITY(ar.destination)=d.id) ';
-        $query=$query.'AND a.id!=:id)';
-        return $this->getEntityManager()->createQuery($query)->setParameter('id',$id)->getResult();
+        $query_destination='SELECT IDENTITY (a.destination) FROM HearWeGoHearWeGoBundle:Article a WHERE a.id=:id';
+        $destination_id=$this->getEntityManager()->createQuery($query_destination)->setParameter('id',$id)->getOneOrNullResult();
+        $query='SELECT a FROM HearWeGoHearWeGoBundle:Article a WHERE (IDENTITY(a.destination)=:destination_id AND a.id!=:id)';
+        return $this->getEntityManager()->createQuery($query)->setParameters(array('destination_id'=>$destination_id,'id'=>$id))->getResult();
     }
 
     public function queryAll()

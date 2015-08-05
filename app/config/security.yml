@@ -2,9 +2,9 @@
 security:
     encoders:
         HearWeGo\HearWeGoBundle\Entity\User:
-            algorithm: plaintext
+            algorithm: bcrypt
         HearWeGo\HearWeGoBundle\Entity\Company:
-            algorithm: plaintext
+            algorithm: bcrypt
         Symfony\Component\Security\Core\User\User: plaintext
     providers:
         user_provider:
