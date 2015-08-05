@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
+<<<<<<< HEAD
   <data-source name="MySQL - hearwego@localhost" uuid="81246998-4fbc-4338-acab-615224713b55">
     <database-info product="MySQL" version="5.6.19-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+=======
+  <data-source name="MySQL - hearwego@localhost" uuid="f7c09147-de2e-48d8-a869-c81e1a442174">
+    <database-info product="MySQL" version="5.5.43-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -60,16 +65,26 @@
       <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="phone" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+<<<<<<< HEAD
       <column name="role" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+=======
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="role" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_6AD1F969979B1AD6" table="tour" schema="" catalog="hearwego" columns="company_id"/>
       <index name="UNIQ_4FBF094FE7927C74" unique="true" columns="email"/>
     </table>
     <table name="destination" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+<<<<<<< HEAD
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="region_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+=======
+      <column name="region_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <column name="article" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="id"/>
@@ -83,8 +98,13 @@
     </table>
     <table name="gallery" schema="" catalog="hearwego" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+<<<<<<< HEAD
       <column name="imgpath" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+=======
+      <column name="destination_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="imgpath" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_472B783A816C6140" columns="destination_id" ref-table="destination" ref-schema="" ref-catalog="hearwego" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>
       <index name="IDX_472B783A816C6140" unique="false" columns="destination_id"/>
@@ -138,9 +158,15 @@
       <column name="startdate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="enddate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="status" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+<<<<<<< HEAD
       <column name="discount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="info" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+=======
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="discount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="info" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="link" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
       <primary-key name="PRIMARY" columns="id"/>
@@ -156,8 +182,13 @@
       <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="date_of_birth" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+<<<<<<< HEAD
       <column name="phone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+=======
+      <column name="created_at" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="phone" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+>>>>>>> 71177d0637a082c7644ff9864850b07d0420b018
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_9474526CA76ED395" table="comment" schema="" catalog="hearwego" columns="user_id"/>
       <exported-key name="FK_E52FFDEEA76ED395" table="orders" schema="" catalog="hearwego" columns="user_id"/>
