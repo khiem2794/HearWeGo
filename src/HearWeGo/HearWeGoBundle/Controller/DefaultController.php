@@ -8,11 +8,14 @@ use HearWeGo\HearWeGoBundle\Entity\Repository\DoctrineHelp;
 use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+//use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Console\Helper\Helper;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use HearWeGo\HearWeGoBundle\Entity\Company;
 use HearWeGo\HearWeGoBundle\Entity\User;
 use HearWeGo\HearWeGoBundle\Entity\Article;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class DefaultController extends Controller
@@ -260,8 +263,12 @@ class DefaultController extends Controller
     /**
      * @Route("/test", name="test")
      */
-    public function testAction()
+    public function testAction(Request $request)
     {
+        if($request->isXmlHttpRequest()) {
+            $b=$request->get('id1');
+            echo $b;
+        }
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
 
