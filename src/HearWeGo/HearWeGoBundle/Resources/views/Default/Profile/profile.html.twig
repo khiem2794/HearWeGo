@@ -8,6 +8,8 @@
     <link href="{{ asset('bundles/hearwegohearwego/css/profile.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ asset('bundles/hearwegohearwego/js/jquery-2.1.4.min.js') }}"></script>
     <script src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" id="css-main" href="{{ asset('bundles/hearwegohearwego/oneUI/css/oneui.css') }}">
+
 </head>
 
 <body>
@@ -40,10 +42,10 @@
                 Phone: {{ form_widget(form.phone,{'attr':{'size':'30','class':'infotext'}}) }}
             </p>
             <p>
-                Password to change: {{ form_widget(form.password,{'attr':{'size':'30','class':'infotext'}}) }}
+                New Password: {{ form_widget(form.password,{'attr':{'size':'30','class':'infotext'}}) }}
             </p>
             <p>
-                Password to confirm: {{ form_widget(form.confirm,{'attr':{'size':'30','class':'infotext'}}) }}
+                Old Password: {{ form_widget(form.confirm,{'attr':{'size':'30','class':'infotext'}}) }}
             </p>
             {{ form_widget(form.submit,{'attr':{'class':'my-custom-button'}}) }}
             {{ form_end(form) }}
@@ -51,7 +53,52 @@
     </div>
     <div class="container" align="center">
         <img src="{{ asset('bundles/hearwegohearwego/images/personal/purchase.png') }}" style="height:40px">
+
+
+        <div class="col-md-2"></div>
+        <div class="table-responsive col-md-10">
+            <table class="table table-striped table-vcenter">
+                <thead>
+                <tr>
+                    <th style="width: 19%;">Order Number</th>
+                    <th style="width: 20%;">Date</th>
+                    <th style="width: 20%;">Price</th>
+                    <th style="width: 15%;">Status</th>
+                    <th class="text-center" style="width: 100px;">Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%  for order in orders  %}
+                    <tr>
+                        <td class="font-w600">{{ order.id }}</td>
+                        <td>{{ order.date|date('M d, Y') }}</td>
+                        <td>{{ order.audios.price }} $</td>
+                        <td>
+                            <span class="label label-success">Success</span>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ order.audios.getWebPath }}" target="_blank" class="btn btn-primary btn-xs">Go To Page</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
+
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.scrollLock.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.appear.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.countTo.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.placeholder.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/js.cookie.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/app.js') }}"></script>
+
 </body>
 
 </html>

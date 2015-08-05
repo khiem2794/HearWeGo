@@ -167,7 +167,7 @@ class Audio
      * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
      * @return Audio
      */
-    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    public function addOrder(\HearWeGo\HearWeGoBundle\Entity\Orders $orders)
     {
         $this->orders[] = $orders;
         return $this;
@@ -177,7 +177,7 @@ class Audio
      *
      * @param \HearWeGo\HearWeGoBundle\Entity\Order $orders
      */
-    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Order $orders)
+    public function removeOrder(\HearWeGo\HearWeGoBundle\Entity\Orders $orders)
     {
         $this->orders->removeElement($orders);
     }
