@@ -63,6 +63,11 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
+                        <a href="{{ path('company_manage') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                         <a href="{{ path('company_profile') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
@@ -126,7 +131,6 @@
 
 
 {% block newtours %}
-
     <ul class="my-slide-top">
         {% for tourpair in newtourfilter %}
             <li>
@@ -147,7 +151,6 @@
 
 
 {% block saletours %}
-
     <ul class="my-slide-top">
         {% for tourpair in saletoursfilter %}
             <li>

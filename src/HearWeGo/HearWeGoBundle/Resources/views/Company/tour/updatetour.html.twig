@@ -1,0 +1,64 @@
+{% extends('company/company_base.html.twig') %}
+
+{% block cssinclude %}
+    <link rel="stylesheet" id="css-main" href="{{ asset('bundles/hearwegohearwego/oneUI/css/oneui.css') }}">
+{% endblock %}
+
+
+{% block mainpageheader %}
+    <h1 class="page-heading">Update Tour</h1>
+{% endblock %}
+
+
+
+{% block content %}
+    {% include 'HearWeGoHearWeGoBundle:Company:companySubmit.html.twig' %}
+{% endblock %}
+
+
+
+
+{% block jsinclude %}
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.scrollLock.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.appear.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.countTo.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/jquery.placeholder.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/core/js.cookie.min.js') }}"></script>
+    <script src="{{ asset('bundles/hearwegohearwego/oneUI/js/app.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/summernote.css') }}">
+    <script src="{{ asset('bundles/hearwegohearwego/js/summernote.min.js') }}"></script>
+
+{% endblock %}
+
+{% block jscode %}
+    <script>
+        $(function () {
+            var message = $('#info').val();
+            $("#summernote").code(message);
+        });
+
+
+        $('#summernote').summernote({
+            height: 400,
+            onKeyup: function (e) {
+                $("#info").val($("#summernote").code());
+            }
+        });
+
+        $("#company_submit_tour_startdate_year").val("{{form.vars.value.startdate|date('Y')}}");
+        $("#company_submit_tour_startdate_month").val("{{form.vars.value.startdate|date('m') - 0}}");
+        $("#company_submit_tour_startdate_day").val("{{form.vars.value.startdate|date('d') - 0}}");
+
+
+        $("#company_submit_tour_enddate_year").val("{{form.vars.value.enddate|date('Y')}}");
+        $("#company_submit_tour_enddate_month").val("{{form.vars.value.enddate|date('m') - 0}}");
+        $("#company_submit_tour_enddate_day").val("{{form.vars.value.enddate|date('d') - 0}}");
+
+
+    </script>
+{% endblock %}
+
+

@@ -12,85 +12,43 @@
 
 
 {% block content %}
-    <div class="table-responsive">
+    <div class="col-md-2"></div>
+    <div class="table-responsive col-md-10">
         <table class="table table-striped table-vcenter">
             <thead>
             <tr>
-                <th>Name</th>
-                <th style="width: 50%;">Email</th>
-                <th style="width: 15%;">Access</th>
+                <th>Tour's Name</th>
+                <th style="width: 19%;">Start Date</th>
+                <th style="width: 15%;">Price</th>
+                <th style="width: 20%;">Link</th>
+                <th style="width: 15%;">Status</th>
                 <th class="text-center" style="width: 100px;">Actions</th>
             </tr>
             </thead>
             <tbody>
+            {%  for tour in tours  %}
             <tr>
-                <td class="font-w600">Julia Cole</td>
-                <td>client1@example.com</td>
+                <td class="font-w600">{{ tour.name }}</td>
+                <td>{{ tour.startDate|date('d-M-Y') }}</td>
+                <td>{{ tour.price }} $</td>
+                <td><a href="{{ tour.link }}" target="_blank" class="btn btn-primary btn-xs">Go To Page</a></td>
                 <td>
-                    <span class="label label-info">Business</span>
+                    {% if "now"|date('Y-m-d') > tour.startdate|date('Y-m-d') %}
+                        <span class="label label-danger">Expire</span>
+                    {% elseif tour.status == 0 %}
+                        <span class="label label-warning">Waiting</span>
+                    {% else %}
+                        <span class="label label-success">Approved</span>
+                    {% endif %}
                 </td>
                 <td class="text-center">
                     <div class="btn-group">
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
+                        <a href="{{ path('company_update_tour', { 'id': tour.id } ) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button></a>
                         <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td class="font-w600">Julia Cole</td>
-                <td>client2@example.com</td>
-                <td>
-                    <span class="label label-danger">Disabled</span>
-                </td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-
-                <td class="font-w600">Denise Watson</td>
-                <td>client3@example.com</td>
-                <td>
-                    <span class="label label-primary">Personal</span>
-                </td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-
-                <td class="font-w600">Tiffany Kim</td>
-                <td>client4@example.com</td>
-                <td>
-                    <span class="label label-warning">Trial</span>
-                </td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-
-                <td class="font-w600">Emma Cooper</td>
-                <td>client5@example.com</td>
-                <td>
-                    <span class="label label-warning">Trial</span>
-                </td>
-                <td class="text-center">
-                    <div class="btn-group">
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                    </div>
-                </td>
-            </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

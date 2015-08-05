@@ -323,17 +323,36 @@ class ManageController extends Controller
      */
     public function manageTourAction()
     {
-        $tours = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Tour')->findAll();
+        $tours = $this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Tour')->findApprovedTours();
         return $this->render('@HearWeGoHearWeGo/Manage/tour/tour.html.twig', array('tours' => $tours));
     }
 
     /**
-     * @Route("/admin/tour/approve",name="approve_tour")
+     * @Route("/admin/tour/approve",name="approve_tours")
      */
-    public function approveTourAction()
+    public function approveToursAction()
     {
+        $tours=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Tour')->findUnapprovedTours();
+        return $this->render('@HearWeGoHearWeGo/Manage/tour/approvetours.html.twig',array('tours'=>$tours));
+    }
 
-        return $this->render('@HearWeGoHearWeGo/Manage/tour/approvetour.html.twig');
+    /**
+     * @Route("/admin/tour/approve/{id}",name="approve_one_tour")
+     */
+    public function approveOneTourAction($id,Request $request)
+    {
+        $tour=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Tour')->findById($id);
+        if ($request->getMethod()=='POST')
+        {
+            $tour->setStatus(true);
+            $em=$this->getDoctrine()->getEntityManager();
+            $em->persist($tour);
+            $em->flush();
+            return $this->redirectToRoute('manage_tour');
+        }
+        else {
+            return $this->render('@HearWeGoHearWeGo/Manage/tour/approveonetour.html.twig', array('tour' => $tour));
+        }
     }
 
     /**
@@ -387,7 +406,8 @@ class ManageController extends Controller
 
                 $session->getFlashBag()->add('status', 'success');
                 return $this->render('@HearWeGoHearWeGo/Manage/media/uploadmedia.html.twig', array(
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'img' => $img
                 ));
             }
         }

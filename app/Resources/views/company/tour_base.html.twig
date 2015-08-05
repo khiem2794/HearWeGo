@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>detail</title>
-    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/detail/detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
     <link rel="stylesheet" id="css-main" href="{{ asset('bundles/hearwegohearwego/oneUI/css/oneui.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/detail/detail.css') }}">
+
 </head>
 <body>
 <div class="my-page container .no-offset">
@@ -135,8 +136,8 @@
         <div class="right-side col-md-4">
             <div class="assist">
                 <h4><b>ASSISTANCE</b></h4>
-                <a href="#">Contact Us!</a><br />
-                <a href="#">About Us!</a>
+                <a href="{{ path('contact') }}">Contact Us!</a><br />
+                <a href="{{ path('about') }}">About Us!</a>
             </div>
             <div class="hotline">
                 <h5>Hotline</h5>

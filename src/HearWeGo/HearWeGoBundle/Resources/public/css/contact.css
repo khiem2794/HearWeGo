@@ -1,0 +1,30 @@
+.container
+{
+    background-color: #90D973;
+    margin-top:50px;
+    margin-bottom: 50px;
+    width:900px;
+}
+.container *
+{
+    margin-top:30px;
+    margin-bottom: 30px;
+}
+#leftcontent
+{
+    float:left;
+}
+#rightcontent *
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#rightcontent input[type="text"]
+{
+    width:500px;
+    padding:0;
+}
+label
+{
+    color: gray;
+}

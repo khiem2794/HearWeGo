@@ -1,16 +1,19 @@
 {% extends('admin/admin.html.twig') %}
 
+
+
 {% block mainpageheader %}
     <h1 class="page-heading">TOUR MANAGEMENT</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">Approved Tours</h3>
+    <h3 class="block-title">Choose one tour to approve</h3>
 {% endblock %}
 
 
 {% block mainpagecontainer %}
+    <h3 class="block-title">Brief details</h3>
     <div class="block">
         <div class="block-content">
             <table class="table">
@@ -21,11 +24,9 @@
                     <th style="width:15%">Company</th>
                     <th style="width:15%">Destination</th>
                     <th style="width:20px">Start Date</th>
-                    <th style="width:20px">End Date</th>
-                    <th>Price</th>
-                    <th>Discount</th>
                     <th style="width:40%">Info</th>
                     <th style="width:20px">Submission Date</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,11 +37,16 @@
                         <td>{{ tour.company.name }}</td>
                         <td>{{ tour.destination.name }}</td>
                         <td>{{ tour.startdate|date('Y-m-d') }}</td>
-                        <td>{{ tour.enddate|date('Y-m-d') }}</td>
-                        <td>{{ tour.price }}</td>
-                        <td>{{ tour.discount }}</td>
-                        <td>{{ tour.info|raw }}</td>
+                        <td>
+                            {% set seg=tour.info|split('.') %}
+                            {{ seg[0]|raw }}
+                        </td>
                         <td>{{ tour.createdAt|date('Y-m-d') }}</td>
+                        <td>
+                            <a href="{{ path('approve_one_tour',{'id':tour.id}) }}">
+                                <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="See details and approve"><i class="glyphicon glyphicon-check"></i></button>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

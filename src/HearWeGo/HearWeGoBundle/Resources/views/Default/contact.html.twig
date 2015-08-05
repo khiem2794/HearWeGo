@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/contact.css') }}">
+</head>
+<body>
+    <div id="toppage">
+        <img src="{{ asset('bundles/hearwegohearwego/images/banner.png') }}" align="middle" style="width:100%">
+    </div>
+    <div class="container" id="middlepage">
+        <div id="leftcontent">
+            <img src="{{ asset('bundles/hearwegohearwego/images/contact/contact.png') }}" class="col-md-3" style="width:300px">
+        </div>
+        <div id="rightcontent">
+            <label>Your name</label>
+            <br>
+            <input type="text" name="name"/>
+            <br>
+            <label>Email</label>
+            <br>
+            <input type="text" name="email"/>
+            <br>
+            <label>Comment</label>
+            <br>
+            <textarea name="comment" style="width:500px;height:200px"></textarea>
+            <br>
+            <a href="#">
+                <img src="{{ asset('bundles/hearwegohearwego/images/contact/submit.png') }}" style="width:120px;margin-left: 380px"/>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

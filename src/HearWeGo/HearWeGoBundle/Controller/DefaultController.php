@@ -109,6 +109,7 @@ class DefaultController extends Controller
             'hotplaces_filter' => $hotplaces_filter,
             'newtourfilter' => $newtoursfilter,
             'saletoursfilter' => $saletoursfilter
+
         ));
     }
 
@@ -210,6 +211,10 @@ class DefaultController extends Controller
             $count++;
         }
         $numPages=ceil(($articlesCount)/$pageSize);
+        if ($numPages==0)
+        {
+            $numPages = 1;
+        }
         return $this->render('@HearWeGoHearWeGo/Default/Blog/blog.html.twig',array(
             'current'=>$page,
             'numPages'=>$numPages,
@@ -259,10 +264,29 @@ class DefaultController extends Controller
     {
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
+
     /**
      * @Route("/payment" , name="payment")
      */
-    public  function paymentAction(){
+    public  function paymentAction()
+    {
         return $this->render('HearWeGoHearWeGoBundle:Payment:payment.html.twig');
+    }
+
+    /**
+     * @Route("/about",name="about")
+     */
+    public function aboutAction()
+    {
+        return $this->render('@HearWeGoHearWeGo/Default/about.html.twig');
+    }
+
+    /**
+     * @Route("/contact",name="contact")
+     */
+    public function contactAction()
+    {
+        return $this->render('@HearWeGoHearWeGo/Default/contact.html.twig');
+
     }
 }

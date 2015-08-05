@@ -64,6 +64,11 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
+                        <a href="{{ path('company_manage') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                         <a href="{{ path('company_profile') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
@@ -109,7 +114,10 @@
                     <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
-                    <p> {{ article.content|split('.')|raw }} ...</p>
+                    <p>
+                        {% set seg=article.content|split('.') %}
+                        {{ seg[0]|raw }}
+                    </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
             </div>
@@ -132,7 +140,10 @@
                     <i>{{ article.getCreatedAt|date('Y-m-d') }}</i>
                 </div>
                 <div class="sub-content">
-                    <p> {{ article.content|split('.')|raw }} ...</p>
+                    <p>
+                        {% set seg=article.content|split('.') %}
+                        {{ seg[0]|raw }}
+                    </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
             </div>
@@ -156,7 +167,7 @@
             {% if current>1 %}
                 <li>
                     <a href="{{ path('blog',{'page':current-1}) }}">
-                        <span aria-hidden="true">Prev</span>
+                        <span aria-hidden="true">&#8249;</span>
                     </a>
                 </li>
             {% endif %}
@@ -166,7 +177,7 @@
             {% if current<numPages %}
                 <li>
                     <a href="{{ path('blog',{'page':current+1}) }}">
-                        <span aria-hidden="true">Next</span>
+                        <span aria-hidden="true">&#8250;</span>
                     </a>
                 </li>
             {% endif %}
