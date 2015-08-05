@@ -406,7 +406,8 @@ class ManageController extends Controller
 
                 $session->getFlashBag()->add('status', 'success');
                 return $this->render('@HearWeGoHearWeGo/Manage/media/uploadmedia.html.twig', array(
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'img' => $img
                 ));
             }
         }

@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HearWeGo\HearWeGoBundle\Entity\Repository\GalleryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Gallery
 {
@@ -143,5 +144,17 @@ class Gallery
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $file = $this->getAbsolutePath();
+
+        if (file_exists($file)) {
+            unlink($file);
+        }
     }
 }
