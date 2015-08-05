@@ -266,6 +266,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/payment" , name="payment")
+     */
+    public  function paymentAction()
+    {
+        return $this->render('HearWeGoHearWeGoBundle:Payment:payment.html.twig');
+    }
+
+    /**
      * @Route("/about",name="about")
      */
     public function aboutAction()
@@ -279,5 +287,6 @@ class DefaultController extends Controller
     public function contactAction()
     {
         return $this->render('@HearWeGoHearWeGo/Default/contact.html.twig');
+
     }
 }

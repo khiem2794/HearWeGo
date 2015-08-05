@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CompanyController extends Controller
 {
     /**
-     * @Route("/company/signup",name="company_signup")
+     * @Route("/signup/company",name="company_signup")
      */
     public function signupAction(Request $request)
     {
