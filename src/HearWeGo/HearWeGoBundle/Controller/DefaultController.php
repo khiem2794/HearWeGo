@@ -109,6 +109,7 @@ class DefaultController extends Controller
             'hotplaces_filter' => $hotplaces_filter,
             'newtourfilter' => $newtoursfilter,
             'saletoursfilter' => $saletoursfilter
+
         ));
     }
 
