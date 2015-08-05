@@ -3,6 +3,7 @@
 namespace HearWeGo\HearWeGoBundle\Controller;
 
 use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Entity\Orders;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -144,14 +145,18 @@ class UserController extends Controller
                     $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($user);
                     $em->flush();
-                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
-                } else {
-                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
+                    return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array(
+                        "form" => $form->createView(),
+                        'orders' => $user->getOrders()->toArray()
+                    ));
                 }
             }
         }
 
-        return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array("form" => $form->createView()));
+        return $this->render('HearWeGoHearWeGoBundle:Default/Profile:profile.html.twig', array(
+            "form" => $form->createView(),
+            'orders' => $user->getOrders()->toArray()
+        ));
     }
 
     /**
@@ -159,7 +164,9 @@ class UserController extends Controller
      */
     public function commentAction( $desID ){
         $request = $this->get('request');
-
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
         $comment = new Comment(  );
         $commentForm = $this->createForm(new Form\CommentType(), $comment, array(
             'method' => 'POST',
@@ -190,25 +197,53 @@ class UserController extends Controller
 
     }
 
+
     /**
-     * Route("/checkout", name="checkout")
+     * @Route("/checkout/{audioid}",name="checkout")
      */
-    public function checkOutAction(){
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirect($this->generateUrl('homepage'));
-        }
+    public function checkOutAction( $audioid ){
         $session = $this->get('session');
         $request = $this->get('request');
         if ($request->getMethod() == 'GET') {
             $routeName = $request->get('_route');
             if ($routeName == 'checkout') return $this->redirect($this->generateUrl('homepage'));
         }
-
-        $this->createFormBuilder();
-
+        $em = $this->getDoctrine()->getManager();
+        $audio = $em->getRepository('HearWeGoHearWeGoBundle:Audio')->find($audioid);
+        $detail = array(
+            'name' => $audio->getName(),
+            'price' => $audio->getPrice(),
+            'destination' => $audio->getDestination()->getName()
+        );
+        $form = $this->createFormBuilder($detail, array(
+            'method' => 'POST',
+            'action' => $this->generateUrl('checkout', array(
+                'audioid' => $audioid
+            ))
+        ))
+                    ->add('name', 'text')
+                    ->add('price', 'text')
+                    ->add('destination', 'text')
+                    ->add('submit', 'submit')
+        ;
         if ($request->getMethod() == 'POST'){
-            
+
+            if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')){
+                return $this->redirect($this->generateUrl('homepage'));
+            }
+            if ($audio) {
+                $order = new Orders();
+                $order->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $order->setAudios($audio);
+                $em->persist($order);
+                $em->flush();
+                return $this->render('HearWeGoHearWeGoBundle:Default/SubView:download.html.twig');
+            }
         }
+
+        return $this->render('HearWeGoHearWeGoBundle:Payment:checkout.html.twig', array(
+            'form' => $form->getForm()->createView()
+        ));
     }
 
 }

@@ -23,4 +23,6 @@ class UserRepository extends EntityRepository
     {
         return $this->getEntityManager()->createQuery('SELECT u FROM HearWeGoHearWeGoBundle:User u WHERE u.id=:id')->setParameter('id',$id)->getOneOrNullResult();
     }
+
+
 }

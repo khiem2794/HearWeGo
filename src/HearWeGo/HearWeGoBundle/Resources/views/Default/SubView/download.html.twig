@@ -1,5 +1,4 @@
-{% extends(':company:tour_base.html.twig') %}
-
+{% extends(':default:download.html.twig') %}
 
 
 {% block loginform %}
@@ -7,6 +6,8 @@
     {% if not app.user %}
         {% render controller('HearWeGoHearWeGoBundle:User:userLogin') %}
     {% else %}
+
+
 
         <form>
             <div class="modal-header">
@@ -63,6 +64,11 @@
             <ul class="my-reg-log-bar">
                 {% if app.user %}
                     {% if app.user.name is defined %}
+                        <a href="{{ path('company_manage') }}">
+                            <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                            </li>
+                        </a>
                         <a href="{{ path('company_profile') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
@@ -103,69 +109,11 @@
 
 
 
+{% block thankyou %}
 
-{% block coverflow %}
+    Thank you , your download will start shorly
 
-    {% include('@HearWeGoHearWeGo/Default/SubView/coverflow.html.twig') with { 'photos': photos } %}
 {% endblock %}
-
-
-
-{% block sliderTitle %}
-
-    <p class="text-center" style="text-align: center">Tour {{ tour.getName }} </p>
-{% endblock %}
-
-
-
-
-{% block detail %}
-    {{ tour.info|raw }}
-{% endblock %}
-
-
-{% block link %}
-    <a class="block">
-        <div class="block-header">
-            <h3 class="block-title text-center" style="text-transform: uppercase">{{ tour.company.name }} company</h3>
-        </div>
-        <div class="block-content block-content-full text-center bg-image" style="background-color: #F9F9F9;" >
-            <div>
-                <table class="table  table-hover">
-                    <tr class="">
-                        <td class="">price</td>
-                        <td class="">{{ tour.price }} $ </td>
-
-                    </tr>
-                    <tr class="">
-                        <td class="">Start date</td>
-                        <td class="">{{ tour.startdate|date('d-M-Y') }}</td>
-                    </tr>
-                    <tr class="">
-                        <td class="">End date</td>
-                        <td class="">{{ tour.enddate|date('d-M-Y') }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="block">
-            <div class="row items-push text-center">
-                <div class="col-xs-6" onclick="">
-                    <div class="push-5"><img src="{{ asset('bundles/hearwegohearwego/images/tour/briefcase.png') }}"></div>
-                    <div class="h5 font-w300 text-muted">Comapany Info</div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="push-5"><img src="{{ asset('bundles/hearwegohearwego/images/tour/camera.png') }}"></div>
-                    <div class="h5 font-w300 text-muted">Order Tour</div>
-                </div>
-            </div>
-        </div>
-    </a>
-{% endblock %}
-
-
-
-
 
 
 

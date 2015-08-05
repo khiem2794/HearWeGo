@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Hand Book</title>
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/handbook/handbook.css') }}">
+</head>
+<body>
+<div class="my-page container-fluid no-inset">
+    <!--Banner-->
+    <div class="banner">
+        <img src="{{ asset('bundles/hearwegohearwego/images/homepage/banner.png') }}">
+    </div>
+    <!--End Banner-->
+
+    <!--Content-->
+    <div class="content" style="height: 300px">
+
+    </div>
+    <!--End Content-->
+
+    <!--Navigation bar-->
+    <div class="row my-navbar">
+        <div class="col-md-1">
+            <ul class="my-navbar">
+                <a href="{{ path('homepage') }}">
+                    <li class="item"><img class="icon"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/home.png') }}"
+                                          alt="Home icon"></li>
+                </a>
+                <a href="{{ path('map') }}">
+                    <li class="item"><img class="icon"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/map.png') }}"
+                                          alt="Map icon"></li>
+                </a>
+                <a href="{{ path('destination') }}">
+                    <li class="item"><img class="icon"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/nav-destination.png') }}"
+                                          alt="Destination icon"></li>
+                </a>
+                <a href="{{ path('blog',{'page':1}) }}">
+                    <li class="item"><img class="icon"
+                                          src="{{ asset('bundles/hearwegohearwego/images/homepage/news.png') }}"
+                                          alt="News icon"></li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!--End Navigation bar-->
+
+
+    <!--Login/Reg bar-->
+    {% block reglogbutton %}
+        <div class="row my-reg-log-bar">
+            <div class="col-md-1">
+                <ul class="my-reg-log-bar">
+                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}"></li>
+                    <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form" src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+    <!-- EndLogin/Reg bar -->
+    <!-- Register Form -->
+    <div class="my-reg-form modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!--Form content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <img class="avatar" src="{{ asset('bundles/hearwegohearwego/images/homepage/User.png') }}" >
+                    <img class="modal-title title" src="{{ asset('bundles/hearwegohearwego/images/homepage/title.png') }}">
+                </div>
+                <div class="modal-body">
+                    <button class="fb_signup" type="button"><img src="{{ asset('bundles/hearwegohearwego/images/homepage/fbsignup.png') }}"></button>
+                    {% block register %}
+
+                    {% endblock %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--End Register form-->
+
+    <!--Login form-->
+    <div class="my-log-form modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!--Form content-->
+            <div class="modal-content">
+                {% block loginform %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!--End login form-->
+    <!--Footer-->
+    <div class="my-footer no-offset">
+        <div class="menu row no-offset">
+            <div class="left-side col-md-8 text-center">
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/menu-left.png') }}">
+            </div>
+            <div class="right-side col-md-4">
+                <div class="assist">
+                    <h4><b>ASSISTANCE</b></h4>
+                    <a href="{{ path('contact') }}">Contact Us!</a><br />
+                    <a href="{{ path('about') }}">About Us!</a>
+                </div>
+                <div class="hotline">
+                    <h5>Hotline</h5>
+                    <h3><b>0123456789</b></h3>
+                    <p style="margin-bottom: 0px">Responsible for content: KAPPA team at GPAT Company </p>
+                    <p style="margin-bottom: 0px">Address: 268 Ly Thuong Kiet Ward 15 District 10 HCMC</p>
+                    <p class="last">Business lisence No 12XXXX/NGCB</p>
+                </div>
+            </div>
+        </div>
+        <div class="social row no-offset">
+            <div class="left-side col-md-8 row">
+                <div class="chanel"><a><img src="{{ asset('bundles/hearwegohearwego/images/homepage/twitter.png') }}"></a></div>
+                <div class="chanel"><a><img src="{{ asset('bundles/hearwegohearwego/images/homepage/youtube.png') }}"></a></div>
+                <div class="chanel"><a><img src="{{ asset('bundles/hearwegohearwego/images/homepage/googleplus.png') }}"></a></div>
+                <div class="chanel"><a><img src="{{ asset('bundles/hearwegohearwego/images/homepage/facebook.png') }}"></a></div>
+            </div>
+            <div class="right-side col-md-4">
+                <img src="{{ asset('bundles/hearwegohearwego/images/homepage/logo-bot.png') }}">
+            </div>
+        </div>
+        <div class="end-line"></div>
+    </div>
+    <!--End Footer-->
+</div>
+<script src="{{ asset('bundles/hearwegohearwego/js/jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('bundles/hearwegohearwego/js/bootstrap.min.js') }}"></script>
+
+</body>
+</html>
