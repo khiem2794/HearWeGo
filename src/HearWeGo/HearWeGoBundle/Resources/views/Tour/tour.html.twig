@@ -127,7 +127,7 @@
 {% block link %}
     <a class="block">
         <div class="block-header">
-            <h3 class="block-title text-center">{{ tour.company.name }} company</h3>
+            <h3 class="block-title text-center" style="background-color: #F9F9F9; text-transform: uppercase">{{ tour.company.name }} company</h3>
         </div>
         <div class="block-content block-content-full text-center bg-image" >
             <div>
@@ -151,11 +151,11 @@
         <div class="block">
             <div class="row items-push text-center">
                 <div class="col-xs-6" onclick="">
-                    <div class="push-5"><i class="si si-briefcase fa-2x"></i></div>
+                    <div class="push-5"><img src="{{ asset('bundles/hearwegohearwego/images/tour/briefcase.png') }}"></div>
                     <div class="h5 font-w300 text-muted">Comapany Info</div>
                 </div>
                 <div class="col-xs-6">
-                    <div class="push-5"><i class="si si-camera fa-2x"></i></div>
+                    <div class="push-5"><img src="{{ asset('bundles/hearwegohearwego/images/tour/camera.png') }}"></div>
                     <div class="h5 font-w300 text-muted">Order Tour</div>
                 </div>
             </div>
