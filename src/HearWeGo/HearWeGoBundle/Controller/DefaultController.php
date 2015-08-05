@@ -264,4 +264,20 @@ class DefaultController extends Controller
     {
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
+
+    /**
+     * @Route("/about",name="about")
+     */
+    public function aboutAction()
+    {
+        return $this->render('@HearWeGoHearWeGo/Default/about.html.twig');
+    }
+
+    /**
+     * @Route("/contact",name="contact")
+     */
+    public function contactAction()
+    {
+        return $this->render('@HearWeGoHearWeGo/Default/contact.html.twig');
+    }
 }

@@ -167,7 +167,7 @@
             {% if current>1 %}
                 <li>
                     <a href="{{ path('blog',{'page':current-1}) }}">
-                        <span aria-hidden="true">Prev</span>
+                        <span aria-hidden="true">&#8249;</span>
                     </a>
                 </li>
             {% endif %}
@@ -177,7 +177,7 @@
             {% if current<numPages %}
                 <li>
                     <a href="{{ path('blog',{'page':current+1}) }}">
-                        <span aria-hidden="true">Next</span>
+                        <span aria-hidden="true">&#8250;</span>
                     </a>
                 </li>
             {% endif %}
