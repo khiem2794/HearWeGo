@@ -151,8 +151,15 @@
             </div>
             <div class="subcontent">
                 <p>
-                {% set seg=relative.content|split('.') %}
-                {{ seg[0]|raw }}
+                    {% set seg=relative.content|split('.') %}
+                    {% set seg1=seg[0] %}
+                    {% set seg=relative.content|split(',') %}
+                    {% set seg2=seg[0] %}
+                    {% if seg1|length>seg2|length %}
+                        {{ seg1|raw }}
+                    {% else %}
+                        {{ seg2|raw }}
+                    {% endif %}
                 </p>
             </div>
         </div>
