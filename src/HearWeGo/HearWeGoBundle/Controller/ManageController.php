@@ -368,7 +368,8 @@ class ManageController extends Controller
      */
     public function audioRatingAction()
     {
-        return $this->render('@HearWeGoHearWeGo/Manage/rating/audiorating.html.twig');
+        $ratings=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Rating')->findAll();
+        return $this->render('@HearWeGoHearWeGo/Manage/rating/audiorating.html.twig',array('ratings'=>$ratings));
     }
 
 
