@@ -48,7 +48,7 @@ class Destination
     /**
      * @var string
      *
-     * @ORM\Column(name="location", type="decimal", scale=4)
+     * @ORM\Column( type="decimal", scale=4)
      */
     private $location;
 
