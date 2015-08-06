@@ -4,6 +4,7 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Entity\Rating;
 use HearWeGo\HearWeGoBundle\Entity\Repository\DoctrineHelp;
 use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -266,8 +267,14 @@ class DefaultController extends Controller
     public function testAction(Request $request)
     {
         if($request->isXmlHttpRequest()) {
-            $b=$request->get('id1');
-            echo $b;
+            $b=$request->request->get('id1');
+            $em=$this->getDoctrine()->getEntityManager();
+            $rating=new Rating();
+            $rating->setAudio($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findById(1));
+            $rating->setUser($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findById(4));
+            $rating->setStars($b);
+            $em->persist($rating);
+            $em->flush();
         }
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
@@ -295,5 +302,31 @@ class DefaultController extends Controller
     {
         return $this->render('@HearWeGoHearWeGo/Default/contact.html.twig');
 
+    }
+
+    /**
+     * @Route("/rating/{id}",name="rating")
+     */
+    public function ratingAction($id,Request $request)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('user_login'));
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if($request->isXmlHttpRequest()) {
+            $b=$request->request->get('star');
+            $em=$this->getDoctrine()->getEntityManager();
+            $rating=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Rating')->findByAudioAndUser($user->getId(),$id);
+            if ($rating==null)
+            {
+                $rating = new Rating();
+                $rating->setAudio($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findById($id));
+                $rating->setUser($user);
+            }
+            $rating->setStars($b);
+            $em->persist($rating);
+            $em->flush();
+        }
+        return new Response();
     }
 }

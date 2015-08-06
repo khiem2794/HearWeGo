@@ -10,6 +10,7 @@
         <button class="btn btn-primary col-md-3 " data-toggle="modal" data-target="#myModal">
             Buy
         </button>
+            {% include('@HearWeGoHearWeGo/Default/SubView/rating.html.twig') with {'audio_id':audio.id} %}
         {% else %}
             <button class="btn btn-danger col-md-3 " disabled="disabled">
                 Not Ready
