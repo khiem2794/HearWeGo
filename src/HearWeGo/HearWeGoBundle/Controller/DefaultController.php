@@ -177,23 +177,6 @@ class DefaultController extends Controller
      */
     public function blogAction($page)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
-//        $blog = $articlerepo->findAll();
-//        $blog1 = array();
-//        $blog2 = array();
-//        $count = 0;
-//        foreach ( $blog as $article){
-//            if ( $count % 2 == 1)
-//                $blog1[] = $article;
-//            else
-//                $blog2[] = $article;
-//            $count++;
-//        }
-//        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig', array(
-//            'blog1' => $blog1,
-//            'blog2' => $blog2
-//        ));
         $pageSize=6;
         $articlesQuery=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->queryAll();
         $articlesCount=count($articlesQuery->getResult());

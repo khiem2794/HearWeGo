@@ -3,7 +3,9 @@
     <head lang="en">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Destination Page</title>
+        {% block title %}
+            <title>Hear we go</title>
+        {% endblock %}
         <link href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('bundles/hearwegohearwego/css/destination.css') }}" rel="stylesheet" type="text/css">
         <script src="{{ asset('bundles/hearwegohearwego/js/jquery-2.1.4.min.js') }}"></script>

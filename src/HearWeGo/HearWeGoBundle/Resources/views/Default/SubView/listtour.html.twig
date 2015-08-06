@@ -4,10 +4,24 @@
 
     <div class="row tour">
         <div class="logo col-md-5">
-            <img src="{{ asset('bundles/hearwegohearwego/images/detail/play_btn.png') }}">
+            <a href="{{ path('tour', { 'id': tour.id }) }}"><button>Detail</button></a>
         </div>
         <div class="info col-md-7">
-            {{ tour.price }} $
+
+            <table class="table table-hover">
+                <tr>
+                    <td>Tour</td>
+                    <td>{{ tour.name }}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{ tour.price }} $</td>
+                </tr>
+                <tr>
+                    <td>Start</td>
+                    <td>{{ tour.startdate|date('d-M-Y') }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 

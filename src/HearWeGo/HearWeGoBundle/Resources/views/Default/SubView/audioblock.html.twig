@@ -6,6 +6,7 @@
             <source src="{{ audio.getWebPath }}" type="audio/mpeg">
             Your browser does not support this audio type
         </audio>
+        {% if app.user %}
         {% if audio.getWebPath ends with '.mp3' %}
         <button class="btn btn-primary col-md-3 " data-toggle="modal" data-target="#myModal">
             Buy
@@ -14,6 +15,11 @@
         {% else %}
             <button class="btn btn-danger col-md-3 " disabled="disabled">
                 Not Ready
+            </button>
+        {% endif %}
+        {% else %}
+            <button class="btn btn-danger col-md-3 " disabled="disabled">
+                Login first
             </button>
         {% endif %}
     </div>

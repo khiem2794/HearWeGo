@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Map</title>
+    {% block title %}
+        <title>Hear we go</title>
+    {% endblock %}
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/map/map.css') }}">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
