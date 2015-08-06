@@ -45,11 +45,11 @@ class Destination
      */
     private $createdAt;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column( type="decimal", scale=4)
-     */
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column( type="decimal", scale=4)
+//     */
     private $location;
 
     /**
