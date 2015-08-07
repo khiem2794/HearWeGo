@@ -1,5 +1,9 @@
 {% extends('default/homepage.html.twig') %}
 
+{% block title %}
+    <title>Hear We Go</title>
+{% endblock %}
+
 {% block loginform %}
 
     {% if not app.user %}
@@ -108,7 +112,9 @@
 
 
 {% block hotplaces %}
-
+    {% if error is defined %}
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    {% endif %}
     <ul class="my-slide-top">
 
         {% for despair in hotplaces_filter %}

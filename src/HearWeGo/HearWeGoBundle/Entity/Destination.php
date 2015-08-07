@@ -39,16 +39,17 @@ class Destination
      *
      */
     private $article;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="location", type="decimal", scale=4)
-     */
+
     /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
 
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column( type="decimal", scale=4)
+//     */
     private $location;
 
     /**

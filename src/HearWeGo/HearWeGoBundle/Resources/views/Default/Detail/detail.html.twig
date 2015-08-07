@@ -1,5 +1,13 @@
 {% extends('default/detail.html.twig') %}
 
+{% block title %}
+    <title>{{ destination.name|upper }}</title>
+{% endblock %}
+
+
+{% block cssinclude %}
+    <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/payment/payment.css') }}">
+{% endblock %}
 
 {% block loginform %}
 

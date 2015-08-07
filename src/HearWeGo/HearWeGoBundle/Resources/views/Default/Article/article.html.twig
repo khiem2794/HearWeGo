@@ -1,5 +1,8 @@
 {% extends('default/article.html.twig') %}
 
+{% block title %}
+    <title>{{ article.title|upper }}</title>
+{% endblock %}
 
 {% block loginform %}
 
@@ -148,8 +151,16 @@
             </div>
             <div class="subcontent">
                 <p>
-                {% set seg=relative.content|split('.') %}
-                {{ seg[0]|raw }}
+                    {% set str=relative.content|raw %}
+                    {% set seg=str|split('.') %}
+                    {% set seg1=seg[0] %}
+                    {% set seg=str|split(',') %}
+                    {% set seg2=seg[0] %}
+                    {% if seg1|length<seg2|length %}
+                        {{ seg1|raw }}
+                    {% else %}
+                        {{ seg2|raw }}
+                    {% endif %}
                 </p>
             </div>
         </div>

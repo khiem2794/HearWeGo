@@ -4,15 +4,19 @@ namespace HearWeGo\HearWeGoBundle\Controller;
 
 use Doctrine\ORM\NoResultException;
 use HearWeGo\HearWeGoBundle\Entity\Comment;
+use HearWeGo\HearWeGoBundle\Entity\Rating;
 use HearWeGo\HearWeGoBundle\Entity\Repository\DoctrineHelp;
 use HearWeGo\HearWeGoBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+//use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Console\Helper\Helper;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use HearWeGo\HearWeGoBundle\Entity\Company;
 use HearWeGo\HearWeGoBundle\Entity\User;
 use HearWeGo\HearWeGoBundle\Entity\Article;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class DefaultController extends Controller
@@ -173,23 +177,6 @@ class DefaultController extends Controller
      */
     public function blogAction($page)
     {
-//        $em = $this->getDoctrine()->getManager();
-//        $articlerepo = $em->getRepository('HearWeGoHearWeGoBundle:Article');
-//        $blog = $articlerepo->findAll();
-//        $blog1 = array();
-//        $blog2 = array();
-//        $count = 0;
-//        foreach ( $blog as $article){
-//            if ( $count % 2 == 1)
-//                $blog1[] = $article;
-//            else
-//                $blog2[] = $article;
-//            $count++;
-//        }
-//        return $this->render('HearWeGoHearWeGoBundle:Default/Blog:blog.html.twig', array(
-//            'blog1' => $blog1,
-//            'blog2' => $blog2
-//        ));
         $pageSize=6;
         $articlesQuery=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Article')->queryAll();
         $articlesCount=count($articlesQuery->getResult());
@@ -260,8 +247,18 @@ class DefaultController extends Controller
     /**
      * @Route("/test", name="test")
      */
-    public function testAction()
+    public function testAction(Request $request)
     {
+        if($request->isXmlHttpRequest()) {
+            $b=$request->request->get('id1');
+            $em=$this->getDoctrine()->getEntityManager();
+            $rating=new Rating();
+            $rating->setAudio($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findById(1));
+            $rating->setUser($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findById(4));
+            $rating->setStars($b);
+            $em->persist($rating);
+            $em->flush();
+        }
         return $this->render('HearWeGoHearWeGoBundle::test.html.twig');
     }
 
@@ -288,5 +285,31 @@ class DefaultController extends Controller
     {
         return $this->render('@HearWeGoHearWeGo/Default/contact.html.twig');
 
+    }
+
+    /**
+     * @Route("/rating/{id}",name="rating")
+     */
+    public function ratingAction($id,Request $request)
+    {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl('user_login'));
+        }
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if($request->isXmlHttpRequest()) {
+            $b=$request->request->get('star');
+            $em=$this->getDoctrine()->getEntityManager();
+            $rating=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Rating')->findByAudioAndUser($user->getId(),$id);
+            if ($rating==null)
+            {
+                $rating = new Rating();
+                $rating->setAudio($this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:Audio')->findById($id));
+                $rating->setUser($user);
+            }
+            $rating->setStars($b);
+            $em->persist($rating);
+            $em->flush();
+        }
+        return new Response();
     }
 }

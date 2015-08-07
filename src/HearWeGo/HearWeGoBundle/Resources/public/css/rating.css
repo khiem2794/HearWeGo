@@ -1,35 +1,38 @@
-.ratings {
-            border:     1px solid #CCC;
-            overflow:   visible;
-            padding:    10px;
-            position:   relative;
-            width:      180px;
-            height:     100px;
-        }
-.ratings_stars {
-            background: url('../images/rating/star_blank.png') no-repeat;
-            float:      left;
-            height:     28px;
-            padding:    2px;
-            width:      32px;
-        }
-.ratings_vote {
-            background: url('../images/rating/star_voted.png') no-repeat;
-        }
-.ratings_over {
-            background: url('../images/rating/star_overs.png') no-repeat;
-        }
-		
-.total_votes {  
-    background: #eaeaea;  
-    top: 58px;  
-    left: 0;  
-    padding: 5px;  
-    position:   absolute;  
-}  
-.product{  
-    font: 10px verdana, sans-serif;  
-    margin: 0 auto 40px auto;  
-    width: 180px; 
-	height:200px; 
-}  
+@import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+.rating {
+    border: none;
+    float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating > label {
+    color: gray;
+    float: right;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

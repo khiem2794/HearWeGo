@@ -1,5 +1,8 @@
 {% extends('default/destination.html.twig') %}
 
+{% block title %}
+    <title>Destination</title>
+{% endblock %}
 
 {% block loginform %}
 
@@ -114,7 +117,7 @@
     {% for destination in destinations %}
         {% set i=i+1 %}
         {% for dest in destination %}
-            <nav id="place{{ i }}" hidden="">
+            <nav id="place{{ i }}" hidden>
                 <ul>
                     <li><a href="{{ path('detail',{'id':dest.id}) }}">{{ dest.name }}</a></li>
                 </ul>

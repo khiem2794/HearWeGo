@@ -2,9 +2,13 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>detail</title>
+    {% block title %}
+        <title>Hear we go</title>
+    {% endblock %}
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/detail/detail.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}">
+    {% block cssinclude %}
+    {% endblock %}
 </head>
 <body>
     <div class="my-page container .no-offset">

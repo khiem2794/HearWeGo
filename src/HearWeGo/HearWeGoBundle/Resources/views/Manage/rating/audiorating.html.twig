@@ -1,25 +1,40 @@
 {% extends('admin/admin.html.twig') %}
 
-
-
 {% block mainpageheader %}
-    <h1 class="page-heading">mainpageheader</h1>
+    <h1 class="page-heading">AUDIO RATING MANAGEMENT</h1>
 {% endblock %}
 
 
 {% block mainpagecontainerheader %}
-    <h3 class="block-title">mainpagecontainerheader</h3>
+    <h3 class="block-title">All Ratings for Audios</h3>
 {% endblock %}
 
 
 {% block mainpagecontainer %}
-    <h3 class="block-title">mainpagecontainer</h3>
+    <div class="block">
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Rated by</th>
+                    <th>Audio</th>
+                    <th>Stars</th>
+                    <th style="width:20%">Rating Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rating in ratings %}
+                    <tr>
+                        <td class="text-center">{{ rating.id }}</td>
+                        <td>{{ rating.user.firstName }} {{ rating.user.lastName }}</td>
+                        <td>{{ rating.audio.name }}</td>
+                        <td>{{ rating.stars }}</td>
+                        <td>{{ rating.createdAt|date('Y-m-d') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
-
-
-
-
-
-
-
-

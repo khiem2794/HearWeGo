@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Tilte</title>
+    {% block title %}
+        <title>Hear we go</title>
+    {% endblock %}
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/handbook/article.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/hearwegohearwego/css/detail/detail.css') }}">
