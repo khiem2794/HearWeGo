@@ -118,14 +118,15 @@
                 </div>
                 <div class="sub-content">
                     <p>
-                        {% set seg=article.content|split('.') %}
+                        {% set str=article.content|raw %}
+                        {% set seg=str|split('.') %}
                         {% set seg1=seg[0] %}
-                        {% set seg=article.content|split(',') %}
+                        {% set seg=str|split(',') %}
                         {% set seg2=seg[0] %}
                         {% if seg1|length<seg2|length %}
                             {{ seg1|raw}}
                         {% else %}
-                            {{ seg2|raw }}
+                            {{ seg2|raw}}
                         {% endif %}
                     </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
@@ -151,9 +152,10 @@
                 </div>
                 <div class="sub-content">
                     <p>
-                        {% set seg=article.content|split('.') %}
+                        {% set str=article.content|raw %}
+                        {% set seg=str|split('.') %}
                         {% set seg1=seg[0] %}
-                        {% set seg=article.content|split(',') %}
+                        {% set seg=str|split(',') %}
                         {% set seg2=seg[0] %}
                         {% if seg1|length<seg2|length %}
                             {{ seg1|raw }}
