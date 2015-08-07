@@ -29,8 +29,7 @@
                         <td class="text-center">{{ destination.id }}</td>
                         <td>{{ destination.name }}</td>
                         <td>
-                            {% set seg=destination.article|split('.') %}
-                            {{ seg[0]|raw }}
+                            {{  destination.article|striptags|slice(0,10) }}
                         </td>
                         <td>{{ destination.location }}</td>
                         <td>

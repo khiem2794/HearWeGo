@@ -32,8 +32,7 @@
                         <td class="text-center">{{ article.id }}</td>
                         <td>{{ article.title }}</td>
                         <td>
-                            {% set seg=article.content|split('.') %}
-                            {{ seg[0]|raw }}
+                            {{  article.content|striptags|slice(0,10) }}
                         </td>
                         <td>
                             <a href="{{ path('edit_article',{'id':article.id}) }}"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></button></a>
