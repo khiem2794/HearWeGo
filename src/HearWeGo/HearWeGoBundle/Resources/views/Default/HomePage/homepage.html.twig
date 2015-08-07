@@ -69,7 +69,7 @@
                     {% if app.user.name is defined %}
                         <a href="{{ path('company_manage') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
-                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                                    src="{{ asset('bundles/hearwegohearwego/images/Tour.png') }}">
                             </li>
                         </a>
                         <a href="{{ path('company_profile') }}">
@@ -79,14 +79,14 @@
                         </a>
                         <a href="{{ path('company_submit') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
-                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                                  src="{{ asset('bundles/hearwegohearwego/images/Submit.png') }}">
                             </li>
                         </a>
                     {% else %}
                         {% if app.user.roles[0] == 'ROLE_ADMIN' %}
                             <a href="{{ path('admin_index') }}">
                                 <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
-                                                      src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                                      src="{{ asset('bundles/hearwegohearwego/images/Manage.png') }}">
                                 </li>
                             </a>
                         {% endif %}

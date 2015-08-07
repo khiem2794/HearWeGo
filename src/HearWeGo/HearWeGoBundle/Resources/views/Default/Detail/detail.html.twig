@@ -69,7 +69,6 @@
 
 {% block reglogbutton %}
 
-
     <div class="row my-reg-log-bar">
         <div class="col-md-1">
             <ul class="my-reg-log-bar">
@@ -77,7 +76,7 @@
                     {% if app.user.name is defined %}
                         <a href="{{ path('company_manage') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
-                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                                  src="{{ asset('bundles/hearwegohearwego/images/Tour.png') }}">
                             </li>
                         </a>
                         <a href="{{ path('company_profile') }}">
@@ -87,15 +86,23 @@
                         </a>
                         <a href="{{ path('company_submit') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
-                                                  src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
+                                                  src="{{ asset('bundles/hearwegohearwego/images/Submit.png') }}">
                             </li>
                         </a>
                     {% else %}
+                        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                            <a href="{{ path('admin_index') }}">
+                                <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
+                                                      src="{{ asset('bundles/hearwegohearwego/images/Manage.png') }}">
+                                </li>
+                            </a>
+                        {% endif %}
                         <a href="{{ path('edit_profile') }}">
                             <li class="item"><img type="button" class="icon" data-target=".my-reg-form"
                                                   src="{{ asset('bundles/hearwegohearwego/images/homepage/reg.png') }}">
                             </li>
                         </a>
+
                     {% endif %}
                 {% else %}
                     <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-reg-form"
@@ -104,14 +111,11 @@
                 <li class="item"><img type="button" class="icon" data-toggle="modal" data-target=".my-log-form"
                                       src="{{ asset('bundles/hearwegohearwego/images/homepage/login.png') }}"></li>
             </ul>
-
         </div>
     </div>
 
 
-
 {% endblock %}
-
 
 
 {% block coverflow %}
