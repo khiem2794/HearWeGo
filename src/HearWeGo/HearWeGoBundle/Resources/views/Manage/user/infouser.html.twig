@@ -38,4 +38,29 @@
             </table>
         </div>
     </div>
+    <h3 class="block-title">Ratings</h3>
+    <div class="block">
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Audio</th>
+                    <th>Stars</th>
+                    <th style="width:20%">Rated At</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rating in ratings %}
+                    <tr>
+                        <td class="text-center">{{ rating.id }}</td>
+                        <td>{{ rating.audio.name }}</td>
+                        <td>{{ rating.stars }}</td>
+                        <td>{{ rating.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

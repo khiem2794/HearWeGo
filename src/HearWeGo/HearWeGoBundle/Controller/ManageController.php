@@ -53,7 +53,8 @@ class ManageController extends Controller
     {
         $user=$this->getDoctrine()->getRepository('HearWeGoHearWeGoBundle:User')->findById($id);
         $comments=$user->getComments();
-        return $this->render('@HearWeGoHearWeGo/Manage/user/infouser.html.twig',array('user'=>$user,'comments'=>$comments));
+        $ratings=$user->getRates();
+        return $this->render('@HearWeGoHearWeGo/Manage/user/infouser.html.twig',array('user'=>$user,'comments'=>$comments,'ratings'=>$ratings));
     }
 
     /**

@@ -124,9 +124,9 @@
                         {% set seg=str|split(',') %}
                         {% set seg2=seg[0] %}
                         {% if seg1|length<seg2|length %}
-                            {{ seg1|raw}}
+                            {{ seg1 }}
                         {% else %}
-                            {{ seg2|raw}}
+                            {{ seg2 }}
                         {% endif %}
                     </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
@@ -158,9 +158,9 @@
                         {% set seg=str|split(',') %}
                         {% set seg2=seg[0] %}
                         {% if seg1|length<seg2|length %}
-                            {{ seg1|raw }}
+                            {{ seg1 }}
                         {% else %}
-                            {{ seg2|raw }}
+                            {{ seg2 }}
                         {% endif %}
                     </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
