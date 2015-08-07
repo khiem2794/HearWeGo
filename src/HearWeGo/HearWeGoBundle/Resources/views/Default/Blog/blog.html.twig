@@ -118,16 +118,7 @@
                 </div>
                 <div class="sub-content">
                     <p>
-                        {% set str=article.content|raw %}
-                        {% set seg=str|split('.') %}
-                        {% set seg1=seg[0] %}
-                        {% set seg=str|split(',') %}
-                        {% set seg2=seg[0] %}
-                        {% if seg1|length<seg2|length %}
-                            {{ seg1 }}
-                        {% else %}
-                            {{ seg2 }}
-                        {% endif %}
+                        {{  article.content|striptags|slice(0,10) }}
                     </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
@@ -152,16 +143,7 @@
                 </div>
                 <div class="sub-content">
                     <p>
-                        {% set str=article.content|raw %}
-                        {% set seg=str|split('.') %}
-                        {% set seg1=seg[0] %}
-                        {% set seg=str|split(',') %}
-                        {% set seg2=seg[0] %}
-                        {% if seg1|length<seg2|length %}
-                            {{ seg1 }}
-                        {% else %}
-                            {{ seg2 }}
-                        {% endif %}
+                        {{  article.content|striptags|slice(0,10) }}
                     </p>
                     <a href="{{ path('article', { 'id': article.getID }) }}">Continue reading...</a>
                 </div>
